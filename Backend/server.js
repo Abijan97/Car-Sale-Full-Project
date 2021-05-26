@@ -27,11 +27,15 @@ connection.once('open', ()=> {
 
 const usertypeRouter = require('./routes/usertypes');
 const usersRouter = require('./routes/users');
+const agentsRouter=require('./routes/agents');
+const shipperRouter=require('./routes/shippers');
 
 //using routes
 
 app.use('/users',usersRouter);
 app.use('/usertypes',usertypeRouter);
+app.use('/agents',agentsRouter);
+app.use('/shippers',shipperRouter);
 
 
 app.listen(port,()=>{

@@ -10,12 +10,14 @@ import EditUser from "./Components/edit-user.component";
 import CreateUser from "./Components/create-user.component";
 import CreateUserType from "./Components/create-usertype.component";
 import UserTypesList from "./Components/usertype-list.component";
+import CreateAgent from "./Components/create-agent.component";
+import CreateShipper from "./Components/create-shipper.component";
 
 function App() {
   return (
     <Router>
       <div className="container">  
-   <Navbar/>
+    <Navbar/>
     <br/>
   
     <Route path="/" exact component={UserList} />  
@@ -23,7 +25,9 @@ function App() {
     <Route path="/create" exact component={CreateUser} />
     <Route path="/usertypes" exact component={CreateUserType} />
     <Route path="/createusertype" exact component={UserTypesList}/>
-
+    <Route path="/agents" exact component={CreateAgent}/>
+    <Route path="/shippers" exact component={CreateShipper}/>
+    
     </div>
     </Router>
   );

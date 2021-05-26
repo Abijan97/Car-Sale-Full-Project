@@ -1,6 +1,6 @@
 
 import React, {Component} from 'react';
-
+import UserTypesList from "./usertype-list.component";
 //send http request to backend (connect to backend)
 import axios from 'axios';
 
@@ -92,12 +92,19 @@ export default class CreateUserType extends Component{
                     onChange={this.onChangeUsertypeName}
                     />
               </div>
+            <br></br>
+              
 
 
               <div className="form-group"> 
                 <input type="submit" value="Create Usertype" className="btn btn-primary" />
               </div>
             </form>
+
+            <div>
+                <br></br>
+                <UserTypesList/>
+            </div>
           </div>
         )
     }

@@ -10,7 +10,13 @@ const userTypeSchema = new Schema({
         unique:true,
         trim:true,
     
-    }
+    },
+    usertypeName:{
+        type:String,
+        required:true,
+        unique:true,
+
+    },
 },{
     timestamps:true, 
 });

@@ -53,11 +53,14 @@ export default class AgentList extends Component {
 
 render(){
     return (
+        <div className="container border rounded border-warning pt-5 pb-5">
+          <div className="pl-2">
+        <h3 className="text-primary">Agents</h3><br></br>
+        </div>
         <div>
-        <h3>Agents</h3>
-        <table className="table">
+        <table className="table table-boarded">
           <thead className="thead-light">
-            <tr>
+            <tr className="table-primary">
               <th>Agent ID</th>
               <th>Agent Name</th>
 
@@ -69,6 +72,7 @@ render(){
             { this.agentsList() } 
           </tbody>
         </table>
+        </div>
       </div>
     
     )

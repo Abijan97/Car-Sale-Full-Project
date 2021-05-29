@@ -1,4 +1,4 @@
-
+import React from 'react';
 import './App.css';
 import {BrowserRouter as Router,Route} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -12,6 +12,8 @@ import CreateUserType from "./Components/create-usertype.component";
 import UserTypesList from "./Components/usertype-list.component";
 import CreateAgent from "./Components/create-agent.component";
 import CreateShipper from "./Components/create-shipper.component";
+import CreateCustomers from "./Components/create.customer.component";
+
 
 function App() {
   return (
@@ -27,7 +29,7 @@ function App() {
     <Route path="/createusertype" exact component={UserTypesList}/>
     <Route path="/agents" exact component={CreateAgent}/>
     <Route path="/shippers" exact component={CreateShipper}/>
-    
+    <Route path="/customers" exact component={CreateCustomers}/>
     </div>
     </Router>
   );

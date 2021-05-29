@@ -14,6 +14,8 @@ const User =props=> (
             
         </td>
     </tr>
+
+
 )
 
 
@@ -54,11 +56,14 @@ export default class UsersList extends Component {
 
     render(){
         return (
-            <div>
+          <div className="container pt-5 pb-5 border rounded border-warning pt-5 pb-5">
+          <div className="">
             <h3>Users</h3>
-            <table className="table">
+            </div>
+            <div>
+            <table className="table  table-boarded">
               <thead className="thead-light">
-                <tr>
+                <tr className="table-primary">
                   <th>User type</th>
                   <th>User name</th>
                   <th>Password</th>
@@ -70,6 +75,7 @@ export default class UsersList extends Component {
                 { this.usersList() } 
               </tbody>
             </table>
+          </div>
           </div>
         
         )

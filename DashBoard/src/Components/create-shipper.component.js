@@ -1,6 +1,6 @@
 
 import React, {Component} from 'react';
-//import UserTypesList from "./shipper-list.component";
+import ShipperList from "./shipper-list.component";
 //send http request to backend (connect to backend)
 import axios from 'axios';
 
@@ -70,7 +70,9 @@ export default class CreateShipper extends Component{
 
     render(){
         return(
-            <div>
+            <div className="container">
+                <div className="row">
+                    <div className="col-4 pb-5 pt-5 border rounded border-primary">
             <h3>Add Shipper</h3>
             <form onSubmit={this.onSubmit}>
               <div className="form-group"> 
@@ -100,11 +102,13 @@ export default class CreateShipper extends Component{
                 <input type="submit" value="Create Shipper" className="btn btn-primary" />
               </div>
             </form>
-
-            <div>
-                <br></br>
-                {/* <UserTypesList/> */}
             </div>
+
+            <div className="col-8">
+            
+               <ShipperList/>
+            </div>
+          </div>
           </div>
         )
     }

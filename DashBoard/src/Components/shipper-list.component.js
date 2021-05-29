@@ -17,7 +17,7 @@ const Shipper =props=> (
 )
 
 
-export default class AgentList extends Component {
+export default class ShipperList extends Component {
     constructor(props) {
       super(props); 
   
@@ -53,11 +53,14 @@ export default class AgentList extends Component {
 
 render(){
     return (
+        <div className="container border rounded border-warning pt-5 pb-5">
+       <div className="pl-2">
+        <h3 className="text-primary">Shipper</h3>
+        </div>
         <div>
-        <h3>Shipper</h3>
-        <table className="table">
+        <table className="table table-boarded">
           <thead className="thead-light">
-            <tr>
+            <tr className=" table-primary">
               <th>Shipper ID</th>
               <th>Shipper Name</th>
 
@@ -69,6 +72,7 @@ render(){
             { this.shipperList() } 
           </tbody>
         </table>
+      </div>
       </div>
     
     )

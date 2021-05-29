@@ -1,6 +1,6 @@
 
 import React, {Component} from 'react';
-//import UserTypesList from "./agent-list.component";
+import AgentList from "./agent-list.component";
 //send http request to backend (connect to backend)
 import axios from 'axios';
 
@@ -33,6 +33,10 @@ export default class CreateAgent extends Component{
 
         
     }
+    
+    
+      
+    
 
     onChangeAgentId(e){
         this.setState({
@@ -45,6 +49,8 @@ export default class CreateAgent extends Component{
             agentName:e.target.value
         })
     };
+
+   
 
 
     onSubmit(e){
@@ -66,12 +72,19 @@ export default class CreateAgent extends Component{
         })
 
         
+            window.location.reload(false);
+          
+
+        
     }
 
     render(){
         return(
-            <div>
-            <h3>Add Agent</h3>
+            <div className="container">
+                <div className="row">
+            <div className="col-4  pb-5 pt-5 border rounded border-primary">
+                
+            <h3 className="text-primary">Add Agent</h3>
             <form onSubmit={this.onSubmit}>
               <div className="form-group"> 
                 <label>User type ID : </label>
@@ -92,18 +105,22 @@ export default class CreateAgent extends Component{
                     onChange={this.onChangeAgentName}
                     />
               </div>
+
             <br></br>
               
 
 
               <div className="form-group"> 
-                <input type="submit" value="Create Agent" className="btn btn-primary" />
+                <input type="submit"  value="Create Agent" className="btn btn-primary" />
               </div>
             </form>
 
-            <div>
-                <br></br>
-                {/* <UserTypesList/> */}
+            </div>
+
+            <div className="col-8">
+            
+               <AgentList/>
+            </div>
             </div>
           </div>
         )

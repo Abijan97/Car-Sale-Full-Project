@@ -9,14 +9,18 @@ export default class Navbar extends Component {
         <Link to="/" className="navbar-brand">DashBoard</Link>
         <div className="collpase navbar-collapse">
         <ul className="navbar-nav mr-auto">
+         
           <li className="navbar-item">
-          <Link to="/" className="nav-link">Users</Link>
+          <Link to="/usertypes" className="nav-link">Usertypes</Link>
           </li>
           <li className="navbar-item">
-          <Link to="/create" className="nav-link">Create New User</Link>
+          <Link to="/agents" className="nav-link">Agents</Link>
           </li>
           <li className="navbar-item">
-          <Link to="/usertypes" className="nav-link">Add User Type</Link>
+          <Link to="/shippers" className="nav-link">Shippers</Link>
+          </li>
+          <li className="navbar-item">
+          <Link to="/customers" className="nav-link">Customers</Link>
           </li>
         </ul>
         </div>

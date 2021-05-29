@@ -85,12 +85,14 @@ export default class CreateUser extends Component{
 
         //when click submit button window will go to userslist view
 
-        window.location='/';
     }
 
     render(){
         return(
-            <div>
+            <div className="container">
+                <div className="row">
+                <div className="border border-rounded border-primary">
+               
             <h3>Create a User</h3>
             <form onSubmit={this.onSubmit}>
               <div className="form-group"> 
@@ -134,6 +136,10 @@ export default class CreateUser extends Component{
                 <input type="submit" value="Create User" className="btn btn-primary" />
               </div>
             </form>
+            </div>
+            
+            </div>
+
           </div>
         )
     }

@@ -13,7 +13,7 @@ import UserTypesList from "./Components/usertype-list.component";
 import CreateAgent from "./Components/create-agent.component";
 import CreateShipper from "./Components/create-shipper.component";
 import CreateCustomers from "./Components/create.customer.component";
-
+import CreateOrder from "./Components/create-order.component";
 
 function App() {
   return (
@@ -30,6 +30,9 @@ function App() {
     <Route path="/agents" exact component={CreateAgent}/>
     <Route path="/shippers" exact component={CreateShipper}/>
     <Route path="/customers" exact component={CreateCustomers}/>
+    <Route path="/orders" exact component={CreateOrder}/>
+
+
     </div>
     </Router>
   );

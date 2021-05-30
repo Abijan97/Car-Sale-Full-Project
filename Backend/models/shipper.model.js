@@ -9,7 +9,7 @@ const ShipperSchema = new Schema({
         required :true,
         unique:true,
         trim:true,
-    
+                                    
     },
     shipperName:{
         type:String,

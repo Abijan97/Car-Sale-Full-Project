@@ -35,7 +35,7 @@ export default class CustomersList extends Component {
   
 
   deleteCustomer(id) {
-    axios.delete('http://localhost:/customers/'+id)
+    axios.delete('http://localhost:5001/customers/'+id)
       .then(response => { console.log(response.data)});
 
     this.setState({

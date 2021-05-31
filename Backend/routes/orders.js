@@ -14,10 +14,10 @@ router.route('/add').post((req,res)=>
 {
     const orderId = req.body.orderId;
     const date = Date.parse(req.body.date);  
-    const Payment = Number(req.body.Payment);
+    const payment = Number(req.body.payment);
     const agent = req.body.agent;
     const shipper = req.body.shipper;
-    const manager = req.body.manager;
+    const user = req.body.user;
     const customer = req.body.customer;
    
 
@@ -28,13 +28,13 @@ router.route('/add').post((req,res)=>
         payment,
         agent,
         shipper,
-        manager,
+        user,
         customer
         
     });
   
     newOrder.save()
-    .then(() =>res.json('Order added'))
+    .then(() =>res.json('Order added')) 
     .catch(err => res.status(400).json('Error:' + err));
 
 }
@@ -58,10 +58,10 @@ router.route('/update/:id').post((req,res)=>{
     .then(order =>{
         order.orderId=req.body.orderId;
         order.date=Date.parse(req.body.date);
-        order.Payment=Number(req.body.Payment);
+        order.payment=Number(req.body.payment);
         order.agent=req.body.agent;
         order.shipper=req.body.shipper;
-        order.manager=req.body,manager;
+        order.user=req.body,user;
         order.customer=req.body.customer;
 
         

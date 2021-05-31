@@ -4,7 +4,7 @@ let User = require('../models/user.model');
  
 //first end point -GET
 
-router.route('/').get((req,res)=>{
+router.route('/').get((req,res)=>{  
 
   User.find() 
   .then(users=>res.json(users))

@@ -30,6 +30,8 @@ const usersRouter = require('./routes/users');
 const agentsRouter=require('./routes/agents');
 const shipperRouter=require('./routes/shippers');
 const customerRouter=require('./routes/customers');
+const orderRouter=require('./routes/orders');
+const CustomClearanceRouter = require('./routes/customclearance');
 
 //using routes
 
@@ -38,8 +40,12 @@ app.use('/usertypes',usertypeRouter);
 app.use('/agents',agentsRouter);
 app.use('/shippers',shipperRouter);
 app.use('/customers',customerRouter);
+app.use('/orders',orderRouter);
+app.use('/customclearances',CustomClearanceRouter);
 
+ 
 
 app.listen(port,()=>{
     console.log(`Server is start at server ${port}`);
 })
+

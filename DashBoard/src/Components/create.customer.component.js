@@ -69,7 +69,15 @@ export default class CreateCustomers extends Component{
     axios.post('http://localhost:5001/customers/add', customer)
     .then(res => console.log(res.data));
 
+    // this.setState({
+    //   username:'',
+    //   password:'',
+    //   email:'',
+    //   mobile:'',
+    //   dob:''
+    // })
 
+    window.location.reload(false);
    
 }
 render() {

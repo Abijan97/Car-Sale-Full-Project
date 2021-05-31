@@ -2,9 +2,9 @@ import React,{Component} from 'react';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
+import OrdersList from "./order.list.component";
 
-
-export default class CreateOrder extends Component{
+export default class CreateOrders extends Component{
 
     constructor(props){
         super(props);
@@ -13,95 +13,89 @@ export default class CreateOrder extends Component{
         this.onChangeDate = this.onChangeDate.bind(this);
         this.onChangePayment = this.onChangePayment.bind(this);
         this.onChangeAgent = this.onChangeAgent.bind(this);
-        this.onChangeShipper=this.onChangeShipper.bind(this);
-        this.onChangeManager=this.onChangeManager.bind(this);
-        this.onChangeCustomer=this.onChangeCustomer.bind(this);
+        this.onChangeShipper = this.onChangeShipper.bind(this);
+        this.onChangeUser = this.onChangeUser.bind(this);
+        this.onChangeCustomer = this.onChangeCustomer.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     
 
         this.state={
-            username: '',
+            orderId: '',
             date:new Date(),
             payment:0,
             agent:'',
             shipper:'',
-            manager:'',
+            user:'',
             customer:'',
 
-            
             agents:[],
             shippers:[],
-            managers:[],
-            users:[],
-
-            customers:[]
+            customers:[],
+            users:[] 
         }
     }
 
     componentDidMount(){
-        axios.get('http://localhost:5001/agents/')
-        .then(Response=>{
-            if(Response.data.length>0){
-                this.setState({
-                    agents:Response.data.map(agent=>agent.agentId),
-                    agentId:Response.data[0].agentId 
-                })
-            }
-        })
+     axios.get('http://localhost:5001/users/')
+     .then(Response=>{
+         if(Response.data.length>0){
+             this.setState({
+                 users:Response.data.map(user=>user.username),
+                 username:Response.data[0].username 
+             })
+         }
+     })
 
-        axios.get('http://localhost:5001/shippers/')
-        .then(Response=>{
-            if(Response.data.length>0){
-                this.setState({
-                    shippers:Response.data.map(shipper=>shipper.shipperId),
-                    shipperId:Response.data[0].shipperId 
-                })
-            }
-        })
-        axios.get('http://localhost:5001/users/')
-        .then(Response=>{
-            if(Response.data.length>0){
-                this.setState({
-                users:Response.data.map(username=>username.username),
-                    username:Response.data[0].username 
-                })
-            }
-        })
+     axios.get('http://localhost:5001/agents/')
+     .then(Response=>{
+         if(Response.data.length>0){
+             this.setState({
+                 agents:Response.data.map(agent=>agent.agentId),
+                 agentId:Response.data[0].agentId 
+             })
+         }
+     })
 
-        axios.get('http://localhost:5001/customers/')
-        .then(Response=>{
-            if(Response.data.length>0){
-                this.setState({
-                    customers:Response.data.map(customer=>customer.username),
-                    username:Response.data[0].username 
-                })
-            }
-        })
-        
-   
-       }
+     axios.get('http://localhost:5001/shippers/')
+     .then(Response=>{
+         if(Response.data.length>0){
+             this.setState({
+                 shippers:Response.data.map(shipper=>shipper.shipperId),
+                 shipperId:Response.data[0].shipperId 
+             })
+         }
+     })
+     axios.get('http://localhost:5001/customers/')
+     .then(Response=>{
+         if(Response.data.length>0){
+             this.setState({
+                 customers:Response.data.map(customer=>customer.username),
+                 username:Response.data[0].username 
+             })
+         }
+     })
+     
 
+    }
 
     onChangeOrderId(e){
         this.setState({
-            username: e.target.value
+            orderId: e.target.value
         });
     } 
-
     onChangeDate(date){
         this.setState({
-            date: date
+            date:date
         });
     }
-
     onChangePayment(e){
         this.setState({
-            description: e.target.value
+            payment: e.target.value
         });
     }
     onChangeAgent(e){
         this.setState({
-            duration: e.target.value
+            agent: e.target.value
         });
     }
     onChangeShipper(e){
@@ -109,9 +103,10 @@ export default class CreateOrder extends Component{
             shipper: e.target.value
         });
     }
-    onChangeManager(e){
+
+    onChangeUser(e){
         this.setState({
-            manager: e.target.value
+            user: e.target.value
         });
     }
     onChangeCustomer(e){
@@ -120,41 +115,57 @@ export default class CreateOrder extends Component{
         });
     }
   
+
     onSubmit(e){
         e.preventDefault( );
 
-        const customer={
+        const order={
            orderId: this.state.orderId,
            date:this.state.date,
            payment:this.state.payment,
            agent:this.state.agent,
            shipper:this.state.shipper,
-           manager:this.state.manager,
+           user:this.state.user,
            customer:this.state.customer
     }
 
-    console.log(customer);
+    console.log(order);
 
-    axios.post('http://localhost:5001/customers/add', customer)
-    .then(res => console.log(res.data));
+    axios.post('http://localhost:5001/orders/add',order)
+    .then(res=>console.log(res.data))
+    .catch(error=>{
+        console.log(error.response);
+    })
+
+    this.setState({
+        orderId:'',
+        pacyment:'',
+        agent:'',
+        shipper:'',
+        user:'',
+        customer:''
+    })
 
 
-    
 }
+
+
+
 render() {
     return (
     <div>
-      <h3>Add Orders</h3>
+      <h3>Add Vehicle Order</h3>
       <form onSubmit={this.onSubmit}>
-      <div className="form-group"> 
-          <label>OrderId: </label>
-          <input  type="text"
-              required
+        <div className="form-group"> 
+        <label>Order ID </label>
+          <input 
+              type="text" 
               className="form-control"
               value={this.state.orderId}
               onChange={this.onChangeOrderId}
-              />
+              />  
         </div>
+
         <div className="form-group">
           <label>Date: </label>
           <div>
@@ -164,19 +175,20 @@ render() {
             />
           </div>
         </div>
-        <div className="form-group">
-          <label>Payment </label>
+
+        <div className="form-group"> 
+        <label>Payment</label>
           <input 
               type="text" 
               className="form-control"
               value={this.state.payment}
               onChange={this.onChangePayment}
-              />
+              />  
         </div>
 
         <div className="form-group"> 
           <label>Agent </label>
-          <select ref="agentInput"
+          <select ref="userInput"
               required
               className="form-control"
               value={this.state.agent}
@@ -187,13 +199,14 @@ render() {
                     key={agent}
                     value={agent}>{agent}
                     </option>;
-                }) 
+                })
               }
           </select>
         </div>
+        
         <div className="form-group"> 
           <label>Shipper </label>
-          <select ref="shipperInput"
+          <select ref="userInput"
               required
               className="form-control"
               value={this.state.shipper}
@@ -204,33 +217,32 @@ render() {
                     key={shipper}
                     value={shipper}>{shipper}
                     </option>;
-                }) 
+                })
               }
           </select>
         </div>
-        
-    
 
         <div className="form-group"> 
-          <label>Manager</label>
+          <label>Manager </label>
           <select ref="userInput"
               required
               className="form-control"
               value={this.state.user}
-              onChange={this.onChangeAgent}>
+              onChange={this.onChangeUser}>
               {
                 this.state.users.map(function(user) {
                   return <option 
                     key={user}
                     value={user}>{user}
                     </option>;
-                }) 
+                })
               }
           </select>
         </div>
+
         <div className="form-group"> 
           <label>Customer </label>
-          <select ref="customerInput"
+          <select ref="userInput"
               required
               className="form-control"
               value={this.state.customer}
@@ -241,17 +253,24 @@ render() {
                     key={customer}
                     value={customer}>{customer}
                     </option>;
-                }) 
+                })
               }
           </select>
         </div>
-        
+
+
+
+
+       
 
 
         <div className="form-group">
           <input type="submit" value="Create Order" className="btn btn-primary" />
         </div>
       </form>
+      <div>
+              <OrdersList/>
+      </div>
     </div>
     )
   }

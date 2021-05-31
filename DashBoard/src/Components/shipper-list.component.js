@@ -31,7 +31,7 @@ export default class ShipperList extends Component {
           this.setState({ shippers: response.data })
         })
         .catch((error) => {
-          console.log(error); 
+          console.log(error);  
         })
     }
     
@@ -40,7 +40,7 @@ export default class ShipperList extends Component {
         .then(response => { console.log(response.data)});
   
       this.setState({
-        shippers: this.state.shippers.filter(el => el._id !== id)
+        shippers: this.state.shippers.filter(el => el._id !== id) 
       })
     }
   shipperList(){

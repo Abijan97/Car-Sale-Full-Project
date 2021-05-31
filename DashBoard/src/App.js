@@ -13,7 +13,9 @@ import UserTypesList from "./Components/usertype-list.component";
 import CreateAgent from "./Components/create-agent.component";
 import CreateShipper from "./Components/create-shipper.component";
 import CreateCustomers from "./Components/create.customer.component";
-import CreateOrder from "./Components/create-order.component";
+import CreateOrders from "./Components/create-order.component";
+import CreateCustomClearance from "./Components/create-customclearance.component";
+
 
 function App() {
   return (
@@ -30,8 +32,8 @@ function App() {
     <Route path="/agents" exact component={CreateAgent}/>
     <Route path="/shippers" exact component={CreateShipper}/>
     <Route path="/customers" exact component={CreateCustomers}/>
-    <Route path="/orders" exact component={CreateOrder}/>
-
+    <Route path="/orders" exact component={CreateOrders}/>
+    <Route path="/customclearances" exact component={CreateCustomClearance}/>
 
     </div>
     </Router>

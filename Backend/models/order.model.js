@@ -9,7 +9,7 @@ const orderSchema = new Schema({
       payment:{type:Number , required:true},
       agent:{type:String , required:true},
       shipper:{type:String , required:true},
-      manager:{type:String , required:true},
+      user:{type:String , required:true},
       customer:{type:String, required:true}
 
 },{

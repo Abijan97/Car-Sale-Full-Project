@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import swal from "sweetalert";
 
 
 const Agent =props=> (
@@ -9,12 +10,34 @@ const Agent =props=> (
         <td>{props.agent.agentName}</td>
         
         <td>
-         <a className="btn btn-danger" href="#" onClick={()=>{props.deleteAgent(props.agent._id) }}> delete</a> 
+         {/* <a className="btn btn-danger" href="#" onClick={()=>{props.deleteAgent(props.agent._id) }}> delete</a>  */}
+         <a className="btn btn-danger" href="#" onClick={()=>{
+           swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this imaginary file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              {props.deleteAgent(props.agent._id) };
+              swal("Poof! Your imaginary file has been deleted!", {
+                icon: "success",
+            
+              });
+
+            } else {
+              swal("Your imaginary file is safe!");
+            }
+          });
+          
+
+          }}> delete</a> 
             
         </td>
     </tr>
 )
-
 
 export default class AgentList extends Component {
     constructor(props) {
@@ -52,14 +75,14 @@ export default class AgentList extends Component {
 
 render(){
     return (
-        <div className="container border rounded border-warning pt-5 pb-5">
+        <div className="container border  pt-5 pb-5">
           <div className="pl-2">
         <h3 className="text-primary">Agents</h3><br></br>
         </div>
         <div>
-        <table className="table table-boarded">
+        <table className="table table-boarded table-striped table-dark">
           <thead className="thead-light">
-            <tr className="table-primary">
+            <tr className="">
               <th>Agent ID</th>
               <th>Agent Name</th>
 

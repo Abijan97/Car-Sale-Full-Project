@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 import axios from 'axios';
+import swal from "sweetalert";
 
 export default class CreateUser extends Component{
 
@@ -84,14 +85,18 @@ export default class CreateUser extends Component{
         .then(res=>console.log(res.data));
 
         //when click submit button window will go to userslist view
-
+        swal("Add new agent?")
+        .then((value) => {
+          document.location.reload();
+});
     }
 
     render(){
         return(
             <div className="container">
+    
+        
                 <div className="row">
-                <div className="border border-rounded border-primary">
                
             <h3>Create a User</h3>
             <form onSubmit={this.onSubmit}>
@@ -138,7 +143,7 @@ export default class CreateUser extends Component{
             </form>
             </div>
             
-            </div>
+            
 
           </div>
         )

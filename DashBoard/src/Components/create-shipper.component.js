@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import ShipperList from "./shipper-list.component";
 //send http request to backend (connect to backend)
 import axios from 'axios';
+import swal from "sweetalert";
 
 export default class CreateShipper extends Component{
 
@@ -64,6 +65,10 @@ export default class CreateShipper extends Component{
             shipperId:'',
             shipperName:''
         })
+        swal("Add new shipper?")
+        .then((value) => {
+          document.location.reload();
+});
 
         
     }
@@ -72,7 +77,7 @@ export default class CreateShipper extends Component{
         return(
             <div className="container">
                 <div className="row">
-                    <div className="col-4 pb-5 pt-5 border rounded border-primary">
+                    <div className="col-4 pb-5 pt-5 border bg-light">
             <h3>Add Shipper</h3>
             <form onSubmit={this.onSubmit}>
               <div className="form-group"> 
@@ -104,7 +109,7 @@ export default class CreateShipper extends Component{
             </form>
             </div>
 
-            <div className="col-8">
+            <div className="col-8 border bg-light">
             
                <ShipperList/>
             </div>

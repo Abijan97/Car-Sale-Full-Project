@@ -52,14 +52,14 @@ export default class ShipperList extends Component {
 
 render(){
     return (
-        <div className="container border rounded border-warning pt-5 pb-5">
+        <div className="container pt-5 pb-5">
        <div className="pl-2">
         <h3 className="text-primary">Shipper</h3>
         </div>
         <div>
-        <table className="table table-boarded">
+        <table className="table table-boarded table-striped table-dark">
           <thead className="thead-light">
-            <tr className=" table-primary">
+            <tr className=" ">
               <th>Shipper ID</th>
               <th>Shipper Name</th>
 

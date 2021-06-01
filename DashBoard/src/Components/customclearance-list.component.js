@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import swal from "sweetalert";
 
 const CustomClearance = props => (
   <tr>
@@ -13,7 +14,27 @@ const CustomClearance = props => (
 
    
     <td>
-   <a className="btn btn-danger" href="#" onClick={() => { props.deleteCustomClearance(props.customclearance._id) }}>delete</a> 
+    
+   <a className="btn btn-danger" href="#" onClick={() => {
+
+swal({
+  title: "Are you sure?",
+  text: "Once deleted, you will not be able to recover this imaginary file!",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
+    {props.deleteCustomClearance(props.customclearance._id) };
+    swal("Poof! Your imaginary file has been deleted!", {
+      icon: "success",
+    });
+  } else {
+    swal("Your imaginary file is safe!");
+  }
+});
+   }}>delete</a> 
     </td>
   </tr>
 )
@@ -54,9 +75,9 @@ export default class CustomClearanceList extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container border  pt-5 pb-5">
         <h3>Vehicle Receivings</h3>
-        <table className="table">
+        <table className="table table-striped table-dark table-boarded">
           <thead className="thead-light">
             <tr>
               <th>CustomClearance ID</th>
@@ -64,6 +85,7 @@ export default class CustomClearanceList extends Component {
               <th>Custom Clearance Payment</th>
               <th>Tavel payments</th>
               <th>Sales Person</th>
+              <th>Actions</th>
             
             </tr>
           </thead>

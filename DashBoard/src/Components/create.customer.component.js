@@ -82,7 +82,9 @@ export default class CreateCustomers extends Component{
 }
 render() {
     return (
-    <div>
+    <div className="container">
+      <div className="row">
+        <div className="col-3 border pt-5 pb-5 bg-light">
       <h3>Add Customer</h3>
       <form onSubmit={this.onSubmit}>
 
@@ -97,7 +99,7 @@ render() {
         </div>
         <div className="form-group"> 
           <label>Password </label>
-          <input  type="text"
+          <input  type="password"
               required
               className="form-control"
               value={this.state.password}
@@ -116,7 +118,7 @@ render() {
         <div className="form-group">
           <label>Mobile </label>
           <input 
-              type="text" 
+              type="tel" 
               className="form-control"
               value={this.state.mobile}
               onChange={this.onChangeMobile}
@@ -131,16 +133,19 @@ render() {
             />
           </div>
         </div>
+        <br></br>
 
         <div className="form-group">
           <input type="submit" value="Create Exercise Log" className="btn btn-primary" />
         </div>
     
       </form> 
-      <div>
+      </div>
+      
+      <div className="col-9 border bg-light">
           <CustomersList/>
       </div>
-
+      </div>
     </div>
     )
   }

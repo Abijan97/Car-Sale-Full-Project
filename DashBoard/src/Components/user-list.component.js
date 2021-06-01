@@ -56,14 +56,14 @@ export default class UsersList extends Component {
 
     render(){
         return (
-          <div className="container pt-5 pb-5 border rounded border-warning pt-5 pb-5">
+          <div className="container pt-5 pb-5 ">
           <div className="">
             <h3>Users</h3>
             </div>
             <div>
-            <table className="table  table-boarded">
+            <table className="table  table-boarded table-striped table-dark">
               <thead className="thead-light">
-                <tr className="table-primary">
+                <tr className="">
                   <th>User type</th>
                   <th>User name</th>
                   <th>Password</th>

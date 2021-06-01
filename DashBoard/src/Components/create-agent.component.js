@@ -4,6 +4,9 @@ import AgentList from "./agent-list.component";
 //send http request to backend (connect to backend)
 import axios from 'axios';
 
+//alert
+import swal from 'sweetalert';
+
 export default class CreateAgent extends Component{
 
     constructor(props){
@@ -11,7 +14,7 @@ export default class CreateAgent extends Component{
 
         //hard coding a single user
 
-       
+          
 
 
         //binding this keyword to class
@@ -33,6 +36,12 @@ export default class CreateAgent extends Component{
 
         
     }
+
+    makeAlert(){
+        <div class="alert alert-success">
+        <strong>Success!</strong> This alert box could indicate a successful or positive action.
+      </div>
+    }
     
     
       
@@ -50,6 +59,7 @@ export default class CreateAgent extends Component{
         })
     };
 
+
    
 
 
@@ -58,8 +68,7 @@ export default class CreateAgent extends Component{
 
         const agent = {
             agentId:this.state.agentId,
-            agentName:this.state.agentName
-           
+            agentName:this.state.agentName,
         }
         console.log(agent);
 
@@ -70,9 +79,21 @@ export default class CreateAgent extends Component{
             agentId:'',
             agentName:''
         })
+        //refresh page and give a alert
+        swal("Add new agent?")
+        .then((value) => {
+          document.location.reload();
+});
+        
+        // document.AgentList.reload()
+        
+    
+        // swal("Done!", "You added a agent!", "success");
 
         
-            window.location.reload(false);
+        //refresh the page 
+      
+        
           
 
         
@@ -82,7 +103,7 @@ export default class CreateAgent extends Component{
         return(
             <div className="container">
                 <div className="row">
-            <div className="col-4  pb-5 pt-5 border rounded border-primary">
+            <div className="col-4 bg-light pb-5 pt-5 border">
                 
             <h3 className="text-primary">Add Agent</h3>
             <form onSubmit={this.onSubmit}>
@@ -116,8 +137,8 @@ export default class CreateAgent extends Component{
             </form>
 
             </div>
-
-            <div className="col-8">
+ 
+            <div className="col-8 bg-light">
             
                <AgentList/>
             </div>

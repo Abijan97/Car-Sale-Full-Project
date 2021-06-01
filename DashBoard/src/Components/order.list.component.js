@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-
+import swal from "sweetalert";
 const Order = props => (
   <tr>
     <td>{props.order.orderId}</td>
@@ -14,7 +14,25 @@ const Order = props => (
 
    
     <td>
-   <a className="btn btn-danger" href="#" onClick={() => { props.deleteOrder(props.order._id) }}>delete</a> 
+   <a className="btn btn-danger" href="#" onClick={() => { 
+     swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this imaginary file!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        {props.deleteOrder(props.order._id) };
+        swal("Poof! Your imaginary file has been deleted!", {
+          icon: "success",
+        });
+      } else {
+        swal("Your imaginary file is safe!");
+      }
+    });
+    }}>delete</a> 
     </td>
   </tr>
 )
@@ -56,8 +74,8 @@ export default class OrdersList extends Component {
   render() {
     return (
       <div>
-        <h3>Orders Placed</h3>
-        <table className="table">
+        <h3>Orders List</h3>
+        <table className="table table-striped table-dark table-boarded">
           <thead className="thead-light">
             <tr>
               <th>Order ID</th>
@@ -67,6 +85,7 @@ export default class OrdersList extends Component {
               <th>Shipper</th>
               <th>Manager</th>
               <th>Customer</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>

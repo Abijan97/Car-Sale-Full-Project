@@ -3,6 +3,9 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import CustomClearanceList from "./customclearance-list.component";
+import swal from "sweetalert";
+
+
 
 export default class CreateCustomClearance extends Component{
 
@@ -15,6 +18,8 @@ export default class CreateCustomClearance extends Component{
         this.onChangeTransportPayment = this.onChangeTransportPayment.bind(this);
         this.onChangeUser = this.onChangeUser.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+
+        
     
 
         this.state={
@@ -111,15 +116,23 @@ export default class CreateCustomClearance extends Component{
         user:'',
 
     })
+    swal("Add new customer?")
+    .then((value) => {
+      document.location.reload();
+});
 
 
 }
 
 
 
+
+
 render() {
     return (
-    <div>
+    <div className="container">
+      <div className="row">
+        <div className="col-4 bg-light border p-5">
       <h3>Add Custom Clerance Details</h3>
       <form onSubmit={this.onSubmit}>
         <div className="form-group"> 
@@ -162,6 +175,7 @@ render() {
         <div className="form-group"> 
         <label>Transport Payment</label>
           <input 
+            placeholder="Rs."
               type="text" 
               className="form-control"
               value={this.state.transportPayment}
@@ -196,10 +210,14 @@ render() {
         <div className="form-group">
           <input type="submit" value="Receive order" className="btn btn-primary" />
         </div>
+        
       </form>
-      <div>
+      </div>
+      
+      <div className="col-7 bg-light">
               <CustomClearanceList/>
       </div>
+    </div>
     </div>
     )
   }

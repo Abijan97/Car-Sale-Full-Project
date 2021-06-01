@@ -51,9 +51,9 @@ export default class CustomersList extends Component {
 
   render() {
     return (
-      <div>
+      <div className="">
         <h3>Customers List</h3>
-        <table className="table">
+        <table className="table table-striped table-dark table-boarded">
           <thead className="thead-light">
             <tr>
               <th>Customer name</th>

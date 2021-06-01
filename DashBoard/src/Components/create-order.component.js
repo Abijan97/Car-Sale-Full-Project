@@ -3,6 +3,7 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import OrdersList from "./order.list.component";
+import swal from "sweetalert";
 
 export default class CreateOrders extends Component{
 
@@ -139,12 +140,17 @@ export default class CreateOrders extends Component{
 
     this.setState({
         orderId:'',
-        pacyment:'',
+        payment:'',
         agent:'',
         shipper:'',
         user:'',
         customer:''
     })
+
+    swal("Add new order?")
+    .then((value) => {
+      document.location.reload();
+});
 
 
 }
@@ -153,7 +159,9 @@ export default class CreateOrders extends Component{
 
 render() {
     return (
-    <div>
+    <div className="container">
+      <div className="row">
+        <div className="col-4 bg-light border pt-5 pb-5  ">
       <h3>Add Vehicle Order</h3>
       <form onSubmit={this.onSubmit}>
         <div className="form-group"> 
@@ -261,6 +269,7 @@ render() {
 
 
 
+                <br></br>
        
 
 
@@ -268,10 +277,19 @@ render() {
           <input type="submit" value="Create Order" className="btn btn-primary" />
         </div>
       </form>
-      <div>
-              <OrdersList/>
       </div>
-    </div>
+      
+
+      
+    
+        <div className="col-8 bg-light pt-5 pb-5 border">
+        
+              <OrdersList/>
+              
+              </div>
+      </div>
+      </div>
+    
     )
   }
 }

@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import OrdersList from "./order.list.component";
 import swal from "sweetalert";
 
+
 export default class CreateOrders extends Component{
 
     constructor(props){
@@ -159,7 +160,37 @@ export default class CreateOrders extends Component{
 
 render() {
     return (
+      //adding a modal
     <div className="container">
+    
+
+      <div className="row">
+        <section className="col-12">
+  
+<button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  More Info
+</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      Pest control
+            <p>We offer the latest advances in safe and effective prevention and </p>
+      </div>
+     
+    </div>
+  </div>
+</div>
+</section>
+      </div>
+
+
+
       <div className="row">
         <div className="col-4 bg-light border pt-5 pb-5  ">
       <h3>Add Vehicle Order</h3>
@@ -185,13 +216,19 @@ render() {
         </div>
 
         <div className="form-group"> 
-        <label>Payment</label>
+        <label className="form-control-label">Payment</label>
+         <div className="input-group">
+        <div className="input-group-prepend">
+          <div className="input-group-text">Rs.</div>
+        
+         </div>
           <input 
               type="text" 
               className="form-control"
               value={this.state.payment}
               onChange={this.onChangePayment}
               />  
+              </div>
         </div>
 
         <div className="form-group"> 
@@ -250,9 +287,17 @@ render() {
 
         <div className="form-group"> 
           <label>Customer </label>
+          <div className="input-group">
+            {/* adding a checkbox */}
+              <div className="input-group-prepend">
+                <div className="input-group-text">
+                  <input type="checkbox" id="confirm-customer" checked area-label="checkbox for customized vehicle order"></input>
+                </div>
+              </div>
+          
           <select ref="userInput"
               required
-              className="form-control"
+              className="custom-select"
               value={this.state.customer}
               onChange={this.onChangeCustomer}>
               {
@@ -264,6 +309,7 @@ render() {
                 })
               }
           </select>
+          </div>
         </div>
 
 

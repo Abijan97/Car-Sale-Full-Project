@@ -3,6 +3,13 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import CustomersList from "./customer-list.component";
+//validator
+import SimpleReactValidator from 'simple-react-validator';
+//moment-date and time
+import moment from 'moment';
+moment().format();
+
+
 export default class CreateCustomers extends Component{
 
     constructor(props){
@@ -14,6 +21,9 @@ export default class CreateCustomers extends Component{
         this.onChangeMobile=this.onChangeMobile.bind(this);
         this.onChangeDob = this.onChangeDob.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+
+        //add validations
+        this.validator = new SimpleReactValidator();
     
         this.state={
             username: '',
@@ -21,7 +31,8 @@ export default class CreateCustomers extends Component{
             email:'',
             mobile:0,
             dob:new Date(),
-            customers:[] 
+            customers:[] ,
+            date:moment().calendar()
         }
     }
 
@@ -56,18 +67,42 @@ export default class CreateCustomers extends Component{
     onSubmit(e){
         e.preventDefault( );
 
-        const customer={
-           username: this.state.username,
-           password:this.state.password,
-           email:this.state.email,
-           mobile:this.state.mobile,
-           dob:this.state.dob
-    }
+        if (this.validator.allValid()) {
+          alert('You submitted the form and stuff!');
+          const customer={
+            username: this.state.username,
+            password:this.state.password,
+            email:this.state.email,
+            mobile:this.state.mobile,
+            dob:this.state.dob
+     }
+ 
+     console.log(customer);
+ 
+     axios.post('http://localhost:5001/customers/add', customer)
+     .then(res => console.log(res.data));
+ 
+        } else {
+          this.validator.showMessages();
+          // rerender to show messages for the first time
+          // you can use the autoForceUpdate option to do this automatically`
+          this.forceUpdate();
+        }
+      }
 
-    console.log(customer);
 
-    axios.post('http://localhost:5001/customers/add', customer)
-    .then(res => console.log(res.data));
+    //     const customer={
+    //        username: this.state.username,
+    //        password:this.state.password,
+    //        email:this.state.email,
+    //        mobile:this.state.mobile,
+    //        dob:this.state.dob
+    // }
+
+    // console.log(customer);
+
+    // axios.post('http://localhost:5001/customers/add', customer)
+    // .then(res => console.log(res.data));
 
     // this.setState({
     //   username:'',
@@ -77,9 +112,11 @@ export default class CreateCustomers extends Component{
     //   dob:''
     // })
 
-    window.location.reload(false);
+    // window.location.reload(false);
    
-}
+
+
+
 render() {
     return (
     <div className="container">
@@ -95,7 +132,9 @@ render() {
               className="form-control"
               value={this.state.username}
               onChange={this.onChangeUsername}
+              onBlur={()=>this.validator.showMessageFor('username')}
               />
+               {this.validator.message('username', this.state.username, 'required|alpha',{className:'text-danger'})}
         </div>
         <div className="form-group"> 
           <label>Password </label>
@@ -104,7 +143,11 @@ render() {
               className="form-control"
               value={this.state.password}
               onChange={this.onChangePassword}
+              onBlur={()=>this.validator.showMessageFor('password')}
               />
+
+              {this.validator.message('password', this.state.password, 'required|alpha|max:8',{className:'text-danger'})}
+              
         </div>
         <div className="form-group">
           <label>Email </label>
@@ -113,16 +156,21 @@ render() {
               className="form-control"
               value={this.state.email}
               onChange={this.onChangeEmail}
+              onBlur={()=>this.validator.showMessageFor('email')}
               />
+           {this.validator.message('email', this.state.email, 'required|email', { className: 'text-danger' })}
         </div>
         <div className="form-group">
           <label>Mobile </label>
           <input 
-              type="tel" 
+              type="text" 
               className="form-control"
               value={this.state.mobile}
               onChange={this.onChangeMobile}
+              onBlur={()=>this.validator.showMessageFor('mobile')}
+
               />
+                {this.validator.message('mobile', this.state.mobile, 'required|phone|max:10', { className: 'text-danger' })}
         </div>
         <div className="form-group">
           <label>Date of birth </label>
@@ -131,6 +179,7 @@ render() {
               selected={this.state.dob}
               onChange={this.onChangeDob}
             />
+             {this.validator.message('dob', this.state.dob, `required`, { className: 'text-danger' })}
           </div>
         </div>
         <br></br>

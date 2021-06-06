@@ -98,7 +98,7 @@ export default class CreateUser extends Component{
         
                 <div className="row">
                
-            <h3>Create a User</h3>
+            <h3>Add Employee</h3>
             <form onSubmit={this.onSubmit}>
               <div className="form-group"> 
                 <label>User Type ID : </label>

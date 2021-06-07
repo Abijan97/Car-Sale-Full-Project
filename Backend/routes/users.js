@@ -18,13 +18,17 @@ router.route('/add').post((req,res)=>
     const usertypeId = req.body.usertypeId;
     const username = req.body.username;
     const password = req.body.password;
+    const email =req.body.email;
+    const mobile = req.body.mobile;
     
 
 
     const newUser = new User({
         usertypeId,
         username,
-        password
+        password,
+        email,
+        mobile
     
     });
   
@@ -54,6 +58,8 @@ router.route('/update/:id').post((req,res)=>{
         user.usertypeId=req.body.usertypeId;
         user.username=req.body.username;
         user.passsword=req.body.passsword;
+        user.email =req.body.email;
+        user.mobile = req.body.mobile;
     
         
  user.save()

@@ -19,14 +19,17 @@ export default class CreateShipper extends Component{
         
         this.onChangeShipperId=this.onChangeShipperId.bind(this);
         this.onChangeShipperName=this.onChangeShipperName.bind(this);
-
+        this.onChangeEmail=this.onChangeEmail.bind(this);
+        this.onChangeMobile=this.onChangeMobile.bind(this);
         this.onSubmit=this.onSubmit.bind(this);
 
 
 
         this.state={
             shipperId: '',
-            shipperName:''
+            shipperName:'',
+            email:'',
+            mobile:''
 
 
 
@@ -46,6 +49,17 @@ export default class CreateShipper extends Component{
             shipperName:e.target.value
         })
     };
+    onChangeEmail(e){
+        this.setState({
+            email:e.target.value
+        })
+    };
+    onChangeMobile(e){
+        this.setState({
+            mobile:e.target.value
+        })
+    };
+
 
 
     onSubmit(e){
@@ -53,7 +67,9 @@ export default class CreateShipper extends Component{
 
         const shipper = {
             shipperId:this.state.shipperId,
-            shipperName:this.state.shipperName
+            shipperName:this.state.shipperName,
+            email:this.state.email,
+            mobile:this.state.mobile
            
         }
         console.log(shipper);
@@ -81,7 +97,7 @@ export default class CreateShipper extends Component{
             <h3>Add Shipper</h3>
             <form onSubmit={this.onSubmit}>
               <div className="form-group"> 
-                <label>Agent Id : </label>
+                <label>Shipper Id : </label>
                 <input  type="text"
                     required
                     className="form-control"
@@ -97,6 +113,26 @@ export default class CreateShipper extends Component{
                     className="form-control"
                     value={this.state.shipperName}
                     onChange={this.onChangeShipperName}
+                    />
+              </div>
+              
+              <div className="form-group"> 
+                <label>Email </label>
+                <input  type="text"
+                    required
+                    className="form-control"
+                    value={this.state.email}
+                    onChange={this.onChangeEmail}
+                    />
+              </div>
+
+              <div className="form-group"> 
+                <label>Mobile </label>
+                <input  type="text"
+                    required
+                    className="form-control"
+                    value={this.state.agentMobile}
+                    onChange={this.onChangeMobile}
                     />
               </div>
             <br></br>

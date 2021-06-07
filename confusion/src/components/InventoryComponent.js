@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardImg, CardImgOverlay, CardTitle, CardBody, CardText } from "reactstrap";
+import { Card, CardImg, CardTitle, CardBody, CardText } from "reactstrap";
 
       function RenderMenuItem({dish}){
 

@@ -15,15 +15,15 @@ import CreateShipper from "./Components/create-shipper.component";
 import CreateCustomers from "./Components/create.customer.component";
 import CreateOrders from "./Components/create-order.component";
 import CreateCustomClearance from "./Components/create-customclearance.component";
-import SignInSide from "./Components/signin.component";
+import AddStock from "./Components/addStock-component";
 
 function App() {
   return (
     <Router>
-      <div className="container">  
+      <div className="container bg-light">  
     <Navbar/>
     <br/>
-  
+
     <Route path="/" exact component={UserList} />  
     <Route path="/edit/:id" exact component={EditUser} />
     <Route path="/create" exact component={CreateUser} />
@@ -34,8 +34,9 @@ function App() {
     <Route path="/customers" exact component={CreateCustomers}/>
     <Route path="/orders" exact component={CreateOrders}/>
     <Route path="/customclearances" exact component={CreateCustomClearance}/>
-    
+    <Route path="/stocks" exact component={AddStock}/>
     </div>
+  
     </Router>
   );
 }

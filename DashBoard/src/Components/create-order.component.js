@@ -52,8 +52,8 @@ export default class CreateOrders extends Component{
      .then(Response=>{
          if(Response.data.length>0){
              this.setState({
-                 agents:Response.data.map(agent=>agent.agentId),
-                 agentId:Response.data[0].agentId 
+                 agents:Response.data.map(agent=>agent.agentName),
+                 agentName:Response.data[0].agentName 
              })
          }
      })
@@ -62,8 +62,8 @@ export default class CreateOrders extends Component{
      .then(Response=>{
          if(Response.data.length>0){
              this.setState({
-                 shippers:Response.data.map(shipper=>shipper.shipperId),
-                 shipperId:Response.data[0].shipperId 
+                 shippers:Response.data.map(shipper=>shipper.shipperName),
+                 shipperName:Response.data[0].shipperName 
              })
          }
      })
@@ -148,12 +148,30 @@ export default class CreateOrders extends Component{
         customer:''
     })
 
-    swal("Add new order?")
+    swal("Add new agent?")
     .then((value) => {
       document.location.reload();
 });
 
 
+};
+
+
+
+ 
+
+myFunction() {
+  // Get the checkbox
+  var checkBox=document.getElementById("confirm-customer")
+  // Get the output text
+  var text = document.getElementById("mytext");
+  
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    text.disabled = false;
+  } else {
+    text.disabled=true;
+  }
 }
 
 
@@ -166,21 +184,21 @@ render() {
 
       <div className="row">
         <section className="col-12">
-  
-<button type="button" class="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#exampleModal">
+
+<button type="button" className="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#exampleModal">
   More Info
 </button>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div className="modal-dialog">
+    <div className="modal-content">
+      <div className="modal-header">
+        <h5 className="modal-title" id="exampleModalLabel">Customized Vehicle Orders</h5>
+        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-      Pest control
-            <p>We offer the latest advances in safe and effective prevention and </p>
+      <div className="modal-body">
+    
+            <p>If the order is placed by a customer put a tick on and select the customer from dropdown.</p>
       </div>
      
     </div>
@@ -291,13 +309,15 @@ render() {
             {/* adding a checkbox */}
               <div className="input-group-prepend">
                 <div className="input-group-text">
-                  <input type="checkbox" id="confirm-customer" checked area-label="checkbox for customized vehicle order"></input>
+                  <input type="checkbox" id="confirm-customer"  onClick={this.myFunction} area-label="checkbox for customized vehicle order"></input>
                 </div>
               </div>
           
           <select ref="userInput"
-              required
-              className="custom-select"
+          
+              disabled
+              id="mytext"
+              className="form-control"
               value={this.state.customer}
               onChange={this.onChangeCustomer}>
               {

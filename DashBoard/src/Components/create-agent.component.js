@@ -21,6 +21,8 @@ export default class CreateAgent extends Component{
         
         this.onChangeAgentId=this.onChangeAgentId.bind(this);
         this.onChangeAgentName=this.onChangeAgentName.bind(this);
+        this.onChangeEmail=this.onChangeEmail.bind(this);
+        this.onChangeMobile=this.onChangeMobile.bind(this);
 
         this.onSubmit=this.onSubmit.bind(this);
 
@@ -28,7 +30,9 @@ export default class CreateAgent extends Component{
 
         this.state={
             agentId: '',
-            agentName:''
+            agentName:'',
+            email:'',
+            mobile:''
 
 
 
@@ -58,6 +62,16 @@ export default class CreateAgent extends Component{
             agentName:e.target.value
         })
     };
+    onChangeEmail(e){
+        this.setState({
+            email:e.target.value
+        })
+    };
+    onChangeMobile(e){
+        this.setState({
+            mobile:e.target.value
+        })
+    };
 
 
    
@@ -69,6 +83,8 @@ export default class CreateAgent extends Component{
         const agent = {
             agentId:this.state.agentId,
             agentName:this.state.agentName,
+            email:this.state.email,
+            mobile:this.state.mobile
         }
         console.log(agent);
 
@@ -77,7 +93,9 @@ export default class CreateAgent extends Component{
 
         this.setState({
             agentId:'',
-            agentName:''
+            agentName:'',
+            email:'',
+            mobile:''
         })
         //refresh page and give a alert
         swal("Add new agent?")
@@ -124,6 +142,26 @@ export default class CreateAgent extends Component{
                     className="form-control"
                     value={this.state.agentName}
                     onChange={this.onChangeAgentName}
+                    />
+              </div>
+            
+              <div className="form-group"> 
+                <label>Email </label>
+                <input  type="text"
+                    required
+                    className="form-control"
+                    value={this.state.email}
+                    onChange={this.onChangeEmail}
+                    />
+              </div>
+            
+              <div className="form-group"> 
+                <label>Mobile </label>
+                <input  type="text"
+                    required
+                    className="form-control"
+                    value={this.state.agentMobile}
+                    onChange={this.onChangeMobile}
                     />
               </div>
 

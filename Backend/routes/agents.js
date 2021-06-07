@@ -23,9 +23,11 @@ router.route('/:id').delete((req,res)=>{
 router.route('/add').post((req, res) => {
   const agentId = req.body.agentId;
   const agentName=req.body.agentName;
+  const email =req.body.email;
+  const mobile = req.body.mobile;
   
 
-  const newAgent = new Agent({agentId,agentName});
+  const newAgent = new Agent({agentId,agentName,email,mobile});
 
   newAgent.save()
     .then(() => res.json('Agent added!'))

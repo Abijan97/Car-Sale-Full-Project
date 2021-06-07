@@ -32,6 +32,10 @@ const shipperRouter=require('./routes/shippers');
 const customerRouter=require('./routes/customers');
 const orderRouter=require('./routes/orders');
 const CustomClearanceRouter = require('./routes/customclearance');
+// const OrderReceiveRouter=require('./routes/orderreceives');
+const VehicleStockRouter=require('./routes/stock');
+
+
 
 //using routes
 
@@ -42,6 +46,7 @@ app.use('/shippers',shipperRouter);
 app.use('/customers',customerRouter);
 app.use('/orders',orderRouter);
 app.use('/customclearances',CustomClearanceRouter);
+app.use('/stocks',VehicleStockRouter);
 
  
 

@@ -7,6 +7,8 @@ const Shipper =props=> (
     <tr>
         <td>{props.shipper.shipperId}</td>
         <td>{props.shipper.shipperName}</td>
+        <td>{props.shipper.email}</td>
+        <td>{props.shipper.mobile}</td>
         
         <td>
          <a className="btn btn-danger" href="#" onClick={()=>{props.deleteShipper(props.shipper._id) }}> delete</a> 
@@ -62,6 +64,8 @@ render(){
             <tr className=" ">
               <th>Shipper ID</th>
               <th>Shipper Name</th>
+              <th>Email</th>
+              <th>Mobile</th>
 
               <th>Actions</th>
 

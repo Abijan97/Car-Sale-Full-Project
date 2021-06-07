@@ -23,9 +23,11 @@ router.route('/:id').delete((req,res)=>{
 router.route('/add').post((req, res) => {
   const shipperId = req.body.shipperId;
   const shipperName=req.body.shipperName;
+  const email =req.body.email;
+  const mobile = req.body.mobile;
   
 
-  const newShipper = new Shipper({shipperId,shipperName});
+  const newShipper = new Shipper({shipperId,shipperName,email,mobile});
 
   newShipper.save()
     .then(() => res.json('Shipper added!'))

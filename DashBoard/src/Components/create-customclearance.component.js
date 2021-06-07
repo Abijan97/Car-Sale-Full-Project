@@ -108,6 +108,10 @@ export default class CreateCustomClearance extends Component{
         console.log(error.response);
     })
 
+    
+
+
+
     this.setState({
         orderId:'',
         customPayment:0,

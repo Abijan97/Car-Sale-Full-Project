@@ -8,7 +8,8 @@ const User =props=> (
     <tr>
         <td>{props.user.usertypeId}</td>
         <td>{props.user.username}</td>
-        <td>{props.user.password}</td>
+        <td>{props.user.email}</td>
+        <td>{props.user.mobile}</td>
         <td>
            <Link className="btn btn-warning" to={"/edit/"+props.user.id}>edit</Link> | <a className="btn btn-danger" href="#" onClick={()=>{props.deleteUser(props.user._id) }}> delete</a> 
             
@@ -66,7 +67,9 @@ export default class UsersList extends Component {
                 <tr className="">
                   <th>User type</th>
                   <th>User name</th>
-                  <th>Password</th>
+          
+                  <th>Email</th>
+                  <th>Mobile</th>
                   <th>Actions</th>
 
                 </tr>

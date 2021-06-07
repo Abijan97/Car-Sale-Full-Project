@@ -7,7 +7,6 @@ import {LEADERS} from '../shared/leaders';
 import {PROMOTIONS} from '../shared/promotions';
 
 import { Component } from 'react';
-import DishDetail from './DishDetailComponent';
 
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';

@@ -137,7 +137,7 @@ render() {
     <div className="container">
       <div className="row">
         <div className="col-4 bg-light border p-5">
-      <h3>Add Custom Clerance Details</h3>
+      <h3>Add Custom Clearance Details</h3>
       <form onSubmit={this.onSubmit}>
         <div className="form-group"> 
         <label>Order ID </label>

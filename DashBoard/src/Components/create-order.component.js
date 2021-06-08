@@ -33,7 +33,7 @@ export default class CreateOrders extends Component{
             agents:[],
             shippers:[],
             customers:[],
-            users:[] 
+            users:[]    
         }
     }
 

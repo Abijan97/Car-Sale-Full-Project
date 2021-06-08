@@ -15,7 +15,8 @@ import CreateShipper from "./Components/create-shipper.component";
 import CreateCustomers from "./Components/create.customer.component";
 import CreateOrders from "./Components/create-order.component";
 import CreateCustomClearance from "./Components/create-customclearance.component";
-import AddStock from "./Components/addStock-component";
+
+import AddVehicles from "./Components/add-vehicle.component";
 
 function App() {
   return (
@@ -34,7 +35,8 @@ function App() {
     <Route path="/customers" exact component={CreateCustomers}/>
     <Route path="/orders" exact component={CreateOrders}/>
     <Route path="/customclearances" exact component={CreateCustomClearance}/>
-    <Route path="/stocks" exact component={AddStock}/>
+    
+    <Route path="/vehicles" exact component={AddVehicles}/>
     </div>
   
     </Router>

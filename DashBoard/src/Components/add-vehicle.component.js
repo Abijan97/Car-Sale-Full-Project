@@ -181,6 +181,15 @@ render() {
               />  
         </div>
 
+        <div className="form-group"> 
+          <label>Image</label>
+          <input 
+              type="file" 
+              className="form-control"
+              
+              />  
+        </div>
+
 
 
 

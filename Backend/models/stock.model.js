@@ -9,6 +9,7 @@ const stockSchema = new Schema({
       marketPrice:{type:Number , required:true},
       orderId:{type:String , required:true},
       color:{type:String , required:true},
+      Img:{type:String}
     
 
 },{

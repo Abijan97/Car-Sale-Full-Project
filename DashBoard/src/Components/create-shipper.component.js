@@ -4,7 +4,7 @@ import ShipperList from "./shipper-list.component";
 //send http request to backend (connect to backend)
 import axios from 'axios';
 import swal from "sweetalert";
-
+import SimpleReactValidator from 'simple-react-validator';
 export default class CreateShipper extends Component{
 
     constructor(props){
@@ -23,7 +23,7 @@ export default class CreateShipper extends Component{
         this.onChangeMobile=this.onChangeMobile.bind(this);
         this.onSubmit=this.onSubmit.bind(this);
 
-
+        this.validator = new SimpleReactValidator();
 
         this.state={
             shipperId: '',
@@ -103,7 +103,9 @@ export default class CreateShipper extends Component{
                     className="form-control"
                     value={this.state.shipperId}
                     onChange={this.onChangeShipperId}
+                    onBlur={()=>this.validator.showMessageFor('Shipper ID')}
                     />
+                    {this.validator.message('Shipper ID', this.state.shipperId, 'required', { className: 'text-danger' })}
               </div>
 
               <div className="form-group"> 
@@ -113,7 +115,9 @@ export default class CreateShipper extends Component{
                     className="form-control"
                     value={this.state.shipperName}
                     onChange={this.onChangeShipperName}
+                    onBlur={()=>this.validator.showMessageFor('Shipper Name')}
                     />
+                     {this.validator.message('Shipper Name', this.state.shipperName, 'required', { className: 'text-danger' })}
               </div>
               
               <div className="form-group"> 
@@ -123,7 +127,9 @@ export default class CreateShipper extends Component{
                     className="form-control"
                     value={this.state.email}
                     onChange={this.onChangeEmail}
+                    onBlur={()=>this.validator.showMessageFor('email')}
                     />
+                     {this.validator.message('email', this.state.email, 'required|email', { className: 'text-danger' })}
               </div>
 
               <div className="form-group"> 
@@ -133,7 +139,9 @@ export default class CreateShipper extends Component{
                     className="form-control"
                     value={this.state.agentMobile}
                     onChange={this.onChangeMobile}
+                    onBlur={()=>this.validator.showMessageFor('mobile')}
                     />
+                     {this.validator.message('mobile', this.state.agentMobile, 'required|phone', { className: 'text-danger' })}
               </div>
             <br></br>
               

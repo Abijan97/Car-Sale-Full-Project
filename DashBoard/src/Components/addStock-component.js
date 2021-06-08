@@ -15,6 +15,7 @@ export default class CreateStock extends Component{
         this.onChangeMarketPrice = this.onChangeMarketPrice.bind(this);
         this.onChangeOrderId = this.onChangeOrderId.bind(this);
         this.onChangeColor = this.onChangeColor.bind(this);
+        this.onChangeImg=this.onChangeImg.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         
@@ -26,6 +27,7 @@ export default class CreateStock extends Component{
             marketPrice: 0,
             orderId:'',
             color:'',
+            Img:'',
 
 
         
@@ -64,7 +66,14 @@ export default class CreateStock extends Component{
             vehicleId: e.target.value
         });
     }
-    
+
+
+    onChangeImg(e){
+        this.setState({
+            Img: e.target.value
+        });
+    }
+   
     onChangeColor(e){
         this.setState({
             color: e.target.value
@@ -96,7 +105,8 @@ export default class CreateStock extends Component{
            modelName:this.state.modelName,
            marketPrice:this.state.marketPrice,
            orderId:this.state.orderId,  
-           color:this.state.color
+           color:this.state.color,
+           Img:this.state.Img
          
     }
 
@@ -117,7 +127,8 @@ export default class CreateStock extends Component{
         modelName:'',
         marketPrice:0,
         orderId:'',
-        color:''
+        color:'',
+        Img:''
 
     })
     swal("Add new customer?")
@@ -134,11 +145,16 @@ export default class CreateStock extends Component{
 
 render() {
     return (
+        //dad
     <div className="container">
       <div className="row">
-        <div className="col-4 bg-light border p-5">
+        <div className="col-6 bg-light border p-5">
+     
       <h3>Add Vehicles to stock</h3>
-      <form onSubmit={this.onSubmit}>
+     
+      <form onSubmit={this.onSubmit} encType="multipart/form-data">
+        
+        
         <div className="form-group"> 
         <label>Vehicle ID </label>
         <input 
@@ -196,23 +212,36 @@ render() {
               />  
 
         </div>
-
-
-
-
-       
-
-
+        <div className="form-group"> 
+          <label  for="image">Image </label>
+          <input 
+              type="file" 
+              className="form-control"
+              name="image"
+              id="image"
+              value={this.state.Img}
+              onChange={this.onChangeImg}
+          
+              />
+        </div>
+              
         <div className="form-group">
           <input type="submit" value="ADD" className="btn btn-primary" />
         </div>
         
+    
+    
       </form>
-      </div>
       
-     
+      
+     </div>
+     <div className="col-2"></div>
+
     </div>
     </div>
+
+  
     )
   }
+
 }

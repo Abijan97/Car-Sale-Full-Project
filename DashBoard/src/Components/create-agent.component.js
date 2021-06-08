@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import AgentList from "./agent-list.component";
 //send http request to backend (connect to backend)
 import axios from 'axios';
-
+import SimpleReactValidator from 'simple-react-validator';
 //alert
 import swal from 'sweetalert';
 
@@ -25,7 +25,8 @@ export default class CreateAgent extends Component{
         this.onChangeMobile=this.onChangeMobile.bind(this);
 
         this.onSubmit=this.onSubmit.bind(this);
-
+        
+        this.validator = new SimpleReactValidator();
 
 
         this.state={
@@ -126,13 +127,15 @@ export default class CreateAgent extends Component{
             <h3 className="text-primary">Add Agent</h3>
             <form onSubmit={this.onSubmit}>
               <div className="form-group"> 
-                <label>User type ID : </label>
+                <label>Agent ID : </label>
                 <input  type="text"
                     required
                     className="form-control"
                     value={this.state.agentId}
                     onChange={this.onChangeAgentId}
+                    onBlur={()=>this.validator.showMessageFor('Agent ID')}
                     />
+                    {this.validator.message('Agent ID', this.state.agentId, 'required', { className: 'text-danger' })}
               </div>
 
               <div className="form-group"> 
@@ -142,7 +145,9 @@ export default class CreateAgent extends Component{
                     className="form-control"
                     value={this.state.agentName}
                     onChange={this.onChangeAgentName}
+                    onBlur={()=>this.validator.showMessageFor('Shipper Name')}
                     />
+                    {this.validator.message('Agent Name', this.state.agentName, 'required', { className: 'text-danger' })}
               </div>
             
               <div className="form-group"> 
@@ -152,7 +157,9 @@ export default class CreateAgent extends Component{
                     className="form-control"
                     value={this.state.email}
                     onChange={this.onChangeEmail}
+                    onBlur={()=>this.validator.showMessageFor('email')}
                     />
+                    {this.validator.message('Email', this.state.email, 'required|email', { className: 'text-danger' })}
               </div>
             
               <div className="form-group"> 
@@ -162,7 +169,9 @@ export default class CreateAgent extends Component{
                     className="form-control"
                     value={this.state.agentMobile}
                     onChange={this.onChangeMobile}
+                    onBlur={()=>this.validator.showMessageFor('Mobile')}
                     />
+                    {this.validator.message('mobile', this.state.agentMobile, 'required|phone', { className: 'text-danger' })}
               </div>
 
             <br></br>

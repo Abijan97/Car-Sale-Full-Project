@@ -6,6 +6,9 @@ import axios from 'axios';
 //importing create user and view user
 import CreateUser from './create-user.component';
 import UsersList from './user-list.component';
+import swal from "sweetalert";
+import SimpleReactValidator from 'simple-react-validator';
+
 export default class CreateUserType extends Component{
 
     constructor(props){
@@ -66,6 +69,10 @@ export default class CreateUserType extends Component{
             usertypeId:'',
             usertypeName:''
         })
+        swal("Add new agent?")
+        .then((value) => {
+          document.location.reload();
+});
 
         
     }

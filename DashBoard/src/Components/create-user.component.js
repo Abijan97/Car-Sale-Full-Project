@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 import axios from 'axios';
 import swal from "sweetalert";
+import SimpleReactValidator from 'simple-react-validator';
 
 export default class CreateUser extends Component{
 
@@ -23,7 +24,7 @@ export default class CreateUser extends Component{
         this.onChangeEmail=this.onChangeEmail.bind(this);
         this.onChangeMobile=this.onChangeMobile.bind(this);
 
-
+        this.validator = new SimpleReactValidator();
 
         this.state={
             usertypeId:'',
@@ -159,7 +160,9 @@ export default class CreateUser extends Component{
                     className="form-control"
                     value={this.state.email}
                     onChange={this.onChangeEmail}
+                    onBlur={()=>this.validator.showMessageFor('email')}
                     />
+                     {this.validator.message('email', this.state.email, 'required|email', { className: 'text-danger' })}
               </div>
               
               <div className="form-group"> 

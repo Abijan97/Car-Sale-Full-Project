@@ -8,7 +8,8 @@ const vehicleSchema = new Schema({
       company:{type:String,required:true},
       fueltype:{type:String , required:true},
       seats:{type:String,required:true},
-      capacity:{type:String,required:true}
+      capacity:{type:String,required:true},
+      
 
      
 

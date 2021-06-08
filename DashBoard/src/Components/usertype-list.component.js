@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-
+import swal from 'sweetalert';
 
 const UserType =props=> (
 
@@ -9,7 +9,29 @@ const UserType =props=> (
         <td>{props.usertype.usertypeName}</td>
         
         <td>
-         <a className="btn btn-danger" href="#" onClick={()=>{props.deleteUserType(props.usertype._id) }}> delete</a> 
+         <a className="btn btn-danger" href="#" onClick={()=>{
+            swal({
+              title: "Are you sure?",
+              text: "Once deleted, you will not be able to recover this imaginary file!",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+            })
+            .then((willDelete) => {
+              if (willDelete) {
+                {props.deleteUserType(props.usertype._id) };
+                swal("Poof! Your imaginary file has been deleted!", {
+                  icon: "success",
+              
+                });
+  
+              } else {
+                swal("Your imaginary file is safe!");
+              }
+            });
+            
+  
+        }}> delete</a> 
             
         </td>
     </tr>

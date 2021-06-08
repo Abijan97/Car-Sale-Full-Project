@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
-
+import swal from 'sweetalert';
 
 const User =props=> (
 
@@ -11,7 +11,31 @@ const User =props=> (
         <td>{props.user.email}</td>
         <td>{props.user.mobile}</td>
         <td>
-           <Link className="btn btn-warning" to={"/edit/"+props.user.id}>edit</Link> | <a className="btn btn-danger" href="#" onClick={()=>{props.deleteUser(props.user._id) }}> delete</a> 
+           <Link className="btn btn-warning" to={"/edit/"+props.user.id}>edit</Link> | <a className="btn btn-danger" href="#" onClick={()=>{
+              swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this imaginary file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+              })
+              .then((willDelete) => {
+                if (willDelete) {
+                  {props.deleteUser(props.user._id) };
+                  swal("Poof! Your imaginary file has been deleted!", {
+                    icon: "success",
+                
+                  });
+    
+                } else {
+                  swal("Your imaginary file is safe!");
+                }
+              });
+              
+    
+          
+          
+          }}> delete</a> 
             
         </td>
     </tr>

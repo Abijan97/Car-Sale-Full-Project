@@ -10,6 +10,8 @@ import moment from 'moment';
 moment().format();
 
 
+
+
 export default class CreateCustomers extends Component{
 
     constructor(props){
@@ -22,6 +24,9 @@ export default class CreateCustomers extends Component{
         this.onChangeDob = this.onChangeDob.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
+        this.validator = new SimpleReactValidator();
+    
+
         //add validations
         this.validator = new SimpleReactValidator();
     
@@ -32,11 +37,11 @@ export default class CreateCustomers extends Component{
             mobile:0,
             dob:new Date(),
             customers:[] ,
-            date:moment().calendar()
+          
         }
     }
 
-  
+ 
 
     onChangeUsername(e){
         this.setState({
@@ -134,7 +139,7 @@ render() {
               onChange={this.onChangeUsername}
               onBlur={()=>this.validator.showMessageFor('username')}
               />
-               {this.validator.message('username', this.state.username, 'required|alpha',{className:'text-danger'})}
+               {this.validator.message('username', this.state.username, 'required|max:10|min:5',{className:'text-danger'})}
         </div>
         <div className="form-group"> 
           <label>Password </label>
@@ -146,7 +151,7 @@ render() {
               onBlur={()=>this.validator.showMessageFor('password')}
               />
 
-              {this.validator.message('password', this.state.password, 'required|alpha|max:8',{className:'text-danger'})}
+              {this.validator.message('password', this.state.password, 'required|max:8|min:5',{className:'text-danger'})}
               
         </div>
         <div className="form-group">
@@ -176,6 +181,7 @@ render() {
           <label>Date of birth </label>
           <div>
             <DatePicker
+              
               selected={this.state.dob}
               onChange={this.onChangeDob}
             />

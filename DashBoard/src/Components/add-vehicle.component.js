@@ -1,7 +1,8 @@
 import React,{Component} from 'react';
 import axios from 'axios';
 import swal from "sweetalert";
-import VehicleModelList from './vehiclemodel-list.component';
+import VehicleList from "./vehicle-view.component";
+import CreateStock from "./addstock-component";
 
 
 export default class AddVehicles extends Component{
@@ -199,9 +200,14 @@ render() {
     
         <div className="col-8 bg-light pt-5 pb-5 border">
         
-              <VehicleModelList/>
+              <VehicleList/>
               
               </div>
+      </div>
+      <div className="row">
+            <div className="col-12">
+        
+            </div>
       </div>
       </div>
     

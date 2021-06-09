@@ -19,6 +19,10 @@ router.route('/add').post((req,res)=>
     const shipper = req.body.shipper;
     const user = req.body.user;
     const customer = req.body.customer;
+    const insurancecost = Number(req.body.insurancecost);
+    const shippingcost = Number(req.body.shippingcost);
+    const agentpayment = Number(req.body.agentpayment);
+    
    
 
 
@@ -29,7 +33,10 @@ router.route('/add').post((req,res)=>
         agent,
         shipper,
         user,
-        customer
+        customer,
+        insurancecost,
+        shippingcost,
+        agentpayment
         
     });
   
@@ -63,6 +70,9 @@ router.route('/update/:id').post((req,res)=>{
         order.shipper=req.body.shipper;
         order.user=req.body,user;
         order.customer=req.body.customer;
+        order.insurancecost=req.body.insurancecost;
+        order.shippingcost=req.body.shippingcost;
+        order.agentpayment=req.body.agentpayment;
 
         
  order.save()

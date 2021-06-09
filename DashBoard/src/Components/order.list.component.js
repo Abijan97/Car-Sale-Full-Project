@@ -7,8 +7,11 @@ const Order = props => (
     <td>{props.order.orderId}</td>
     <td>{props.order.date.substring(0,10)}</td>
     <td>{props.order.payment}</td>
+    <td>{props.order.insurancepayment}</td>
     <td>{props.order.agent}</td>
+    <td>{props.order.agentpayment}</td>
     <td>{props.order.shipper}</td>
+    <td>{props.order.shippingcost}</td>
     <td>{props.order.user}</td>
     <td>{props.order.customer}</td>
 
@@ -74,15 +77,18 @@ export default class OrdersList extends Component {
   render() {
     return (
       <div>
-        <h3>Orders List</h3>
+        <h3 className="mb-3">Orders List</h3>
         <table className="table table-striped table-dark table-boarded">
           <thead className="thead-light">
             <tr>
               <th>Order ID</th>
               <th>Date</th>
               <th>Payment</th>
+              <th>Insurance Payment</th>
               <th>Agent</th>
+              <th>AgentPayment</th>
               <th>Shipper</th>
+              <th>ShippingCost</th>
               <th>Manager</th>
               <th>Customer</th>
               <th>Actions</th>

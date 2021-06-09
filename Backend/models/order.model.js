@@ -10,7 +10,10 @@ const orderSchema = new Schema({
       agent:{type:String , required:true},
       shipper:{type:String , required:true},
       user:{type:String , required:true},
-      customer:{type:String, required:false}
+      customer:{type:String, required:false},
+      insurancecost:{type:Number,required:true},
+      shippingcost:{type:Number,required:true},
+      agentpayment:{type:Number,required:true}
 
 },{
     timestamps:true,

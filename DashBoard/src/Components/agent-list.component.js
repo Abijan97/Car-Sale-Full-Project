@@ -10,6 +10,7 @@ const Agent =props=> (
         <td>{props.agent.agentName}</td>
         <td>{props.agent.email}</td>
         <td>{props.agent.mobile}</td>
+        <td>{props.agent.company}</td>
         
         <td>
          {/* <a className="btn btn-danger" href="#" onClick={()=>{props.deleteAgent(props.agent._id) }}> delete</a>  */}
@@ -89,6 +90,7 @@ render(){
               <th>Agent Name</th>
               <th>Email</th>
               <th>Mobile</th>
+              <th>Company</th>
               
 
               <th>Actions</th>

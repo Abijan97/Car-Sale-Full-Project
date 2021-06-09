@@ -18,6 +18,9 @@ export default class CreateOrders extends Component{
         this.onChangeShipper = this.onChangeShipper.bind(this);
         this.onChangeUser = this.onChangeUser.bind(this);
         this.onChangeCustomer = this.onChangeCustomer.bind(this);
+        this.onChangeinsurance = this.onChangeinsurance.bind(this);
+        this.onChangeshippingCost = this.onChangeshippingCost.bind(this);
+        this.onChangeAgentPayment = this.onChangeAgentPayment.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     
 
@@ -29,6 +32,9 @@ export default class CreateOrders extends Component{
             shipper:'',
             user:'',
             customer:'',
+            insurancecost:0,
+            shippingcost:0,
+            agentpayment:0,
 
             agents:[],
             shippers:[],
@@ -95,6 +101,23 @@ export default class CreateOrders extends Component{
             payment: e.target.value
         });
     }
+
+    onChangeinsurance(e){
+      this.setState({
+          insurancecost: e.target.value
+      });
+  }
+
+  onChangeshippingCost(e){
+    this.setState({
+        shippingcost: e.target.value
+    });
+}
+onChangeAgentPayment(e){
+  this.setState({
+      agentpayment: e.target.value
+  });
+}
     onChangeAgent(e){
         this.setState({
             agent: e.target.value
@@ -128,7 +151,10 @@ export default class CreateOrders extends Component{
            agent:this.state.agent,
            shipper:this.state.shipper,
            user:this.state.user,
-           customer:this.state.customer
+           customer:this.state.customer,
+           insurancecost:this.state.insurancecost,
+           shippingcost:this.state.shippingcost,
+           agentpayment:this.state.agentpayment,
     }
 
     console.log(order);
@@ -141,11 +167,14 @@ export default class CreateOrders extends Component{
 
     this.setState({
         orderId:'',
-        payment:'',
+        payment:0,
         agent:'',
         shipper:'',
         user:'',
-        customer:''
+        customer:'',
+        insurancecost:0,
+        shippingcost:0,
+        agentpayment:0
     })
 
     swal("Add new agent?")
@@ -179,13 +208,15 @@ myFunction() {
 render() {
     return (
       //adding a modal
-    <div className="container">
+      
+    <div className="container-fluid">
     
 
-      <div className="row">
-        <section className="col-12">
+      
+        <div className="row">
+          <div className="col-4 mb-3">
 
-<button type="button" className="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button" className="btn btn-secondary float-right" data-bs-toggle="modal" data-bs-target="#exampleModal">
   More Info
 </button>
 
@@ -204,18 +235,27 @@ render() {
     </div>
   </div>
 </div>
-</section>
-      </div>
+</div>
+</div>
+      
 
 
 
-      <div className="row">
-        <div className="col-4 bg-light border pt-5 pb-5  ">
-      <h3>Add Vehicle Order</h3>
+      
+      
+      
+  
       <form onSubmit={this.onSubmit}>
-        <div className="form-group"> 
-        <label>Order ID </label>
+
+
+
+        <div className="form-row">
+          <div className="row">
+
+        <div className="col-4 mb-3"> 
+        <label for="orderID">Order ID </label>
           <input 
+              id="orderID"
               type="text" 
               className="form-control"
               value={this.state.orderId}
@@ -223,7 +263,7 @@ render() {
               />  
         </div>
 
-        <div className="form-group">
+        <div className="col-6 mb-3">
           <label>Date: </label>
           <div>
             <DatePicker
@@ -232,9 +272,14 @@ render() {
             />
           </div>
         </div>
+        </div>
+        </div>
+      
 
-        <div className="form-group"> 
-        <label className="form-control-label">Payment</label>
+  <div className="form-group "> 
+        <div className="row">
+          <div className="col-4 mb-3">
+          <label for="pay" className="">Payment</label>
          <div className="input-group">
         <div className="input-group-prepend">
           <div className="input-group-text">Rs.</div>
@@ -242,14 +287,36 @@ render() {
          </div>
           <input 
               type="text" 
+              id="pay"
               className="form-control"
               value={this.state.payment}
               onChange={this.onChangePayment}
               />  
               </div>
+          </div>
+          <div className="col-4 mb-3">
+          <label for="insurancepay" className="">Insurance Payment</label>
+         <div className="input-group">
+        <div className="input-group-prepend">
+          <div className="input-group-text">Rs.</div>
+        
+         </div>
+          <input 
+              type="text" 
+              id="insurancepay"
+              className="form-control"
+              value={this.state.insurancecost}
+              onChange={this.onChangeinsurance}
+              />  
+              </div>
+          </div>
+          </div>
         </div>
 
-        <div className="form-group"> 
+
+        <div className="form-group "> 
+        <div className="row">
+          <div className="col-4 mb-3">
           <label>Agent </label>
           <select ref="userInput"
               required
@@ -265,9 +332,29 @@ render() {
                 })
               }
           </select>
-        </div>
+          </div>
+          <div className="col-4 mb-3">
+          <label for="agentpay" className="">Agent Payment</label>
+         <div className="input-group">
+        <div className="input-group-prepend">
+          <div className="input-group-text">Rs.</div>
         
-        <div className="form-group"> 
+         </div>
+          <input 
+              type="text" 
+              id="agentpay"
+              className="form-control"
+              value={this.state.agentpayment}
+              onChange={this.onChangeAgentPayment}
+              />  
+              </div>
+          </div>
+          </div>
+        </div>
+
+        <div className="form-group "> 
+        <div className="row">
+          <div className="col-4 mb-3">
           <label>Shipper </label>
           <select ref="userInput"
               required
@@ -283,9 +370,29 @@ render() {
                 })
               }
           </select>
+          </div>
+          <div className="col-4 mb-3">
+          <label for="shipperpay" className="">Shipping Payment</label>
+         <div className="input-group">
+        <div className="input-group-prepend">
+          <div className="input-group-text">Rs.</div>
+        
+         </div>
+          <input 
+              type="text" 
+              id="shipperpay"
+              className="form-control"
+              value={this.state.shippingcost}
+              onChange={this.onChangeshippingCost}
+              />  
+              </div>
+          </div>
+          </div>
         </div>
+        
+      
 
-        <div className="form-group"> 
+        <div className="form-group col-4 mb-3"> 
           <label>Manager </label>
           <select ref="userInput"
               required
@@ -303,7 +410,7 @@ render() {
           </select>
         </div>
 
-        <div className="form-group"> 
+        <div className="form-group col-4 mb-3"> 
           <label>Customer </label>
           <div className="input-group">
             {/* adding a checkbox */}
@@ -339,21 +446,23 @@ render() {
        
 
 
-        <div className="form-group">
+        <div className="form-group mb-3">
           <input type="submit" value="Create Order" className="btn btn-primary" />
         </div>
       </form>
-      </div>
+    
+
+      
       
 
       
     
-        <div className="col-8 bg-light pt-5 pb-5 border">
+        <div className="col-12 bg-light pt-5 pb-5 border">
         
               <OrdersList/>
               
               </div>
-      </div>
+
       </div>
     
     )

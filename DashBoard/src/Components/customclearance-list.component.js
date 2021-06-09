@@ -7,8 +7,12 @@ const CustomClearance = props => (
   <tr>
     <td>{props.customclearance.orderId}</td>
     <td>{props.customclearance.date.substring(0,10)}</td>
+    <td>{props.customclearance.lc}</td>
+    <td>{props.customclearance.invoice}</td>
     <td>{props.customclearance.customPayment}</td>
     <td>{props.customclearance.transportPayment}</td>
+    <td>{props.customclearance.commision}</td>
+    <td>{props.customclearance.taxpayment}</td>
     <td>{props.customclearance.user}</td>
 
 
@@ -82,8 +86,13 @@ export default class CustomClearanceList extends Component {
             <tr>
               <th>CustomClearance ID</th>
               <th>Date</th>
+              <th>LC</th>
+              <th>Invoice</th>
+
               <th>Custom Clearance Payment</th>
-              <th>Tavel payments</th>
+              <th>Transport payments</th>
+              <th>Commision</th>
+              <th>taxpayment</th>
               <th>Sales Person</th>
               <th>Actions</th>
             

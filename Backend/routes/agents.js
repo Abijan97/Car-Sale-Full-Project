@@ -25,9 +25,10 @@ router.route('/add').post((req, res) => {
   const agentName=req.body.agentName;
   const email =req.body.email;
   const mobile = req.body.mobile;
+  const company =req.body.company;
   
 
-  const newAgent = new Agent({agentId,agentName,email,mobile});
+  const newAgent = new Agent({agentId,agentName,email,mobile,company});
 
   newAgent.save()
     .then(() => res.json('Agent added!'))

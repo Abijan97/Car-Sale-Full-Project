@@ -23,6 +23,7 @@ export default class CreateAgent extends Component{
         this.onChangeAgentName=this.onChangeAgentName.bind(this);
         this.onChangeEmail=this.onChangeEmail.bind(this);
         this.onChangeMobile=this.onChangeMobile.bind(this);
+        this.onChangeCompany=this.onChangeCompany.bind(this);
 
         this.onSubmit=this.onSubmit.bind(this);
         
@@ -33,7 +34,8 @@ export default class CreateAgent extends Component{
             agentId: '',
             agentName:'',
             email:'',
-            mobile:''
+            mobile:'',
+            company:''
 
 
 
@@ -68,6 +70,13 @@ export default class CreateAgent extends Component{
             email:e.target.value
         })
     };
+
+    onChangeCompany(e){
+        this.setState({
+            company:e.target.value
+        })
+    };
+
     onChangeMobile(e){
         this.setState({
             mobile:e.target.value
@@ -85,7 +94,8 @@ export default class CreateAgent extends Component{
             agentId:this.state.agentId,
             agentName:this.state.agentName,
             email:this.state.email,
-            mobile:this.state.mobile
+            mobile:this.state.mobile,
+            company:this.state.company
         }
         console.log(agent);
 
@@ -96,7 +106,8 @@ export default class CreateAgent extends Component{
             agentId:'',
             agentName:'',
             email:'',
-            mobile:''
+            mobile:'',
+            company:''
         })
         //refresh page and give a alert
         swal("Add new agent?")
@@ -149,6 +160,21 @@ export default class CreateAgent extends Component{
                     />
                     {this.validator.message('Agent Name', this.state.agentName, 'required', { className: 'text-danger' })}
               </div>
+
+              <div className="form-group"> 
+          <label>Agent Company</label>
+          <select ref="userInput"
+              required
+              className="form-control"
+              value={this.state.company}
+              onChange={this.onChangeCompany}>
+                  <option>AUTO SUPPLY JAPAN</option>
+                  <option>KOYO TRADING</option>
+                  <option>JAPAN CAR DIRECT LLC</option>
+                  <option>JAPAN TRADING</option>
+          </select>
+        </div>
+
             
               <div className="form-group"> 
                 <label>Email </label>

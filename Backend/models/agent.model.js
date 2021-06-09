@@ -17,6 +17,12 @@ const AgentSchema = new Schema({
         unique:true,
 
     },
+    company:{
+        type:String,
+        required:true,
+    
+
+    },
     email:{
         type:String,
         required:true,

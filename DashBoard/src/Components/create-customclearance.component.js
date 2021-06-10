@@ -191,13 +191,13 @@ render() {
 <select ref="userInput"
       required
       className="form-control"
-      value={this.state.user}
-      onChange={this.onChangeUser}>
+      value={this.state.order}
+      onChange={this.onChangeOrderId}>
       {
-        this.state.users.map(function(user) {
+        this.state.orders.map(function(order) {
           return <option 
-            key={user}
-            value={user}>{user}
+            key={order}
+            value={order}>{order}
             </option>;
         })
       }

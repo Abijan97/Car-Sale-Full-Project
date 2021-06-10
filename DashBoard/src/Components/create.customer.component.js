@@ -7,6 +7,7 @@ import CustomersList from "./customer-list.component";
 import SimpleReactValidator from 'simple-react-validator';
 //moment-date and time
 import moment from 'moment';
+import swal from "sweetalert";
 moment().format();
 
 
@@ -72,52 +73,37 @@ export default class CreateCustomers extends Component{
     onSubmit(e){
         e.preventDefault( );
 
-        if (this.validator.allValid()) {
-          alert('You submitted the form and stuff!');
-          const customer={
-            username: this.state.username,
-            password:this.state.password,
-            email:this.state.email,
-            mobile:this.state.mobile,
-            dob:this.state.dob
-     }
- 
-     console.log(customer);
- 
-     axios.post('http://localhost:5001/customers/add', customer)
-     .then(res => console.log(res.data));
- 
-        } else {
-          this.validator.showMessages();
-          // rerender to show messages for the first time
-          // you can use the autoForceUpdate option to do this automatically`
-          this.forceUpdate();
-        }
-      }
+   
 
 
-    //     const customer={
-    //        username: this.state.username,
-    //        password:this.state.password,
-    //        email:this.state.email,
-    //        mobile:this.state.mobile,
-    //        dob:this.state.dob
-    // }
+        const customer={
+           username: this.state.username,
+           password:this.state.password,
+           email:this.state.email,
+           mobile:this.state.mobile,
+           dob:this.state.dob
+    }
 
-    // console.log(customer);
+  
 
-    // axios.post('http://localhost:5001/customers/add', customer)
-    // .then(res => console.log(res.data));
+    axios.post('http://localhost:5001/customers/add', customer)
+    .then(res => console.log(res.data));
 
-    // this.setState({
-    //   username:'',
-    //   password:'',
-    //   email:'',
-    //   mobile:'',
-    //   dob:''
-    // })
+    this.setState({
+      username:'',
+      password:'',
+      email:'',
+      mobile:'',
+      dob:''
+    })
 
-    // window.location.reload(false);
+    swal("Add new agent?")
+    .then((value) => {
+      document.location.reload();
+});
+
+
+  }
    
 
 

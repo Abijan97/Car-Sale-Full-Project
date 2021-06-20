@@ -22,6 +22,10 @@ const ShipperSchema = new Schema({
         required:true,
         
     },
+    photo:{
+        type:String
+    },
+    
     mobile:{
         type:String,
         required:true

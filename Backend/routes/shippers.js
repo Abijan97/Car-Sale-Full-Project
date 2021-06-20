@@ -7,14 +7,14 @@ let path= require('path')
 
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
-      cb(null, 'images');
+      cb(null, './images/');
   },
   filename: function(req, file, cb) {   
       // cb(null, uuidv4() + '-' + Date.now() + path.extname(file.originalname));
       cb(null,Date.now()+"--"+file.originalname)
   }
 });
-
+console.log(storage.filename);
 const fileFilter = (req, file, cb) => {
   const allowedFileTypes = ['image/jpeg', 'image/jpg', 'image/png'];
   if(allowedFileTypes.includes(file.mimetype)) {
@@ -52,6 +52,7 @@ router.route('/add').post(upload.single('photo'),(req, res) => {
   const email =req.body.email;
   const mobile = req.body.mobile;
   const photo=req.file.filename;
+  
   
 
   const newShipper = new Shipper({shipperId,shipperName,email,mobile,photo});

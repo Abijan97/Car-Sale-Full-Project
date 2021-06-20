@@ -21,7 +21,7 @@ export default class CreateShipper extends Component{
         this.onChangeShipperName=this.onChangeShipperName.bind(this);
         this.onChangeEmail=this.onChangeEmail.bind(this);
         this.onChangeMobile=this.onChangeMobile.bind(this);
-        this.onChangePhoto=this.bind.onChangePhoto.bind(this);
+        this.onChangePhoto=this.onChangePhoto.bind(this);
         this.onSubmit=this.onSubmit.bind(this);
 
         this.validator = new SimpleReactValidator();
@@ -40,7 +40,7 @@ export default class CreateShipper extends Component{
         
     }
     onChangePhoto(e){
-        this.state({
+        this.setState({
             photo:e.target.files[0]
         })
     }
@@ -77,7 +77,8 @@ export default class CreateShipper extends Component{
             shipperId:this.state.shipperId,
             shipperName:this.state.shipperName,
             email:this.state.email,
-            mobile:this.state.mobile
+            mobile:this.state.mobile,
+            photo:this.state.photo
            
         }
         console.log(shipper);
@@ -91,7 +92,7 @@ export default class CreateShipper extends Component{
         })
         swal("Add new shipper?")
         .then((value) => {
-          document.location.reload();
+        
 });
 
         

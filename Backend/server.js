@@ -16,7 +16,7 @@ app.use(express.json());
 //connect mongodb atlas using .env file
 
 const uri = process.env.ATLAS_URI;
-mongoose.connect(uri,{useNewUrlParser:true,useCreateIndex:true});
+mongoose.connect(uri,{useNewUrlParser:true,useCreateIndex:true,useUnifiedTopology:true});
 
 const connection =mongoose.connection;
 connection.once('open', ()=> {
@@ -37,6 +37,7 @@ const VehiclesRouter=require('./routes/vehicles');
 const StocksRouter=require('./routes/stocks');
 
 
+
 //using routes
 
 app.use('/users',usersRouter);
@@ -47,6 +48,7 @@ app.use('/customers',customerRouter);
 app.use('/orders',orderRouter);
 app.use('/customclearances',CustomClearanceRouter);
 app.use('/stocks',StocksRouter);
+
 
 app.use('/vehicles',VehiclesRouter);
 

@@ -21,6 +21,7 @@ export default class CreateShipper extends Component{
         this.onChangeShipperName=this.onChangeShipperName.bind(this);
         this.onChangeEmail=this.onChangeEmail.bind(this);
         this.onChangeMobile=this.onChangeMobile.bind(this);
+        this.onChangePhoto=this.bind.onChangePhoto.bind(this);
         this.onSubmit=this.onSubmit.bind(this);
 
         this.validator = new SimpleReactValidator();
@@ -29,7 +30,8 @@ export default class CreateShipper extends Component{
             shipperId: '',
             shipperName:'',
             email:'',
-            mobile:''
+            mobile:'',
+            photo:''
 
 
 
@@ -37,6 +39,12 @@ export default class CreateShipper extends Component{
 
         
     }
+    onChangePhoto(e){
+        this.state({
+            photo:e.target.files[0]
+        })
+    }
+
 
     onChangeShipperId(e){
         this.setState({
@@ -142,6 +150,17 @@ export default class CreateShipper extends Component{
                     onBlur={()=>this.validator.showMessageFor('mobile')}
                     />
                      {this.validator.message('mobile', this.state.agentMobile, 'required|phone', { className: 'text-danger' })}
+              </div>
+
+              <div className="form-group"> 
+                <label>Photo </label>
+                <input 
+                type="file" 
+                accept=".png, .jpg, .jpeg"
+                name="photo"
+                onChange={this.onChangePhoto}
+            />
+
               </div>
             <br></br>
               

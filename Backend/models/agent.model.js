@@ -28,6 +28,11 @@ const AgentSchema = new Schema({
         required:true,
         
     },
+
+    image:{
+        type:String
+    },
+    
     mobile:{
         type:String,
         required:true

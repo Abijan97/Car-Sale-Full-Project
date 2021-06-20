@@ -24,7 +24,7 @@ export default class CreateAgent extends Component{
         this.onChangeEmail=this.onChangeEmail.bind(this);
         this.onChangeMobile=this.onChangeMobile.bind(this);
         this.onChangeCompany=this.onChangeCompany.bind(this);
-
+        this.onChangeImage=this.onChangeImage.bind(this);
         this.onSubmit=this.onSubmit.bind(this);
         
         this.validator = new SimpleReactValidator();
@@ -35,7 +35,8 @@ export default class CreateAgent extends Component{
             agentName:'',
             email:'',
             mobile:'',
-            company:''
+            company:'',
+            image:''
 
 
 
@@ -44,13 +45,12 @@ export default class CreateAgent extends Component{
         
     }
 
-    makeAlert(){
-        <div class="alert alert-success">
-        <strong>Success!</strong> This alert box could indicate a successful or positive action.
-      </div>
+    
+    onChangeImage(e){
+        this.setState({
+            image:e.target.files[0]
+        })
     }
-    
-    
       
     
 
@@ -95,7 +95,8 @@ export default class CreateAgent extends Component{
             agentName:this.state.agentName,
             email:this.state.email,
             mobile:this.state.mobile,
-            company:this.state.company
+            company:this.state.company,
+            image:this.state.image
         }
         console.log(agent);
 
@@ -107,12 +108,13 @@ export default class CreateAgent extends Component{
             agentName:'',
             email:'',
             mobile:'',
-            company:''
+            company:'',
+            image:''
         })
         //refresh page and give a alert
         swal("Add new agent?")
         .then((value) => {
-          document.location.reload();
+        //   document.location.reload();
 });
         
         // document.AgentList.reload()
@@ -136,7 +138,7 @@ export default class CreateAgent extends Component{
             <div className="col-4 bg-light pb-5 pt-5 border">
                 
             <h3 className="text-primary">Add Agent</h3>
-            <form onSubmit={this.onSubmit}>
+            <form onSubmit={this.onSubmit}  encType='multipart/form-data'>
               <div className="form-group"> 
                 <label>Agent ID : </label>
                 <input  type="text"
@@ -198,6 +200,18 @@ export default class CreateAgent extends Component{
                     onBlur={()=>this.validator.showMessageFor('Mobile')}
                     />
                     {this.validator.message('mobile', this.state.agentMobile, 'required|phone', { className: 'text-danger' })}
+              </div>
+              <div className="form-group"> 
+                <label>Image </label>
+                <input  type="file"
+                name="image"
+                    
+                    className="form-control"
+                
+                    onChange={this.onChangeImage}
+                   
+                    />
+
               </div>
 
             <br></br>

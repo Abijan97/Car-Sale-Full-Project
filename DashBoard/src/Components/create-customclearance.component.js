@@ -354,7 +354,7 @@ render() {
 
 
 <div className="form-group mb-3">
-  <input type="submit" value="Create Order" className="btn btn-primary" />
+  <input type="submit" value="ADD CUSTOM CLEARANCE" className="btn btn-primary" />
 </div>
 </form>
 

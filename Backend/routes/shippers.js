@@ -1,6 +1,32 @@
 const router = require('express').Router();
 //require shipper model
 let Shipper = require('../models/shipper.model');
+//image
+const multer=require('multer');
+let path= require('path')
+
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+      cb(null, 'images');
+  },
+  filename: function(req, file, cb) {   
+      // cb(null, uuidv4() + '-' + Date.now() + path.extname(file.originalname));
+      cb(null,Date.now()+"--"+file.originalname)
+  }
+});
+
+const fileFilter = (req, file, cb) => {
+  const allowedFileTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+  if(allowedFileTypes.includes(file.mimetype)) {
+      cb(null, true);
+  } else {
+      cb(null, false);
+  }
+}
+
+let upload = multer({ storage, fileFilter });
+
+
 
 //first endpoint 
 
@@ -20,14 +46,15 @@ router.route('/:id').delete((req,res)=>{
 })
 //second endpoint
 
-router.route('/add').post((req, res) => {
+router.route('/add').post(upload.single('photo'),(req, res) => {
   const shipperId = req.body.shipperId;
   const shipperName=req.body.shipperName;
   const email =req.body.email;
   const mobile = req.body.mobile;
+  const photo=req.file.filename;
   
 
-  const newShipper = new Shipper({shipperId,shipperName,email,mobile});
+  const newShipper = new Shipper({shipperId,shipperName,email,mobile,photo});
 
   newShipper.save()
     .then(() => res.json('Shipper added!'))

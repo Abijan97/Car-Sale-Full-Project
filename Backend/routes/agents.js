@@ -5,6 +5,20 @@ let Agent = require('../models/agent.model');
 
 //image
 const multer= require('multer');
+
+//image2
+const storage= multer.diskStorage({
+  destination:(req,file,callback)=>{
+    callback(null,'../models/uploads/')
+  },
+  filename:(req,file,callback)=>{
+    callback(null,file.originalname)
+  }
+})
+
+const upload=multer({storage:storage});
+
+
 // const {v4:uuidv4}=require('uuid');
 // let path = require('path');
 
@@ -29,20 +43,6 @@ const multer= require('multer');
 
 // let upload = multer({ storage, fileFilter });
 
-//image 2
-const fileStorageEngine=multer.diskStorage({
-  destination: (req,file,cb)=>{
-    cb(null,"./images");
-  },
-  filename:(req,file,cb)=>{
-    cb(null,Date.now()+"--"+file.originalname)
-  },
-});
-const upload=multer({storage:fileStorageEngine});
-
-
-
-
 
 router.route('/').get((req, res) => {
   Agent.find()
@@ -60,16 +60,16 @@ router.route('/:id').delete((req,res)=>{
 })
 //second endpoint
 
-router.route('/add').post(upload.single('image'),(req, res) => {
+router.route('/add').post(upload.single('agentImage'),(req, res) => {
   const agentId = req.body.agentId;
   const agentName=req.body.agentName;
   const email =req.body.email;
   const mobile = req.body.mobile;
   const company =req.body.company;
-  const image=req.file.filename;
+  const agentImage=req.file.originalname;
   
 
-  const newAgent = new Agent({agentId,agentName,email,mobile,company,image});
+  const newAgent = new Agent({agentId,agentName,email,mobile,company,agentImage});
 
   newAgent.save()
     .then(() => res.json('Agent added!'))

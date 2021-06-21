@@ -7,7 +7,7 @@ let path= require('path')
 
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
-      cb(null, './images/');
+      cb(null, './images');
   },
   filename: function(req, file, cb) {   
       // cb(null, uuidv4() + '-' + Date.now() + path.extname(file.originalname));
@@ -51,7 +51,7 @@ router.route('/add').post(upload.single('photo'),(req, res) => {
   const shipperName=req.body.shipperName;
   const email =req.body.email;
   const mobile = req.body.mobile;
-  const photo=req.file.filename;
+  const photo=req.file.photo;
   
   
 

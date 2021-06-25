@@ -1,30 +1,24 @@
 const router = require('express').Router();
 //require shipper model
 let Shipper = require('../models/shipper.model');
+
+
+
 //image
-const multer=require('multer');
-let path= require('path')
+const multer= require('multer');
 
-const storage = multer.diskStorage({
-  destination: function(req, file, cb) {
-      cb(null, './images');
+
+const storage= multer.diskStorage({
+  destination:(req,file,callback)=>{
+    callback(null,'./uploads/')
   },
-  filename: function(req, file, cb) {   
-      // cb(null, uuidv4() + '-' + Date.now() + path.extname(file.originalname));
-      cb(null,Date.now()+"--"+file.originalname)
+  filename:(req,file,callback)=>{
+    callback(null,file.originalname)
   }
-});
-console.log(storage.filename);
-const fileFilter = (req, file, cb) => {
-  const allowedFileTypes = ['image/jpeg', 'image/jpg', 'image/png'];
-  if(allowedFileTypes.includes(file.mimetype)) {
-      cb(null, true);
-  } else {
-      cb(null, false);
-  }
-}
+})
 
-let upload = multer({ storage, fileFilter });
+const upload=multer({storage:storage});
+
 
 
 
@@ -51,7 +45,7 @@ router.route('/add').post(upload.single('photo'),(req, res) => {
   const shipperName=req.body.shipperName;
   const email =req.body.email;
   const mobile = req.body.mobile;
-  const photo=req.file.photo;
+  const photo=req.file.originalname;
   
   
 

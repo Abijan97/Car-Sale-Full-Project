@@ -1,5 +1,5 @@
 
-import React, {userState} from 'react';
+import React, {useState} from 'react';
 import AgentList from "./agent-list.component";
 //send http request to backend (connect to backend)
 import axios from 'axios';
@@ -13,22 +13,22 @@ const CreateAgent=()=>{
          var formData = new FormData();
 
 
-        const [agentId,setAgentId]=userState("");
-        const [agentName,setAgentName]=userState("");
-        const [email,setEmail]=userState("");
-        const [mobile,setMobile]=userState("");
-        const [company,setCompany]=userState("");
-        const [filename,setFilename]=userState("");
+        const [agentId,setAgentId]=useState("");
+        const [agentName,setAgentName]=useState("");
+        const [email,setEmail]=useState("");
+        const [mobile,setMobile]=useState("");
+        const [company,setCompany]=useState("");
+        const [filename,setFilename]=useState("");
 
 
-        const onChangeFile=e=>{
+        const onChangeFile =e => {
             setFilename(e.target.files[0]);
         }
 
-        const changeonClick=e=>{
+        const changeonClick = e => {
             e.preventDefault();
 
-            const fromData=new FormData();
+            const formData=new FormData();
 
             formData.append("agentId",agentId);
             formData.append("agentName",agentName);
@@ -37,17 +37,13 @@ const CreateAgent=()=>{
             formData.append("company",company);
             formData.append("agentImage",filename);
 
-            setAgentId("");
-            setAgentName("");
-            setEmail("");
-            setMobile("");
-            setCompany("");
+          
             
             axios
             .post('http://localhost:5001/agents/add',formData)
             .then(res=>console.log(res.data))
             .catch((err)=>{
-                console.log(err);
+                console.log(err); 
                
             
             });
@@ -70,6 +66,8 @@ const CreateAgent=()=>{
             <div className="col-4 bg-light pb-5 pt-5 border">
                 
             <h3 className="text-primary">Add Agent</h3>
+
+
             <form onSubmit={changeonClick}  encType='multipart/form-data'>
               <div className="form-group"> 
                 <label>Agent ID : </label>
@@ -80,7 +78,7 @@ const CreateAgent=()=>{
                     onChange={(e)=>setAgentId(e.target.value)}
                     
                     />
-                    {this.validator.message('Agent ID', this.state.agentId, 'required', { className: 'text-danger' })}
+              
               </div>
 
               <div className="form-group"> 
@@ -89,7 +87,7 @@ const CreateAgent=()=>{
                     required
                     className="form-control"
                     value={agentName}
-                    onChange={(e)=>setAgentName(e.target.agentName)}
+                    onChange={(e)=>setAgentName(e.target.value)}
             
                     />
                 
@@ -97,7 +95,7 @@ const CreateAgent=()=>{
 
               <div className="form-group"> 
           <label>Agent Company</label>
-          <select ref="userInput"
+          <select
               required
               className="form-control"
               value={company}
@@ -128,7 +126,7 @@ const CreateAgent=()=>{
                     required
                     className="form-control"
                     value={mobile}
-                    onChange={(e)=>setMobile(e.target.mobile)}
+                    onChange={(e)=>setMobile(e.target.value)}
             
                     />
             
@@ -137,7 +135,7 @@ const CreateAgent=()=>{
                 <label htmlFor="file">Image </label>
                 <input
                 type="file"
-                className="form-control"
+                className="form-control-file"
                 onChange={onChangeFile}
                 filename="agentImage"/>
               </div>

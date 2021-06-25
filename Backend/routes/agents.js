@@ -6,10 +6,10 @@ let Agent = require('../models/agent.model');
 //image
 const multer= require('multer');
 
-//image2
+
 const storage= multer.diskStorage({
   destination:(req,file,callback)=>{
-    callback(null,'../models/uploads/')
+    callback(null,'./uploads/')
   },
   filename:(req,file,callback)=>{
     callback(null,file.originalname)

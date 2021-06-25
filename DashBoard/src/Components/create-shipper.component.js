@@ -31,7 +31,7 @@ export default class CreateShipper extends Component{
             shipperName:'',
             email:'',
             mobile:'',
-            photo:''
+            filename:null
 
 
 
@@ -41,9 +41,10 @@ export default class CreateShipper extends Component{
     }
     onChangePhoto(e){
         this.setState({
-            photo:e.target.files[0]
+          
+           filename: e.target.files[0]  
         })
-    }
+    };
 
 
     onChangeShipperId(e){
@@ -78,7 +79,7 @@ export default class CreateShipper extends Component{
             shipperName:this.state.shipperName,
             email:this.state.email,
             mobile:this.state.mobile,
-            photo:this.state.photo
+            filename:this.state.filename
            
         }
         console.log(shipper);
@@ -104,7 +105,7 @@ export default class CreateShipper extends Component{
                 <div className="row">
                     <div className="col-4 pb-5 pt-5 border bg-light">
             <h3>Add Shipper</h3>
-            <form onSubmit={this.onSubmit}>
+            <form onSubmit={this.onSubmit}  encType='multipart/form-data'>
               <div className="form-group"> 
                 <label>Shipper Id : </label>
                 <input  type="text"
@@ -156,9 +157,9 @@ export default class CreateShipper extends Component{
               <div className="form-group"> 
                 <label>Photo </label>
                 <input 
-                type="file" 
-                accept=".png, .jpg, .jpeg"
-                name="photo"
+                type="file"        
+                filename="photo"
+                className="form-control-file"
                 onChange={this.onChangePhoto}
             />
 

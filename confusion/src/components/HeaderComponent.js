@@ -55,7 +55,7 @@ class Header extends Component {
                             </div>
                             <div className="col-12 col-sm-6">
                             
-                           <img className="img-fluid" src="\assets\carsaleimg\bmw.png" alt="bmw car"/>
+                           <img className="img-fluid" src="\assets\carsaleimg\bmw.png" alt="bmw car"/>confusion\public\assets\carsaleimg\bmw.png
                             </div>
                         </div>
                     </div>

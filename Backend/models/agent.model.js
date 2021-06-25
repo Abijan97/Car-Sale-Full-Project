@@ -29,8 +29,9 @@ const AgentSchema = new Schema({
         
     },
 
-    image:{
-        type:String
+    agentImage:{
+        type:String,
+        
     },
     
     mobile:{

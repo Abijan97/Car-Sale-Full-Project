@@ -1,6 +1,6 @@
-import React from 'react';
+import react,{useState,useEffect} from 'react';
 import './App.css';
-import {BrowserRouter as Router,Route} from "react-router-dom";
+import {BrowserRouter as Router,Route}  from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 // importing components 
@@ -17,16 +17,34 @@ import CreateOrders from "./Components/create-order.component";
 import CreateCustomClearance from "./Components/create-customclearance.component";
 import CreateStock from "./Components/addstock-component";
 import AddVehicles from "./Components/add-vehicle.component";
-
+import AgentView  from './Components/Agent/agentview';
+import axios from 'axios';
+import StickyFooter from './Components/footer';
+import Counter from './Components/count';
+import AgentCard from './Components/Agent/agentviews';
 
 function App() {
-  return (
-    <Router>
-      <div className="container bg-light">  
-    <Navbar/>
-    <br/>
 
-    <Route path="/" exact component={UserList} />  
+  const [posts,setPosts]=useState([]);
+
+  useEffect(()=>{
+    axios
+      .get('http://localhost:5001/agents/')
+      .then(res => setPosts(res.data))
+      .catch(error=>console.log(error));
+  })
+
+
+  return (
+    <div>
+    
+    <Router>
+      
+    <Navbar/>
+  
+  
+
+    <Route path="/agentcard" exact component={AgentCard}/>
     <Route path="/edit/:id" exact component={EditUser} />
     <Route path="/create" exact component={CreateUser} />
     <Route path="/usertypes" exact component={CreateUserType} />
@@ -38,11 +56,14 @@ function App() {
     <Route path="/customclearances" exact component={CreateCustomClearance}/>
     <Route path="/stocks" exact component={CreateStock}/>
     <Route path="/vehicles" exact component={AddVehicles}/>
+    <Route path="/agentview" render={()=> <AgentView posts={posts}/>} />
+    <Route path="/count" exact component={Counter} />
     
+    <StickyFooter/>
     
-    </div>
   
     </Router>
+    </div>
   );
 }
 

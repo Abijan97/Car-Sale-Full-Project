@@ -31,7 +31,7 @@ export default class CreateShipper extends Component{
             shipperName:'',
             email:'',
             mobile:'',
-            filename:null
+            filename:''
 
 
 
@@ -79,7 +79,7 @@ export default class CreateShipper extends Component{
             shipperName:this.state.shipperName,
             email:this.state.email,
             mobile:this.state.mobile,
-            filename:this.state.filename
+            photo:this.state.filename
            
         }
         console.log(shipper);

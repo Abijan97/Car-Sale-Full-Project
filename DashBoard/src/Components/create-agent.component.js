@@ -61,15 +61,12 @@ const CreateAgent=()=>{
 
     
         return(
-            <div className="container">
-                <div className="row">
-            <div className="col-4 bg-light pb-5 pt-5 border">
-                
-            <h3 className="text-primary">Add Agent</h3>
+    
+          
 
 
             <form onSubmit={changeonClick}  encType='multipart/form-data'>
-              <div className="form-group"> 
+              <div className="form-group mb-3"> 
                 <label>Agent ID : </label>
                 <input  type="text"
                     required
@@ -81,7 +78,7 @@ const CreateAgent=()=>{
               
               </div>
 
-              <div className="form-group"> 
+              <div className="form-group mb-3"> 
                 <label>Agent Name : </label>
                 <input  type="text"
                     required
@@ -93,7 +90,7 @@ const CreateAgent=()=>{
                 
               </div>
 
-              <div className="form-group"> 
+              <div className="form-group mb-3"> 
           <label>Agent Company</label>
           <select
               required
@@ -108,7 +105,7 @@ const CreateAgent=()=>{
         </div> 
 
             
-              <div className="form-group"> 
+              <div className="form-group mb-3"> 
                 <label>Email </label>
                 <input  type="text"
                     required
@@ -120,7 +117,7 @@ const CreateAgent=()=>{
                     
               </div>
             
-              <div className="form-group"> 
+              <div className="form-group mb-3"> 
                 <label>Mobile </label>
                 <input  type="text"
                     required
@@ -131,7 +128,7 @@ const CreateAgent=()=>{
                     />
             
               </div>
-              <div className="form-group"> 
+              <div className="form-group mb-3"> 
                 <label htmlFor="file">Image </label>
                 <input
                 type="file"
@@ -144,19 +141,12 @@ const CreateAgent=()=>{
               
 
 
-              <div className="form-group"> 
-                <input type="submit"  value="Create Agent" className="btn btn-primary" />
+              <div className="form-group mb-3"> 
+                <input type="submit"  value="Submit" className="btn btn-primary" />
               </div>
             </form>
 
-            </div>
- 
-            <div className="col-8 bg-light">
-            
-               <AgentList/>
-            </div>
-            </div>
-          </div>
+       
         )
     }
 

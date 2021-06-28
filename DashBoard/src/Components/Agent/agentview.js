@@ -1,6 +1,6 @@
-import React,{useState,useEffect} from 'react';
+
 import me from './pic/mail image.jpg';
-import {Card,CardImg,CardText,CardTitle, CardBody, CardSubtitle} from 'reactstrap';
+
 
 
 

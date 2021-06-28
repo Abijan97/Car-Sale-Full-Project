@@ -14,7 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 import axios from 'axios';
-import CreateAgent from '../create-agent.component';
+import CreateShipper from '../create-shipper.component';
 
 //materila ui things
 const useStyles = makeStyles((theme) => ({
@@ -53,18 +53,17 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export default function AgentCard() {
+export default function ShipperCard() {
   const classes = useStyles();
 
-  const [agents,setAgents]=useState([]);
+  const [shippers,setShippers]=useState([]);
 
 useEffect(()=>{
   axios
-    .get('http://localhost:5001/agents/')
-    .then(res => setAgents(res.data))
+    .get('http://localhost:5001/shippers/')
+    .then(res => setShippers(res.data))
     .catch(error=>console.log(error));
 })
-
 
 
 
@@ -75,22 +74,22 @@ useEffect(()=>{
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-              Agents
+              Shippers
             </Typography>
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              you can add, view, delete agents from here.
+              you can add, view, delete shippers from here.
             </Typography>
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
-
+              
 
                 </Grid>
                 <Grid item>
             
 
                 <button type="button" className="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#exampleModalone">
-  ADD AGENT
+  ADD SHIPPER
 </button>
 
 <div className="modal fade bd-example-modal-lg" id="exampleModalone" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -99,11 +98,12 @@ useEffect(()=>{
      
       <div className="modal-body">
         <div className="container border border-primary rounded pb-5 pt-5 mt-2 mb-2">
-          <div>
-          <h4 className="bg-primary text-white p-2 mb-3">ADD AGENT</h4>
-          </div>
+            <div className="col-12">
+                <h4 className="bg-primary text-white p-2 mb-3">ADD SHIPPER</h4>
+
+            </div>
           <div className="col-9">
-            <CreateAgent/>
+    <CreateShipper/>
             </div>
             </div>
             </div>
@@ -124,26 +124,24 @@ useEffect(()=>{
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {agents.map((agent,key) => (
+            {shippers.map((shipper,key) => (
               <Grid item key={key} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image={require(`./pic/${agent.agentImage}`)}
+                    image="{require(`./pic/${shipper.photo}`)}"
                     title="Image title"
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
-                    {agent.agentName}
+                    {shipper.shipperName}
                     </Typography>
                     <Typography gutterBottom variant="h6" component="h6">
-                    {agent.company}
+                    {shipper.email}
                     </Typography>
+                   
                     <Typography>
-                        {agent.email}
-                    </Typography>
-                    <Typography>
-                        {agent.mobile}
+                        {shipper.mobile}
                     </Typography>
                   </CardContent>
                   <CardActions>

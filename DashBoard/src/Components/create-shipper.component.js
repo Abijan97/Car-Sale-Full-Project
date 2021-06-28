@@ -1,157 +1,102 @@
 
-import React, {Component} from 'react';
-import ShipperList from "./shipper-list.component";
+import React, {useState} from 'react';
+
 //send http request to backend (connect to backend)
 import axios from 'axios';
-import swal from "sweetalert";
-import SimpleReactValidator from 'simple-react-validator';
-export default class CreateShipper extends Component{
 
-    constructor(props){
-        super(props);
+const CreateShipper=()=>{
 
-        //hard coding a single user
-
-       
+    var formData = new FormData();
 
 
-        //binding this keyword to class
-        
-        this.onChangeShipperId=this.onChangeShipperId.bind(this);
-        this.onChangeShipperName=this.onChangeShipperName.bind(this);
-        this.onChangeEmail=this.onChangeEmail.bind(this);
-        this.onChangeMobile=this.onChangeMobile.bind(this);
-        this.onChangePhoto=this.onChangePhoto.bind(this);
-        this.onSubmit=this.onSubmit.bind(this);
-
-        this.validator = new SimpleReactValidator();
-
-        this.state={
-            shipperId: '',
-            shipperName:'',
-            email:'',
-            mobile:'',
-            filename:''
+    const [shipperId,setShipperId]=useState("");
+    const [shipperName,setShipperName]=useState("");
+    const [email,setEmail]=useState("");
+    const [mobile,setMobile]=useState("");
+    const [filename,setFilename]=useState("");
 
 
-
-        }
-
-        
+    const onChangeFile =e => {
+        setFilename(e.target.files[0]);
     }
-    onChangePhoto(e){
-        this.setState({
-          
-           filename: e.target.files[0]  
-        })
-    };
 
-
-    onChangeShipperId(e){
-        this.setState({
-            shipperId:e.target.value
-        })
-    };
-
-    onChangeShipperName(e){
-        this.setState({
-            shipperName:e.target.value
-        })
-    };
-    onChangeEmail(e){
-        this.setState({
-            email:e.target.value
-        })
-    };
-    onChangeMobile(e){
-        this.setState({
-            mobile:e.target.value
-        })
-    };
-
-
-
-    onSubmit(e){
+    const changeonClick = e => {
         e.preventDefault();
 
-        const shipper = {
-            shipperId:this.state.shipperId,
-            shipperName:this.state.shipperName,
-            email:this.state.email,
-            mobile:this.state.mobile,
-            photo:this.state.filename
+        const formData=new FormData();
+
+        formData.append("shipperId",shipperId);
+        formData.append("shipperName",shipperName);
+        formData.append("email",email);
+        formData.append("mobile",mobile);
+        formData.append("photo",filename);
+
+      
+        
+        axios
+        .post('http://localhost:5001/shippers/add',formData)
+        .then(res=>console.log(res.data))
+        .catch((err)=>{
+            console.log(err); 
            
-        }
-        console.log(shipper);
-
-        axios.post('http://localhost:5001/shippers/add',shipper)
-        .then(res=>console.log(res.data));
-
-        this.setState({
-            shipperId:'',
-            shipperName:''
-        })
-        swal("Add new shipper?")
-        .then((value) => {
         
-});
+        });
 
-        
-    }
 
-    render(){
+    
+    };
+
+
+    
+    
         return(
-            <div className="container">
-                <div className="row">
-                    <div className="col-4 pb-5 pt-5 border bg-light">
-            <h3>Add Shipper</h3>
-            <form onSubmit={this.onSubmit}  encType='multipart/form-data'>
+         
+            <form onSubmit={changeonClick}  encType='multipart/form-data'>
               <div className="form-group"> 
-                <label>Shipper Id : </label>
+                <label>Shipper Id</label>
                 <input  type="text"
                     required
-                    className="form-control"
-                    value={this.state.shipperId}
-                    onChange={this.onChangeShipperId}
-                    onBlur={()=>this.validator.showMessageFor('Shipper ID')}
+                    className="form-control mb-3"
+                    value={shipperId}
+                    onChange={(e)=>setShipperId(e.target.value)}
+                    
                     />
-                    {this.validator.message('Shipper ID', this.state.shipperId, 'required', { className: 'text-danger' })}
+    
               </div>
 
               <div className="form-group"> 
-                <label>Shipper Name : </label>
+                <label>Shipper Name</label>
                 <input  type="text"
                     required
-                    className="form-control"
-                    value={this.state.shipperName}
-                    onChange={this.onChangeShipperName}
-                    onBlur={()=>this.validator.showMessageFor('Shipper Name')}
+                    className="form-control mb-3"
+                    value={shipperName}
+                    onChange={(e)=>setShipperName(e.target.value)}
+                    
                     />
-                     {this.validator.message('Shipper Name', this.state.shipperName, 'required', { className: 'text-danger' })}
               </div>
               
               <div className="form-group"> 
                 <label>Email </label>
                 <input  type="text"
                     required
-                    className="form-control"
-                    value={this.state.email}
-                    onChange={this.onChangeEmail}
-                    onBlur={()=>this.validator.showMessageFor('email')}
+                    className="form-control mb-3"
+                    value={email}
+                    onChange={(e)=>setEmail(e.target.value)}
+                
                     />
-                     {this.validator.message('email', this.state.email, 'required|email', { className: 'text-danger' })}
+                     
               </div>
 
               <div className="form-group"> 
                 <label>Mobile </label>
                 <input  type="text"
                     required
-                    className="form-control"
-                    value={this.state.agentMobile}
-                    onChange={this.onChangeMobile}
-                    onBlur={()=>this.validator.showMessageFor('mobile')}
+                    className="form-control mb-3"
+                    value={mobile}
+                    onChange={(e)=>setMobile(e.target.value)}
+                    
                     />
-                     {this.validator.message('mobile', this.state.agentMobile, 'required|phone', { className: 'text-danger' })}
+                     
               </div>
 
               <div className="form-group"> 
@@ -159,8 +104,9 @@ export default class CreateShipper extends Component{
                 <input 
                 type="file"        
                 filename="photo"
-                className="form-control-file"
-                onChange={this.onChangePhoto}
+                className="form-control-file mb-3"
+                onChange={onChangeFile}
+                filename="photo"
             />
 
               </div>
@@ -168,18 +114,12 @@ export default class CreateShipper extends Component{
               
 
 
-              <div className="form-group"> 
-                <input type="submit" value="Create Shipper" className="btn btn-primary" />
+              <div className="form-group mb-3"> 
+                <input type="submit" value="Submit" className="btn btn-primary" />
               </div>
             </form>
-            </div>
-
-            <div className="col-8 border bg-light">
-            
-               <ShipperList/>
-            </div>
-          </div>
-          </div>
+          
         )
     }
-}
+
+    export default CreateShipper;

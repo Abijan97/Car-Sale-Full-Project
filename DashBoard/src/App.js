@@ -17,23 +17,15 @@ import CreateOrders from "./Components/create-order.component";
 import CreateCustomClearance from "./Components/create-customclearance.component";
 import CreateStock from "./Components/addstock-component";
 import AddVehicles from "./Components/add-vehicle.component";
-import AgentView  from './Components/Agent/agentview';
-import axios from 'axios';
 import StickyFooter from './Components/footer';
 import Counter from './Components/count';
 import AgentCard from './Components/Agent/agentviews';
+import ShipperCard from './Components/Shipper/shipperviews';
+
 
 function App() {
 
-  const [posts,setPosts]=useState([]);
-
-  useEffect(()=>{
-    axios
-      .get('http://localhost:5001/agents/')
-      .then(res => setPosts(res.data))
-      .catch(error=>console.log(error));
-  })
-
+ 
 
   return (
     <div>
@@ -49,14 +41,15 @@ function App() {
     <Route path="/create" exact component={CreateUser} />
     <Route path="/usertypes" exact component={CreateUserType} />
     <Route path="/createusertype" exact component={UserTypesList}/>
-    <Route path="/agents" exact component={CreateAgent}/>
-    <Route path="/shippers" exact component={CreateShipper}/>
+    <Route path="/agents" exact component={AgentCard}/>
+    <Route path="/shippers" exact component={ShipperCard}/>
     <Route path="/customers" exact component={CreateCustomers}/>
     <Route path="/orders" exact component={CreateOrders}/>
     <Route path="/customclearances" exact component={CreateCustomClearance}/>
     <Route path="/stocks" exact component={CreateStock}/>
     <Route path="/vehicles" exact component={AddVehicles}/>
-    <Route path="/agentview" render={()=> <AgentView posts={posts}/>} />
+  
+
     <Route path="/count" exact component={Counter} />
     
     <StickyFooter/>

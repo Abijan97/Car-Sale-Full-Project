@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
+import zIndex from '@material-ui/core/styles/zIndex';
 
 function Copyright() {
   return (
@@ -23,6 +24,9 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     minHeight: '20vh',
+    
+    bottom:'0',
+    zIndex:'5'
   },
   main: {
     marginTop: theme.spacing(8),

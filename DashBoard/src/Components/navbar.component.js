@@ -5,7 +5,7 @@ export default class Navbar extends Component {
 
   render() {
     return (
-      <nav className="navbar mb-5 navbar-dark bg-primary navbar-expand-lg">
+      <nav className="navbar  navbar-dark bg-primary navbar-expand-lg">
         <Link to="/" className="ml-5 navbar-brand">DashBoard</Link>
         <div className="collpase navbar-collapse">
         <ul className="navbar-nav mr-auto">

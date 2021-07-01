@@ -10,7 +10,7 @@ const multer= require('multer');
 const storage= multer.diskStorage({
   destination:(req,file,callback)=>{
   //  callback(null,'./uploads/')
-  callback(null,'./../DashBoard/src/Components/Agent/pic/');
+  callback(null,'./../DashBoard/public/agents/');
   },
   filename:(req,file,callback)=>{
     callback(null,file.originalname)
@@ -44,19 +44,44 @@ const upload=multer({storage:storage});
 
 // let upload = multer({ storage, fileFilter });
 
-
+//view agents
 router.route('/').get((req, res) => {
   Agent.find()
     .then(agents => res.json(agents))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-//deleteusertype
+//find agent by id
+router.get('/:id',(req,res)=>{
+  Agent.findById(req.params.id)
+  .then(agent=>res.json(agent))
+  .catch(err=>res.status(400).json(err))
+
+});
+//update agent
+router.put('/update/:id',(req,res)=>{
+  Agent.findById(req.params.id)
+  .then(agent=>{
+    agent.agentId=req.body.agentImage;
+    agent.agentName=req.body.agentName;
+    agent.email=req.body.email;
+    agent.mobile=req.body.mobile;
+    agent.agentImage=req.file.originalname;
+
+    agent
+    .save()
+    .then(() => res.json('Agent updated successfully!'))
+    .catch(err => res.status(400).json('Error: ' + err));
+
+  })
+})
+
+//deleteagent
 
 
 router.route('/:id').delete((req,res)=>{
   Agent.findByIdAndDelete(req.params.id)
-  .then(()=>res.json('Agent deleted.'))
+  .then(()=>res.json('Agent deleted.')) 
   .catch(err=>res.status(400).json('error'+ err));
 })
 //second endpoint

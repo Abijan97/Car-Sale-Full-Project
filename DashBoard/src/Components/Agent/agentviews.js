@@ -1,23 +1,29 @@
 import React,{useEffect,useState} from 'react';
-import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
-import CameraIcon from '@material-ui/icons/PhotoCamera';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
+
 import axios from 'axios';
 import CreateAgent from '../create-agent.component';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import LinearProgress from '@material-ui/core/LinearProgress';
+import { Link } from 'react-router-dom';
 
 //materila ui things
 const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },},
+  
   icon: {
     marginRight: theme.spacing(2),
   },
@@ -53,17 +59,8 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export default function AgentCard() {
+export default function AgentCard({agents}) {
   const classes = useStyles();
-
-  const [agents,setAgents]=useState([]);
-
-useEffect(()=>{
-  axios
-    .get('http://localhost:5001/agents/')
-    .then(res => setAgents(res.data))
-    .catch(error=>console.log(error));
-})
 
 
 
@@ -124,22 +121,44 @@ useEffect(()=>{
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {agents.map((agent,key) => (
+            {
+              !agents.length ? <div className={classes.root}>
+              <LinearProgress color="secondary" />
+
+            </div>:
+        
+
+            agents.map((agent,key) => (
+             
               <Grid item key={key} xs={12} sm={6} md={4}>
+               <Link to={{pathname:`/agent/${agent._id}`}}>
+
+               </Link> 
+                
                 <Card className={classes.card}>
+               
                   <CardMedia
                     className={classes.cardMedia}
-                    image={require(`./pic/${agent.agentImage}`)}
+                    // image={process.env.PUBLIC_URL + `/agents/${agent.agentImage}`}
+                    image = {`/agents/${agent.agentImage}`}
                     title="Image title"
                   />
                   <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                    {agent.agentName}
+              
+                    <Typography  gutterBottom variant="h5" component="h2">
+                  
+                    <Link href={`/agents/${agent._id}`} >
+    {agent.agentName}
+  </Link>
                     </Typography>
                     <Typography gutterBottom variant="h6" component="h6">
                     {agent.company}
+                    <Link to={{
+                pathname:`/agents/${agent._id}`
+              }}>
+              </Link>
                     </Typography>
-                    <Typography>
+                    <Typography>  
                         {agent.email}
                     </Typography>
                     <Typography>
@@ -147,11 +166,11 @@ useEffect(()=>{
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" color="primary">
-                      View
+                    <Button to="/edit-agent" size="small" color="primary">
+                      Update
                     </Button>
-                    <Button size="small" color="primary">
-                      Edit
+                    <Button size="small" color="secondary">
+                      delete
                     </Button>
                   </CardActions>
                 </Card>

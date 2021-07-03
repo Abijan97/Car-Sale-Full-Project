@@ -1,15 +1,31 @@
 
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 //send http request to backend (connect to backend)
 import axios from 'axios';
+import SimpleReactValidator from 'simple-react-validator';
 //alert
-import Swal from 'sweetalert2'
+import swal from 'sweetalert';
 
 
-const CreateAgent=()=>{
+const EditAgent= props=>{
     
+    useEffect(() => {
+        axios
+        .get(`http://localhost:5001/agents/${props.match.params.id}`)
+        .then(res=>[
+        setAgentId(res.data.agentId),
+    setAgentName(res.data.agentName),
+    setEmail(res.data.email),
+    setMobile(res.data.mobile),
+    setCompany(res.data.company),
+    setFilename(res.data.setFilename)
+
+])
+.catch(error =>console.log(error))
+    });
         
-         
+    
+    var formData = new FormData();
 
 
         const [agentId,setAgentId]=useState("");
@@ -18,7 +34,7 @@ const CreateAgent=()=>{
         const [mobile,setMobile]=useState("");
         const [company,setCompany]=useState("");
         const [filename,setFilename]=useState("");
-
+        const [message,setMessage]=useState("");
 
         const onChangeFile =e => {
             setFilename(e.target.files[0]);
@@ -39,33 +55,19 @@ const CreateAgent=()=>{
           
             
             axios
-            .post('http://localhost:5001/agents/add',formData)
+            .put(`http://localhost:5001/agents/update/${props.match.params.id}`,formData)
             .then(res=>console.log(res.data))
             .catch((err)=>{
                 console.log(err); 
                
             
             });
-
-          
-            Swal.fire({
-              position: 'top-end',
-              icon: 'success',
-              title: 'Agent Saved',
-              showConfirmButton: false,
-              timer: 1500
-            })
-            
-
-            setAgentName('');
-            setAgentId('');
-            setCompany('');
-            setEmail('');
-            setMobile('');
-            setFilename('');
+         
 
         
         };
+       
+    
 
       
         
@@ -79,8 +81,9 @@ const CreateAgent=()=>{
     
           
 
-
+            <div className="container mt-5 col-6">
             <form onSubmit={changeonClick}  encType='multipart/form-data'>
+                <h1 className="form-group">Edit Agents</h1><br></br>
               <div className="form-group mb-3"> 
                 <label>Agent ID : </label>
                 <input  type="text"
@@ -158,13 +161,13 @@ const CreateAgent=()=>{
 
               <div className="form-group mb-3"> 
                 <input type="submit"  value="Submit" className="btn btn-primary" />
-
               </div>
             </form>
+            </div>
 
        
         )
     }
 
 
-export default CreateAgent;
+export default EditAgent;

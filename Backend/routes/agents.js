@@ -53,11 +53,13 @@ router.route('/').get((req, res) => {
 
 //find agent by id
 router.get('/:id',(req,res)=>{
-  Agent.findById(req.params.id)
+  Agent
+  .findById(req.params.id)
   .then(agent=>res.json(agent))
-  .catch(err=>res.status(400).json(err))
+  .catch(err=>res.status(400).json(`Error: ${err}`))
 
 });
+
 //update agent
 router.put('/update/:id',(req,res)=>{
   Agent.findById(req.params.id)
@@ -78,7 +80,6 @@ router.put('/update/:id',(req,res)=>{
 
 //deleteagent
 
-
 router.route('/:id').delete((req,res)=>{
   Agent.findByIdAndDelete(req.params.id)
   .then(()=>res.json('Agent deleted.')) 
@@ -93,7 +94,8 @@ router.route('/add').post(upload.single('agentImage'),(req, res) => {
   const mobile = req.body.mobile;
   const company =req.body.company;
   const agentImage=req.file.originalname;
-  
+
+
 
   const newAgent = new Agent({agentId,agentName,email,mobile,company,agentImage});
 

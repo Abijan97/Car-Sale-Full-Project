@@ -5,8 +5,8 @@ import me from './pic/mail image.jpg';
 
 
  const AgentView = ({posts}) => {
-    return (
-        
+    return (  
+
         <div className="d-flex">
            
             {posts.map((agent,key)=>(    

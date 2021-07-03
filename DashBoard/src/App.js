@@ -24,7 +24,7 @@ import AgentCard from './Components/Agent/agentviews';
 import Agent from './Components/Agent/Agent';
 import ShipperCard from './Components/Shipper/shipperviews';
 import Orderviews from './Components/orders/orderviews';
-
+import EditAgent from './Components/Agent/EditAgent';
 
 function App() {
 
@@ -54,7 +54,9 @@ function App() {
     <Route path="/usertypes" exact component={CreateUserType} />
     <Route path="/createusertype" exact component={UserTypesList}/>
     <Route path="/agents" render={()=><AgentCard agents={agents}/>}/>
-    <Route path="/agents" render={(props)=><Agent {...props} agents={agents}/>} />
+    <Route path="/agent/:id" render={(props)=><Agent {...props} agents={agents}/>} />
+    <Route path="/update/:id" render={(props)=><EditAgent {...props} agents={agents}/>} />
+
     <Route path="/shippers" exact component={ShipperCard}/>
     <Route path="/customers" exact component={CreateCustomers}/>
     <Route path="/orders" exact component={CreateOrders}/>

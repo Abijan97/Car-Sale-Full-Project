@@ -15,6 +15,7 @@ import CreateAgent from '../create-agent.component';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2'
 
 //materila ui things
 const useStyles = makeStyles((theme) => ({
@@ -62,7 +63,37 @@ const useStyles = makeStyles((theme) => ({
 export default function AgentCard({agents}) {
   const classes = useStyles();
 
+//delete agent
+const [agent,setAgent]=useState([]);
 
+const deleteAgent = id =>{
+  
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+
+      axios.delete(`http://localhost:5001/agents/${id}`)
+  .then(res => console.log((res.data)) )
+  setAgent(agent.filter(elem => elem._id !== id))
+
+  
+
+      Swal.fire(
+        'Deleted!',
+        'Your file has been deleted.',
+        'success'
+      )
+    }
+  })
+  
+}
 
 
   return (
@@ -131,10 +162,7 @@ export default function AgentCard({agents}) {
             agents.map((agent,key) => (
              
               <Grid item key={key} xs={12} sm={6} md={4}>
-               <Link to={{pathname:`/agent/${agent._id}`}}>
-
-               </Link> 
-                
+              
                 <Card className={classes.card}>
                
                   <CardMedia
@@ -147,29 +175,29 @@ export default function AgentCard({agents}) {
               
                     <Typography  gutterBottom variant="h5" component="h2">
                   
-                    <Link href={`/agents/${agent._id}`} >
-    {agent.agentName}
-  </Link>
+                    <Link style={{textDecoration:"none"}} to={`/agent/${agent._id}`} >
+                    {agent.agentName}
+    
+                    </Link>
+              
                     </Typography>
                     <Typography gutterBottom variant="h6" component="h6">
                     {agent.company}
-                    <Link to={{
-                pathname:`/agents/${agent._id}`
-              }}>
-              </Link>
+             
+            
                     </Typography>
                     <Typography>  
                         {agent.email}
                     </Typography>
                     <Typography>
                         {agent.mobile}
-                    </Typography>
+                    </Typography> 
                   </CardContent>
                   <CardActions>
-                    <Button to="/edit-agent" size="small" color="primary">
+                    <Link to={`/update/${agent._id}`} className="btn btn-primary">
                       Update
-                    </Button>
-                    <Button size="small" color="secondary">
+                    </Link>
+                    <Button onClick={()=>deleteAgent(agent._id)} size="small" color="secondary">
                       delete
                     </Button>
                   </CardActions>

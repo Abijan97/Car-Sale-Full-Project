@@ -11,7 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
 import axios from 'axios';
-import CreateShipper from '../create-shipper.component';
+import CreateAgent from './create-agent.component';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2'
@@ -59,13 +59,13 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export default function ShipperCard({shippers}) {
+export default function AgentCard({agents}) {
   const classes = useStyles();
 
-//delete shipper
-const [shipper,setShipper]=useState([]);
+//delete agent
+const [agent,setAgent]=useState([]);
 
-const deleteShipper = id =>{
+const deleteAgent = id =>{
   
   Swal.fire({
     title: 'Are you sure?',
@@ -78,9 +78,9 @@ const deleteShipper = id =>{
   }).then((result) => {
     if (result.isConfirmed) {
 
-      axios.delete(`http://localhost:5001/shippers/${id}`)
+      axios.delete(`http://localhost:5001/agents/${id}`)
   .then(res => console.log((res.data)) )
-  setShipper(shipper.filter(elem => elem._id !== id))
+  setAgent(agent.filter(elem => elem._id !== id))
 
   
 
@@ -102,10 +102,10 @@ const deleteShipper = id =>{
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-              shippers
+              Agents
             </Typography>
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              you can add, view, delete shippers from here.
+              you can add, view, delete agents from here.
             </Typography>
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
@@ -117,7 +117,7 @@ const deleteShipper = id =>{
             
 
                 <button type="button" className="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#exampleModalone">
-  ADD SHIPPER
+  ADD AGENT
 </button>
 
 <div className="modal fade bd-example-modal-lg" id="exampleModalone" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -130,7 +130,7 @@ const deleteShipper = id =>{
           <h4 className="bg-primary text-white p-2 mb-3">ADD AGENT</h4>
           </div>
           <div className="col-9">
-            <CreateShipper/>
+            <CreateAgent/>
             </div>
             </div>
             </div>
@@ -152,13 +152,13 @@ const deleteShipper = id =>{
           {/* End hero unit */}
           <Grid container spacing={4}>
             {
-              !shippers.length ? <div className={classes.root}>
+              !agents.length ? <div className={classes.root}>
               <LinearProgress color="secondary" />
 
             </div>:
         
 
-            shippers.map((shipper,key) => (
+            agents.map((agent,key) => (
              
               <Grid item key={key} xs={12} sm={6} md={4}>
               
@@ -166,36 +166,37 @@ const deleteShipper = id =>{
                
                   <CardMedia
                     className={classes.cardMedia}
-                    image = {`/shippers/${shipper.photo}`}
+                    // image={process.env.PUBLIC_URL + `/agents/${agent.agentImage}`}
+                    image = {`/agents/${agent.agentImage}`}
                     title="Image title"
                   />
                   <CardContent className={classes.cardContent}>
               
                     <Typography  gutterBottom variant="h5" component="h2">
                   
-                    <Link style={{textDecoration:"none"}} to={`/shipper/${shipper._id}`} >
-                    {shipper.shipperName}
+                    <Link style={{textDecoration:"none"}} to={`/agent/${agent._id}`} >
+                    {agent.agentName}
     
                     </Link>
               
                     </Typography>
                     <Typography gutterBottom variant="h6" component="h6">
-                    {shipper.email}
+                    {agent.company}
              
             
                     </Typography>
                     <Typography>  
-                        {shipper.shipperId}
+                        {agent.email}
                     </Typography>
                     <Typography>
-                        {shipper.mobile}
+                        {agent.mobile}
                     </Typography> 
                   </CardContent>
                   <CardActions>
-                    <Link to={`/update/${shipper._id}`} className="btn btn-primary">
+                    <Link to={`/update/${agent._id}`} className="btn btn-primary">
                       Update
                     </Link>
-                    <Button onClick={()=>deleteShipper(shipper._id)} size="small" color="secondary">
+                    <Button onClick={()=>deleteAgent(agent._id)} size="small" color="secondary">
                       delete
                     </Button>
                   </CardActions>

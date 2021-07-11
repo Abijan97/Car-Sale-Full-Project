@@ -2,6 +2,29 @@ const router = require('express').Router();
 let Vehicle = require('../models/vehicle.model');
 
 
+
+//image
+const multer= require('multer');
+
+
+const storage= multer.diskStorage({
+  destination:(req,file,callback)=>{
+  //  callback(null,'./uploads/')
+  callback(null,'./../frontend/public/vehicles/');
+  },
+  filename:(req,file,callback)=>{
+    callback(null,file.originalname)
+  }
+})
+
+const upload=multer({storage:storage});
+
+
+
+
+
+
+
 router.route('/').get((req,res)=>{
 
   Vehicle.find()
@@ -10,13 +33,14 @@ router.route('/').get((req,res)=>{
 });
 
 
-router.route('/add').post((req,res)=>
+router.route('/add').post(upload.single('vehicleImage'),(req,res)=>
 {
     const modelName = req.body.modelName;
     const company = req.body.company;
     const fueltype = req.body.fueltype;
     const seats =req.body.seats;
     const capacity = req.body.capacity;
+    const vehicleImage=req.file.originalname;
 
    
 
@@ -26,7 +50,8 @@ router.route('/add').post((req,res)=>
         company,
         fueltype,
         seats,
-        capacity
+        capacity,
+        vehicleImage
        
         
     });
@@ -51,17 +76,19 @@ router.route('/:id').delete((req,res)=>{
     .catch(err=>res.status(400).json('error'+ err));
 })
 
-router.route('/update/:id').post((req,res)=>{
+router.put('/update/:id',(req,res)=>{
     Vehicle.findById(req,params.id)
     .then(vehicle =>{
         vehicle.modelName=req.body.modelName;
         vehicle.seats=req.body.seats;
         vehicle.fueltype=req.body.fueltype;
         vehicle.capacity=req.body.capacity;
+        vehicle.vehicleImage=req.file.originalname;
         
 
         
  vehicle.save()
+ 
  .then(()=> res.json('vehicle updated'))
  .catch(err=>res.status(400).json('error'+ err));
 })

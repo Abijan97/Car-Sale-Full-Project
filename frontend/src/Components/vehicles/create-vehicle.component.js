@@ -4,11 +4,11 @@ import Swal from "sweetalert2";
 
 
 
-const VehicleAdd=()=>{
+const CreateVehicle=()=>{
 
     const [modelName,setModelname]=useState("");
     const [company,setCompany]=useState("");
-    const[fuelType,setFueltype]=useState("");
+    const[fueltype,setFueltype]=useState("");
     const[seats,setSeats]=useState("");
     const[capacity,setCapacity]=useState("");
     const[filename,setFilename]=useState("");
@@ -30,7 +30,7 @@ const VehicleAdd=()=>{
 
       formData.append("modelName",modelName);
       formData.append("company",company);
-      formData.append("fuelType",fuelType);
+      formData.append("fueltype",fueltype);
       formData.append("seats",seats);
       formData.append("capacity",capacity);
       formData.append("vehicleImage",filename);
@@ -74,7 +74,7 @@ const VehicleAdd=()=>{
 
 
     return (
-      //adding a modal
+      
     
       <form onSubmit={changeonClick} encType='multipart/form-data'>
         <div className="form-group mb-3"> 
@@ -90,18 +90,17 @@ const VehicleAdd=()=>{
 
         <div className="form-group mb-3"> 
           <label>company :</label>
-          <select ref="userInput" 
-              type="text" 
+          <select 
+              required
               className="form-control"
               value={company}
-              onChange={(e)=>setCompany(e.target.value)}
-              >  
-               <option value="Toyota">Toyota</option>
-                <option value="Honda">Honda</option>
-                <option value="Suzuki">Suzuki</option>
-                <option value="Kia">Kia</option>
-                <option value="Audi">Audi</option>
-                <option value="BMW">BMW</option>
+              onChange={(e)=>setCompany(e.target.value)}>  
+               <option>Toyota</option>
+                <option>Honda</option>
+                <option>Suzuki</option>
+                <option>Kia</option>
+                <option>Audi</option>
+                <option>BMW</option>
 
                 
 
@@ -110,10 +109,10 @@ const VehicleAdd=()=>{
              
         <div className="form-group mb-3"> 
           <label>Fuel type </label>
-          <select ref="userInput" 
+          <select
               type="text" 
               className="form-control"
-              value={fuelType}
+              value={fueltype}
               onChange={(e)=>setFueltype(e.target.value)}
               >  
                <option value="Diesel">Diesel</option>
@@ -168,4 +167,4 @@ const VehicleAdd=()=>{
 }
 
 
-export default VehicleAdd;
+export default CreateVehicle;

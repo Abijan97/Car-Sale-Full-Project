@@ -9,6 +9,7 @@ const vehicleSchema = new Schema({
       fueltype:{type:String , required:true},
       seats:{type:String,required:true},
       capacity:{type:String,required:true},
+      vehicleImage:{type:String,required:true},
       
 
      

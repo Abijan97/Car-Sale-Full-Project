@@ -10,7 +10,7 @@ const multer= require('multer');
 
 const storage= multer.diskStorage({
   destination:(req,file,callback)=>{
-    callback(null,'./../DashBoard/src/Components/Shipper/pic');
+    callback(null,'./../frontend/public/shippers/');
   },
   filename:(req,file,callback)=>{
     callback(null,file.originalname)

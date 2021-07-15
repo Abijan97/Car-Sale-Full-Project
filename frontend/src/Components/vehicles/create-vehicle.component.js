@@ -11,6 +11,11 @@ const CreateVehicle=()=>{
     const[fueltype,setFueltype]=useState("");
     const[seats,setSeats]=useState("");
     const[capacity,setCapacity]=useState("");
+    const[bodyStyle,setBodyStyle]=useState("");
+    const[year,setYear]=useState("");
+    const[mileage,setMileage]=useState("");
+    const[exteriorColor,setExterior]=useState("");
+    const[interiorColor,setInterior]=useState("");
     const[filename,setFilename]=useState("");
     
    
@@ -33,6 +38,11 @@ const CreateVehicle=()=>{
       formData.append("fueltype",fueltype);
       formData.append("seats",seats);
       formData.append("capacity",capacity);
+      formData.append("bodyStyle",bodyStyle);
+      formData.append("year",year);
+      formData.append("mileage",mileage);
+      formData.append("exteriorColor",exteriorColor);
+      formData.append("interiorColor",interiorColor);
       formData.append("vehicleImage",filename);
 
     
@@ -65,6 +75,11 @@ const CreateVehicle=()=>{
       setSeats('');
       setCapacity('');
       setCompany('');
+      setBodyStyle('');
+      setYear('');
+      setMileage('');
+      setExterior('');
+      setInterior('');
       setFilename('');
 
   
@@ -80,6 +95,7 @@ const CreateVehicle=()=>{
         <div className="form-group mb-3"> 
         <label>Model Name :</label>
           <input 
+              required
               type="text" 
               className="form-control"
               value={modelName}
@@ -139,6 +155,87 @@ const CreateVehicle=()=>{
               onChange={(e)=>setCapacity(e.target.value)}
               />  
         </div>
+
+        <div className="form-group mb-3"> 
+          <label>Body Style :</label>
+          <select 
+              required
+              className="form-control"
+              value={bodyStyle}
+              onChange={(e)=>setBodyStyle(e.target.value)}>  
+               <option>SEDAN</option>
+                <option>COUPE</option>
+                <option>HATCHBACK</option>
+                <option>CONVERTIBLE</option>
+                <option>SPORT</option>
+              
+
+                
+
+    </select>
+    </div>
+
+    <div className="form-group mb-3"> 
+          <label>Year :</label>
+          <input 
+              type="text" 
+              className="form-control"
+              value={year}
+              onChange={(e)=>setYear(e.target.value)}
+              />  
+    </div>
+
+    <div className="form-group mb-3"> 
+          <label>Mileage :</label>
+          <input 
+              type="text" 
+              className="form-control"
+              value={mileage}
+              onChange={(e)=>setMileage(e.target.value)}
+              />  
+    </div>
+
+    <div className="form-group mb-3"> 
+          <label>Exterior Color :</label>
+          <select 
+              required
+              className="form-control"
+              value={exteriorColor}
+              onChange={(e)=>setExterior(e.target.value)}>  
+               <option>Black</option>
+                <option>White</option>
+                <option>Silver Grey</option>
+                <option>Cream</option>
+                <option>Titanium</option>
+                <option>Grey</option>
+                <option>Other</option>
+              
+
+                
+
+    </select>
+    </div>
+
+    <div className="form-group mb-3"> 
+          <label>Interior Color :</label>
+          <select 
+              required
+              className="form-control"
+              value={interiorColor}
+              onChange={(e)=>setInterior(e.target.value)}>  
+               <option>Black</option>
+                <option>White</option>
+                <option>Silver Grey</option>
+                <option>Titanium</option>
+                <option>Grey</option>
+                <option>Other</option>
+              
+
+                
+
+    </select>
+    </div>
+
 
         <div className="form-group mb-3"> 
                 <label htmlFor="file">Vehicle Image </label>

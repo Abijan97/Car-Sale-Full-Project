@@ -40,6 +40,11 @@ router.route('/add').post(upload.single('vehicleImage'),(req,res)=>
     const fueltype = req.body.fueltype;
     const seats =req.body.seats;
     const capacity = req.body.capacity;
+    const bodyStyle=req.body.capacity;
+    const year=req.body.year;
+    const mileage=req.body.mileage;
+    const exteriorColor=req.body.exteriorColor;
+    const interiorColor=req.body.interiorColor;
     const vehicleImage=req.file.originalname;
 
    
@@ -51,6 +56,11 @@ router.route('/add').post(upload.single('vehicleImage'),(req,res)=>
         fueltype,
         seats,
         capacity,
+        bodyStyle,
+        year,
+        mileage,
+        exteriorColor,
+        interiorColor,
         vehicleImage
        
         
@@ -83,10 +93,15 @@ router.put('/update/:id',(req,res)=>{
         vehicle.seats=req.body.seats;
         vehicle.fueltype=req.body.fueltype;
         vehicle.capacity=req.body.capacity;
+        vehicle.bodyStyle=req.body.bodyStyle;
+        vehicle.year=req.body.year;
+        vehicle.mileage=req.body.mileage;
+        vehicle.exteriorColor=req.body.exteriorColor;
+        vehicle.interiorColor=req.body.interiorColor;
         vehicle.vehicleImage=req.file.originalname;
         
 
-        
+    
  vehicle.save()
  
  .then(()=> res.json('vehicle updated'))
@@ -96,3 +111,4 @@ router.put('/update/:id',(req,res)=>{
 });
 
 module.exports = router;
+ 

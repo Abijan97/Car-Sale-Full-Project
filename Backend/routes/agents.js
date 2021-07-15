@@ -75,7 +75,7 @@ router.put('/update/:id',(req,res)=>{
     .then(() => res.json('Agent updated successfully!'))
     .catch(err => res.status(400).json('Error: ' + err));
 
-  })
+  })  
 })
 
 //deleteagent

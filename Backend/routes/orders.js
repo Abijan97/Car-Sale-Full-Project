@@ -2,6 +2,26 @@ const router = require('express').Router();
 let Order = require('../models/order.model');
 
 
+
+
+//image
+const multer= require('multer');
+
+
+const storage= multer.diskStorage({
+  destination:(req,file,callback)=>{
+  //  callback(null,'./uploads/')
+  callback(null,'./../frontend/public/orders/');
+  },
+  filename:(req,file,callback)=>{
+    callback(null,file.originalname)
+  }
+})
+
+const upload=multer({storage:storage});
+
+
+
 router.route('/').get((req,res)=>{
 
   Order.find()
@@ -10,7 +30,7 @@ router.route('/').get((req,res)=>{
 });
 
 
-router.route('/add').post((req,res)=>
+router.route('/add').post(upload.single('auctionSheet'),(req,res)=>
 {
     const orderId = req.body.orderId;
     const date = Date.parse(req.body.date);  
@@ -22,6 +42,12 @@ router.route('/add').post((req,res)=>
     const insurancecost = Number(req.body.insurancecost);
     const shippingcost = Number(req.body.shippingcost);
     const agentpayment = Number(req.body.agentpayment);
+    const auctionSheetid=req.body.autionSheetid;
+    const auctionSheet=req.file.originalname;
+    const invoiceNumber=req.body.invoiceNumber;
+    const bank=req.body.bank;
+    const bankEmail=req.body.bankEmail;
+    const locNum=req.body.locNum;
     
    
 
@@ -36,7 +62,14 @@ router.route('/add').post((req,res)=>
         customer,
         insurancecost,
         shippingcost,
-        agentpayment
+        agentpayment,
+        auctionSheetid,
+        auctionSheet,
+        invoiceNumber,
+        bank,
+        bankEmail,
+        locNum,
+        
         
     });
   

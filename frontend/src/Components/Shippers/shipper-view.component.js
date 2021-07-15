@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export default function ShipperCard({shippers}) {
+export default function ShipperCard() {
   const classes = useStyles();
 
 //delete shipper
@@ -93,6 +93,15 @@ const deleteShipper = id =>{
   })
   
 }
+
+const [shippers,setShippers]=useState([]);
+
+useEffect(()=>{
+  axios
+    .get('http://localhost:5001/shippers/')
+    .then(res => setShippers(res.data)) 
+    .catch(error=>console.log(error));
+})
 
 
   return (
@@ -149,7 +158,7 @@ const deleteShipper = id =>{
 
 
         <Container className={classes.cardGrid} maxWidth="md">
-          {/* End hero unit */}
+     
           <Grid container spacing={4}>
             {
               !shippers.length ? <div className={classes.root}>
@@ -205,7 +214,7 @@ const deleteShipper = id =>{
           </Grid>
         </Container>
     
-
+            
     </React.Fragment>
   );
 }

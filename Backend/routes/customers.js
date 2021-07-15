@@ -1,6 +1,24 @@
 const router = require('express').Router();
 let Customer = require('../models/customer.model');
 
+//image
+const multer= require('multer');
+
+
+const storage= multer.diskStorage({
+  destination:(req,file,callback)=>{
+  //  callback(null,'./uploads/')
+  callback(null,'./../frontend/public/customers/');
+  },
+  filename:(req,file,callback)=>{
+    callback(null,file.originalname)
+  }
+})
+
+const upload=multer({storage:storage});
+
+
+
 
 router.route('/').get((req,res)=>{
 
@@ -10,13 +28,14 @@ router.route('/').get((req,res)=>{
 });
 
 
-router.route('/add').post((req,res)=>
+router.route('/add').post(upload.single('customerImage'),(req,res)=>
 {
     const username = req.body.username;
     const password = req.body.password;
     const email =    req.body.email;
     const mobile = Number(req.body.mobile);
     const dob = Date.parse(req.body.dob);  
+    const customerImage=req.file.originalname;
 
 
     const newCustomer = new Customer({
@@ -24,7 +43,8 @@ router.route('/add').post((req,res)=>
         password,
         email,
         mobile,
-        dob
+        dob,
+        customerImage
     });
   
     newCustomer.save()

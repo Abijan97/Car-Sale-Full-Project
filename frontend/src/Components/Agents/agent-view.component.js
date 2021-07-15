@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export default function AgentCard({agents}) {
+export default function AgentCard() {
   const classes = useStyles();
 
 //delete agent
@@ -93,6 +93,16 @@ const deleteAgent = id =>{
   })
   
 }
+
+const[agents,setAgents]=useState([]);
+useEffect(() => {
+  axios
+  .get('http://localhost:5001/agents/')
+  .then(res => setAgents(res.data))
+  .catch(error=>console.log(error));
+
+})
+
 
 
   return (
@@ -149,7 +159,7 @@ const deleteAgent = id =>{
 
 
         <Container className={classes.cardGrid} maxWidth="md">
-          {/* End hero unit */}
+        
           <Grid container spacing={4}>
             {
               !agents.length ? <div className={classes.root}>
@@ -202,9 +212,12 @@ const deleteAgent = id =>{
                   </CardActions>
                 </Card>
               </Grid>
-            ))}
+            ))} 
           </Grid>
         </Container>
+        
+
+            
     
 
     </React.Fragment>

@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export default function VehicleCard({vehicles}) {
+export default function VehicleCard() {
   const classes = useStyles();
 
 //delete agent
@@ -93,6 +93,19 @@ const deleteAgent = id =>{
   })
   
 }
+
+
+//veicles
+
+const [vehicles,setVehicles]=useState([]);
+
+useEffect(()=>{
+  axios
+    .get('http://localhost:5001/vehicles/')
+    .then(res => setVehicles(res.data)) 
+    .catch(error=>console.log(error));
+})
+
 
 
   return (
@@ -149,7 +162,7 @@ const deleteAgent = id =>{
 
 
         <Container className={classes.cardGrid} maxWidth="md">
-          {/* End hero unit */}
+ 
           <Grid container spacing={4}>
             {
               !vehicles.length ? <div className={classes.root}>
@@ -175,26 +188,43 @@ const deleteAgent = id =>{
                     <Typography  gutterBottom variant="h5" component="h2">
                   
                     <Link style={{textDecoration:"none"}} to={`/vehicle/${vehicle._id}`} >
-                    {vehicle.vehicleModel}
+                    {vehicle.modelName}
     
                     </Link>
               
                     </Typography>
+
                     <Typography gutterBottom variant="h6" component="h6">
-                    {vehicle.company}
+                    Company : {vehicle.company}
              
             
                     </Typography>
                     <Typography>  
-                        {vehicle.capacity}
+                      Engine :   {vehicle.capacity}
                     </Typography>
                     <Typography>  
-                        {vehicle.fueltype}
+                      FuelType :  {vehicle.fueltype}
                     </Typography>
                     <Typography>
-                        {vehicle.seats}
+                       Seats :  {vehicle.seats}
+                    </Typography> 
+                    <Typography>
+                       Body Style :  {vehicle.bodyStyle}
+                    </Typography> 
+
+                    <Typography>
+                       Madeyear  :  {vehicle.year}
                     </Typography> 
                   </CardContent>
+                  <Typography>
+                       mileage :  {vehicle.mileage}
+                    </Typography> 
+                    <Typography>
+                       Exterior Color :  {vehicle.exteriorColor}
+                    </Typography> 
+                    <Typography>
+                       Interier Color :  {vehicle.interiorColor}
+                    </Typography> 
                   <CardActions>
                     <Link to={`/update/${vehicle._id}`} className="btn btn-primary">
                       Update
@@ -208,6 +238,8 @@ const deleteAgent = id =>{
             ))}
           </Grid>
         </Container>
+
+            
     
 
     </React.Fragment>

@@ -9,18 +9,27 @@ const orderSchema = new Schema({
       payment:{type:Number , required:true},
       agent:{type:String , required:true},
       shipper:{type:String , required:true},
-      user:{type:String , required:true},
+      user:{type:String , required:false},
       customer:{type:String, required:false},
       insurancecost:{type:Number,required:true},
       shippingcost:{type:Number,required:true},
-      agentpayment:{type:Number,required:true}
+      agentpayment:{type:Number,required:true},
+      auctionSheetid:{type:String,required:false},
+      auctionSheet:{type:String,required:false},
+      invoiceNumber:{type:String,required:false},
+      bank:{type:String,required:false},
+      bankEmail:{type:String,required:false},
+      locNum:{type:String,required:false},
+
+
+
 
 },{
     timestamps:true,
 });
 
 
-
 const Order = mongoose.model('Order', orderSchema);
 
-module.exports= Order; 
+module.exports= Order;
+

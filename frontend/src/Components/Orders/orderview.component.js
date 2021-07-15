@@ -172,7 +172,317 @@ useEffect(()=>{
               </AccordionSummary>
               <AccordionDetails>
                   <div className="container">
-                  <CreateOrders/>
+
+                
+  
+      <form  encType='multipart/form-data'>
+
+
+
+<div className="form-row">
+  <div className="row">
+
+<div className="col-6 mb-3"> 
+<label >Order ID </label>
+  <input 
+    disabled
+      placeholder={order.orderId}
+      type="text" 
+      className="form-control"
+     
+      />  
+</div>
+
+<div className="col-6 mb-3">
+  <label>Date: </label>
+  <input 
+    disabled
+      placeholder={order.date}
+      type="text" 
+      className="form-control"
+     
+      />  
+  <div>
+ 
+  </div>
+</div>
+</div>
+</div>
+
+
+<div className="form-group "> 
+<div className="row">
+  <div className="col-6 mb-3">
+  <label htmlFor="pay" className="">Payment</label>
+ <div className="input-group">
+<div className="input-group-prepend">
+  <div className="input-group-text">Rs.</div>
+
+ </div>
+  <input 
+      type="text" 
+      disabled
+      placeholder={order.payment}
+      id="pay"
+      className="form-control"
+
+      />  
+      </div>
+  </div>
+  <div className="col-6 mb-3">
+  <label htmlFor="insurancepay" className="">Insurance Payment</label>
+ <div className="input-group">
+<div className="input-group-prepend">
+  <div className="input-group-text">Rs.</div>
+
+ </div>
+  <input 
+      type="text" 
+      id="insurancepay"
+      className="form-control"
+      placeholder={order.insuranceCost}
+      disabled
+
+      />  
+      </div>
+  </div>
+  </div>
+</div>
+
+
+<div className="form-group "> 
+<div className="row">
+  <div className="col-6 mb-3">
+  <label>Agent </label>
+  <input 
+      type="text" 
+      placeholder={order.agent}
+      className="form-control"
+      disabled
+
+      />  
+
+
+  </div>
+
+
+  <div className="col-6 mb-3">
+  <label htmlFor="agentpay" className="">Agent Payment</label>
+ <div className="input-group">
+<div className="input-group-prepend">
+  <div className="input-group-text">Rs.</div>
+
+ </div>
+  <input 
+      type="text" 
+      id="agentpay"
+      className="form-control"
+      disabled
+      placeholder={order.agentPayment}
+
+      />  
+      </div>
+  </div>
+  </div>
+</div>
+
+<div className="form-group "> 
+<div className="row">
+  <div className="col-6 mb-3">
+  <label>Shipper </label>
+  <input 
+      type="text" 
+      id="agentpay"
+      className="form-control"
+      disabled
+      placeholder={order.shipper}
+
+      />  
+
+  </div>
+  <div className="col-6 mb-3">
+  <label htmlFor="shipperpay" className="">Shipping Payment</label>
+ <div className="input-group">
+<div className="input-group-prepend">
+  <div className="input-group-text">Rs.</div>
+
+ </div>
+  <input 
+      type="text" 
+      id="shipperpay"
+      className="form-control"
+        placeholder={order.shippingCost}
+        disabled
+
+      
+      />  
+      </div>
+  </div>
+  </div>
+</div>
+
+
+
+<div className="form-group col-6 mb-3"> 
+  <label>Manager </label>
+
+  <input 
+      type="text" 
+      id="agentpay"
+      className="form-control"
+      disabled
+      placeholder={order.user}
+
+      />  
+      
+  
+</div>
+
+<div className="form-group col-6 mb-3"> 
+  <label>Customer </label>
+  <div className="input-group">
+  <input 
+      type="text" 
+      id="agentpay"
+      className="form-control"
+      disabled
+      placeholder={order.customer}
+
+      />  
+
+  </div>
+</div>
+<div className="form-group">
+  <div className="row">
+
+
+<div className="col-6 mb-3"> 
+<label htmlFor="">auctionSheet id</label>
+  <input 
+
+      type="text" 
+      className="form-control"
+      placeholder={order.auctionSheetid}
+      disabled
+ 
+      />  
+</div>
+<div className="col-6 mb-3"> 
+<label htmlFor="">Loc Number</label>
+  <input 
+      id=""
+      type="text" 
+      placeholder={order.locNum}
+      className="form-control"
+      disabled
+
+      />  
+</div>
+
+</div>
+<div className="row">
+<div className="col-6 mb-3"> 
+<label>Auction Sheet </label>
+<img
+src={`/orders/${order.auctionSheet}`}
+alt="auctionsheet"
+className="img-fluid"
+></img>
+</div>
+<div className="col-6 mb-3"> 
+<label>Letter of Credit </label>
+<img
+src="/orders/loc.png"
+alt="loc"
+className="img-fluid"
+></img>
+</div>
+
+
+</div>
+</div>
+  <div className="form-group">
+    <div className="row">
+<div className="col-4 mb-3"> 
+<label htmlFor="invoice">Invoice Number</label>
+  <input 
+    
+      type="text" 
+      className="form-control"
+      placeholder={order.invoiceNumber}
+      disabled
+/>
+</div>
+
+
+</div>
+<div className="row col-6">
+<img
+src="/orders/invoice.png"
+alt="loc"
+className="img-fluid"
+></img>
+</div>
+</div>
+
+<div className="col-6 mb-3"> 
+<label >Bank</label>
+  <input 
+      id=""
+      type="text" 
+      className="form-control"
+        placeholder={order.bank}
+        disabled
+
+      />  
+</div>
+<div className="col-6 mb-3"> 
+<label >Bank Email</label>
+  <input 
+      id=""
+      type="text" 
+      className="form-control"
+      placeholder={order.bankEmail}  
+      disabled
+
+      />  
+</div>
+
+<div className="form-group">
+    <div className="row">
+<div className="col-6 mb-3"> 
+<label htmlFor="">Loc Number</label>
+  <input 
+      id=""
+      type="text" 
+      placeholder={order.locNum}
+      className="form-control"
+      disabled
+
+      />  
+</div>
+
+
+</div>
+</div>
+
+
+
+
+
+        <br></br>
+
+
+
+<div className="form-group mb-3">
+  <input type="submit" value="Create Order" className="btn btn-warning" />
+</div>
+</form>
+
+
+
+
+
                   </div>
 
               </AccordionDetails>

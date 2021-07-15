@@ -8,10 +8,10 @@ export default class Navbar extends Component {
       <nav className="navbar  navbar-dark bg-primary navbar-expand-lg">
         <Link to="/" className="ml-5 navbar-brand">DashBoard</Link>
         <div className="collpase navbar-collapse">
-        <ul className="navbar-nav mr-auto">
+        <ul className="container navbar-nav mr-auto">
          
           <li className="navbar-item">
-          <Link to="/usertypes" className="nav-link">Usertypes</Link>
+          <Link to="/users" className="nav-link">Employees</Link>
           </li>
           <li className="navbar-item">
           <Link to="/agents" className="nav-link">Agents</Link>

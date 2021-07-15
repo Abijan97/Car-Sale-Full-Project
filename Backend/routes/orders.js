@@ -39,9 +39,9 @@ router.route('/add').post(upload.single('auctionSheet'),(req,res)=>
     const shipper = req.body.shipper;
     const user = req.body.user;
     const customer = req.body.customer;
-    const insurancecost = Number(req.body.insurancecost);
-    const shippingcost = Number(req.body.shippingcost);
-    const agentpayment = Number(req.body.agentpayment);
+    const insuranceCost = Number(req.body.insuranceCost);
+    const shippingCost = Number(req.body.shippingCost);
+    const agentPayment = Number(req.body.agentPayment);
     const auctionSheetid=req.body.autionSheetid;
     const auctionSheet=req.file.originalname;
     const invoiceNumber=req.body.invoiceNumber;
@@ -60,9 +60,9 @@ router.route('/add').post(upload.single('auctionSheet'),(req,res)=>
         shipper,
         user,
         customer,
-        insurancecost,
-        shippingcost,
-        agentpayment,
+        insuranceCost,
+        shippingCost,
+        agentPayment,
         auctionSheetid,
         auctionSheet,
         invoiceNumber,

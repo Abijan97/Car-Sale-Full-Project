@@ -1,6 +1,26 @@
 const router = require('express').Router();
 //require model that created early
 let User = require('../models/user.model');
+
+
+//image
+const multer= require('multer');
+
+
+const storage= multer.diskStorage({
+  destination:(req,file,callback)=>{
+  //  callback(null,'./uploads/')
+  callback(null,'./../frontend/public/users/');
+  },
+  filename:(req,file,callback)=>{
+    callback(null,file.originalname)
+  }
+})
+
+const upload=multer({storage:storage});
+
+
+
  
 //first end point -GET
 
@@ -13,22 +33,46 @@ router.route('/').get((req,res)=>{
 
 //second end point - POST
 
-router.route('/add').post((req,res)=>
+router.route('/add').post(upload.single('employeeImage'),(req,res)=>
 {
-    const usertypeId = req.body.usertypeId;
+
     const username = req.body.username;
     const password = req.body.password;
     const email =req.body.email;
     const mobile = req.body.mobile;
+    const address=req.body.address;
+    const homePhone=req.body.homePhone;
+    const marriedState=req.body.marriedState;
+    const dob=Date.parse(req.body.dob);
+    const startDate=Date.parse(req.body.startDate);
+    const empType=req.body.empType;
+    const gender=req.body.gender;
+    const bank=req.body.bank;
+    const accountNo=req.body.accountNo;
+    const position=req.body.position;
+    const qualification =req.body.qualification;
+    const employeeImage=req.file.originalname;
     
 
 
     const newUser = new User({
-        usertypeId,
+      
         username,
         password,
         email,
-        mobile
+        mobile,
+        address,
+        homePhone,
+        marriedState,
+        dob,
+        startDate,
+        empType,
+        gender,
+        bank,
+        accountNo,
+        position,
+        qualification,
+        employeeImage
     
     });
   

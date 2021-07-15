@@ -8,14 +8,12 @@ import ShipperCard from './Components/Shippers/shipper-view.component';
 import VehicleCard from './Components/vehicles/vehicle-view.component';
 import AgentSingle from './Components/Agents/agent';
 import CreateTest from './Components/test.component';
-//import OrderCard from './Components/Orders/orderview.component';
-import CreateOrders from './Components/Orders/create-order.component';
+import OrderCard from './Components/Orders/orderview.component';
 import CustomerCard from './Components/Customers/customer-view.component';
+import UserCard from './Components/User/user-view.component';
+
+
 function App() {
-
-
-
-
 
 
 
@@ -28,9 +26,10 @@ function App() {
        path="/agent/:id" render={(props)=><AgentSingle {...props}/>} />
       <Route path="/shippers" exact component={ShipperCard}/>
       <Route path="/vehicles" exact component={VehicleCard}/>
-      <Route path="/orders"  exact component={CreateOrders}/>
+      <Route path="/orders"  exact component={OrderCard}/>
       <Route path="/tests" exact component={CreateTest}/>
       <Route path="/customers" exact component={CustomerCard}/>
+      <Route path="/users" exact component={UserCard}/>
 
 
       <Footer/>

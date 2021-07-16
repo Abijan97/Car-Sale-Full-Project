@@ -11,7 +11,7 @@ import CreateTest from './Components/test.component';
 import OrderCard from './Components/Orders/orderview.component';
 import CustomerCard from './Components/Customers/customer-view.component';
 import UserCard from './Components/User/user-view.component';
-
+import AuctionSheet from './Components/Orders/order';
 
 function App() {
 
@@ -27,6 +27,8 @@ function App() {
       <Route path="/shippers" exact component={ShipperCard}/>
       <Route path="/vehicles" exact component={VehicleCard}/>
       <Route path="/orders"  exact component={OrderCard}/>
+      <Route
+       path="/order/:id" render={(props)=><AuctionSheet {...props}/>} />
       <Route path="/tests" exact component={CreateTest}/>
       <Route path="/customers" exact component={CustomerCard}/>
       <Route path="/users" exact component={UserCard}/>

@@ -9,9 +9,10 @@ import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-
+import Swal from 'sweetalert2';
 import axios from 'axios';
 import CreateOrders from './create-order.component';
+import { Link } from 'react-router-dom';
 // import LinearProgress from '@material-ui/core/LinearProgress';
 // import { Link } from 'react-router-dom';
 // import Swal from 'sweetalert2'
@@ -62,37 +63,37 @@ const useStyles = makeStyles((theme) => ({
 export default function OrderCard() {
   const classes = useStyles();
 
-// //delete agent
-// const [agent,setAgent]=useState([]);
+//delete order
+const [order,setOrder]=useState([]);
 
-// const deleteOrder = id =>{
+const deleteOrder = id =>{
   
-//   Swal.fire({
-//     title: 'Are you sure?',
-//     text: "You won't be able to revert this!",
-//     icon: 'warning',
-//     showCancelButton: true,
-//     confirmButtonColor: '#3085d6',
-//     cancelButtonColor: '#d33',
-//     confirmButtonText: 'Yes, delete it!'
-//   }).then((result) => {
-//     if (result.isConfirmed) {
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
+    if (result.isConfirmed) {
 
-//       axios.delete(`http://localhost:5001/orders/${id}`)
-//   .then(res => console.log((res.data)) )
-//   setAgent(agent.filter(elem => elem._id !== id))
+      axios.delete(`http://localhost:5001/orders/${id}`)
+  .then(res => console.log((res.data)) )
+  setOrder(order.filter(elem => elem._id !== id))
 
   
 
-//       Swal.fire(
-//         'Deleted!',
-//         'Your file has been deleted.',
-//         'success'
-//       )
-//     }
-//   })
+      Swal.fire(
+        'Deleted!',
+        'Your file has been deleted.',
+        'success'
+      )
+    }
+  })
   
-// }
+}
 
 const [orders,setorders]=useState([]);
   
@@ -381,6 +382,7 @@ useEffect(()=>{
 
 </div>
 <div className="row">
+  <Link to={`/order/${order._id}`}>
 <div className="col-6 mb-3"> 
 <label>Auction Sheet </label>
 <img
@@ -389,6 +391,7 @@ alt="auctionsheet"
 className="img-fluid"
 ></img>
 </div>
+</Link>
 <div className="col-6 mb-3"> 
 <label>Letter of Credit </label>
 <img
@@ -475,7 +478,7 @@ className="img-fluid"
 
 
 <div className="form-group mb-3">
-  <input type="submit" value="Create Order" className="btn btn-warning" />
+  <input onClick={()=>deleteOrder(order._id)} value="Delete Order" className="btn btn-warning" />
 </div>
 </form>
 

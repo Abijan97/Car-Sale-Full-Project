@@ -1,5 +1,6 @@
 const router = require('express').Router();
 let Order = require('../models/order.model');
+let transporter = nodemailer.createTransport(transport[, defaults])
 
 
 
@@ -80,10 +81,11 @@ router.route('/add').post(upload.single('auctionSheet'),(req,res)=>
 }
 );
 
-router.route('/:id').get((req,res)=>{
-    Order.findById(req,params.id)
-    .then(order => res.json(order))
-    .catch(err => res.status(400).json('Error :'+ err));
+router.get('/:id',(req,res)=>{
+  Order
+  .findById(req.params.id)
+  .then(order=>res.json(order))
+  .catch(err=>res.status(400).json(`Error: ${err}`))
 
 });
 
@@ -114,5 +116,23 @@ router.route('/update/:id').post((req,res)=>{
 })
 .catch(err=>res.status(400).json('Error ' + err));
 });
+
+
+
+//nodemailer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = router;

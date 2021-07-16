@@ -1,6 +1,7 @@
 const router = require('express').Router();
 //require agent model
 let Agent = require('../models/agent.model');
+const nodemailer=require('nodemailer');
 
 
 //image
@@ -102,6 +103,44 @@ router.route('/add').post(upload.single('agentImage'),(req, res) => {
   newAgent.save()
     .then(() => res.json('Agent added!'))
     .catch(err => res.status(400).json('Error: ' + err));
+
+      //mail step1
+      let transporter=nodemailer.createTransport({
+        service:'gmail',
+        secure:false,
+        port:25,
+
+        auth:{
+          user:'abijanudara97@gmail.com',
+          pass:'0332256411'
+  
+        },
+        tls:{
+          rejectUnauthorized:false
+        }
+      })
+        //mail step 2
+  
+    let mailOptions={
+      from:'abijanudara97@gmail.com',
+      to:'abijanudara27759@gmail.com',
+      subject:'Testing and Testing',
+      text:'It works'
+      
+  
+    }
+  
+    //step 3
+    transporter.sendMail(mailOptions,function(err,data){
+      if(err){
+        console.log('Erorr ocurs',err);
+      }
+      else{
+        console.log('Email Sent');
+      }
+    })
+
+
 });
 
 module.exports = router;

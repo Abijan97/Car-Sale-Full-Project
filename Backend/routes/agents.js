@@ -2,8 +2,8 @@ const router = require('express').Router();
 //require agent model
 let Agent = require('../models/agent.model');
 const nodemailer=require('nodemailer');
-
-
+const hbs=require('nodemailer-handlebars');
+const log = console.log;
 
 //image
 const multer= require('multer');
@@ -98,7 +98,6 @@ router.route('/add').post(upload.single('agentImage'),(req, res) => {
   const agentImage=req.file.originalname;
 
 
-
   const newAgent = new Agent({agentId,agentName,email,mobile,company,agentImage});
 
   newAgent.save()
@@ -106,41 +105,56 @@ router.route('/add').post(upload.single('agentImage'),(req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 
       //mail step1
+    
       let transporter=nodemailer.createTransport({
         service:'gmail',
         secure:false,
-        port:25,
 
         auth:{
           user:'abijanudara97@gmail.com',
           pass:'0332256411'
   
-        },
-        tls:{
+        }, 
+        tls:{ 
           rejectUnauthorized:false
         }
-      })
-        //mail step 2
+      });
+      //
+      transporter.use('compile', hbs({
+        viewEngine: {
+          extname: '.handlebars',
+          layoutsDir: './views/',
+          defaultLayout : 'index',
+      },
+      viewPath: './views/'
+    }));
+    
+    
+        //mail step 3
   
-    let mailOptions={
-      from:'abijanudara97@gmail.com',
-      to:'abijanudara27759@gmail.com',
-      subject:'Testing and Testing',
-      text:agentName
-      
-  
-    }
+        let mailOptions = {
+          from: 'abijanudara97@gmail.com', 
+          to: email,
+          subject: 'You added as a New Agent',
+          text: 'Wooohooo it works!!',
+          template: 'index',
+          context: {
+            agentId:agentId,
+            agentName:agentName,
+            email:email,
+            mobile:mobile,
+            Company:company
+          }
+      };
   
     //step 3
-    transporter.sendMail(mailOptions,function(err,data){
-      if(err){
-        console.log('Erorr ocurs',err);
+    transporter.sendMail(mailOptions, (err, data) => {
+      if (err) {
+          return log('Error occurs',err);
       }
-      else{
-        console.log('Email Sent');
-      }
-    })
-
+      return log('Email sent!!!');
+  });
+  
 
 });
 

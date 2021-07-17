@@ -4,6 +4,7 @@ let Agent = require('../models/agent.model');
 const nodemailer=require('nodemailer');
 
 
+
 //image
 const multer= require('multer');
 
@@ -125,7 +126,7 @@ router.route('/add').post(upload.single('agentImage'),(req, res) => {
       from:'abijanudara97@gmail.com',
       to:'abijanudara27759@gmail.com',
       subject:'Testing and Testing',
-      text:'It works'
+      text:agentName
       
   
     }

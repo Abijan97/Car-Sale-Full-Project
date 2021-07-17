@@ -12,7 +12,9 @@ import OrderCard from './Components/Orders/orderview.component';
 import CustomerCard from './Components/Customers/customer-view.component';
 import UserCard from './Components/User/user-view.component';
 import AuctionSheet from './Components/Orders/order';
-
+import ReceivingCard from './Components/Receivings/view-receivings.component';
+import ReceivingSingle from './Components/Receivings/receiving';
+import CreateTaxes from './Components/Taxes/create-taxes.component';
 function App() {
 
 
@@ -32,7 +34,10 @@ function App() {
       <Route path="/tests" exact component={CreateTest}/>
       <Route path="/customers" exact component={CustomerCard}/>
       <Route path="/users" exact component={UserCard}/>
-
+      <Route path="/receivings" exact component={ReceivingCard}/>
+      <Route
+       path="/receiving/:id" render={(props)=><ReceivingSingle {...props}/>} />
+      <Route path="/taxes" exact component={CreateTaxes}/>
 
       <Footer/>
 

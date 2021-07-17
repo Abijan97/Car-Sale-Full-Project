@@ -35,8 +35,8 @@ const CustomClearanceRouter = require('./routes/customclearance');
 // const OrderReceiveRouter=require('./routes/orderreceives');
 const VehiclesRouter=require('./routes/vehicles');
 const StocksRouter=require('./routes/stocks');
-
-
+const ReceivingsRouter=require('./routes/receivings');
+const TaxesRouter=require('./routes/taxes')
 
 //using routes
 
@@ -49,6 +49,8 @@ app.use('/orders',orderRouter);
 app.use('/customclearances',CustomClearanceRouter);
 app.use('/stocks',StocksRouter);
 app.use('/vehicles',VehiclesRouter);
+app.use('/receivings',ReceivingsRouter);
+app.use('/taxes',TaxesRouter);
 
 
  

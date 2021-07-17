@@ -50,6 +50,7 @@ router.route('/add').post(upload.single('auctionSheet'),(req,res)=>
     const bank=req.body.bank;
     const bankEmail=req.body.bankEmail;
     const locNum=req.body.locNum;
+    const cif = Number(req.body.cif);
     
    
 
@@ -71,6 +72,7 @@ router.route('/add').post(upload.single('auctionSheet'),(req,res)=>
         bank,
         bankEmail,
         locNum,
+        cif
         
         
     });

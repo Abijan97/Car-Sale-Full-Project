@@ -18,19 +18,22 @@ const CreateOrders=()=> {
     const [shipper,setShipper]=useState("");
     const [user,setUser]=useState("");
     const [customer,setCustomer]=useState("");
-    const [insuranceCost,setInsurance]=useState("");
-    const [shippingCost,setShippingCost]=useState("");
-    const [agentPayment,setAgentpayment]=useState("");
+    const [insuranceCost,setInsurance]=useState(0);
+    const [shippingCost,setShippingCost]=useState(0);
+    const [agentPayment,setAgentpayment]=useState(0);
     const [auctionSheetid,setAuctionsheetid]=useState("");
     const [filename,setFilename]=useState("");
     const [invoiceNumber,setInvoiceNumber]=useState("");
     const [bank,setBank]=useState("");
     const [bankEmail,setBankEmail]=useState("");
     const [locNum,setLocnum]=useState("");
+    let [cif,setCif]=useState(0);
   
+   const setTotall=()=>{
+      return Number(insuranceCost)+Number(agentPayment)+Number(shippingCost)+Number(payment);
+    }
 
-
-
+    cif=setTotall();
 
     const onChangeFile =e => {
         setFilename(e.target.files[0]);
@@ -61,7 +64,7 @@ const CreateOrders=()=> {
         formData.append("bank",bank);
         formData.append("bankEmail",bankEmail);
         formData.append("locNum",locNum);
-
+        formData.append("cif",cif);
 
         
         
@@ -174,7 +177,7 @@ const CreateOrders=()=> {
         </div>
         </div>
       
-
+<div className="bg-secondary border rounded mt-2 mb-2 p-2 text-white">
   <div className="form-group "> 
         <div className="row">
           <div className="col-6 mb-3">
@@ -298,7 +301,17 @@ const CreateOrders=()=> {
           </div>
         </div>
         
-      
+      <div className="form-group">
+        <label className="h6">CIF Value</label>
+    <input 
+    className="form-control" 
+    disabled 
+    value={cif}
+    onChange={(e)=>setCif(e.target.value)}
+
+    placeholder={setTotall()}></input>
+      </div>
+      </div>
 
         <div className="form-group col-6 mb-3"> 
           <label>Manager </label>

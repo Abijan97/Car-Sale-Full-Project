@@ -20,6 +20,7 @@ const orderSchema = new Schema({
       bank:{type:String,required:false},
       bankEmail:{type:String,required:false},
       locNum:{type:String,required:false},
+      cif:{type:Number,required:false}
 
 
 

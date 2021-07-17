@@ -10,13 +10,15 @@ const AuctionSheet = props=> {
 
     
    const [filename,setFilename]=useState("");  
+   const [orderId,setOrderId]=useState("");
  
     
       useEffect(() => {
         axios
         .get(`http://localhost:5001/orders/${props.match.params.id}`)
         .then(res=>[
-        setFilename(res.data.auctionSheet)
+        setFilename(res.data.auctionSheet),
+        setOrderId(res.data.orderId)
 
 ])
 .catch(error =>console.log(error))
@@ -33,12 +35,12 @@ const AuctionSheet = props=> {
         <>
  
         
-        
+                <h4>Order ID : {orderId}</h4>
     
                 <img src={`/orders/${filename}`} alt="pic"></img>
          
             <br></br>
-            <Link to="/agents" type="submit" className="btn btn-primary">Back to the Agents</Link>
+            <Link to="/orders" type="submit" className="btn btn-primary">Back to the Orders</Link>
 
         </>
             )}

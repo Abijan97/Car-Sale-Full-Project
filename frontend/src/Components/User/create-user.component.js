@@ -4,7 +4,6 @@ import React, {useState} from 'react';
 import axios from 'axios';
 //alert
 import Swal from 'sweetalert2';
-
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { Select } from '@material-ui/core';
@@ -212,6 +211,7 @@ const CreateEmployee=()=>{
             <DatePicker
               selected={dob}
               onChange={(date)=>setDOB(date)}
+              maxDate={Date.now()}
             />
           </div>
             </div>
@@ -222,6 +222,7 @@ const CreateEmployee=()=>{
             <DatePicker
               selected={startDate}
               onChange={(date)=>setStartdate(date)}
+              maxDate={Date.now()}
             />
           </div>
             </div>

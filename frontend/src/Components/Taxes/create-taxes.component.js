@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
+import {Link} from 'react-router-dom';
 //import Swal from 'sweetalert2';
 
 
@@ -13,16 +14,14 @@ const CreateTaxes=()=> {
         
     const [orderId,setOrderId]=useState("");
     const [receivedDate,setReceiveddate]=useState(new Date());
-    const [cessTax,setCesstax]=useState("");
-    const [vat,setVat]=useState("");
-    const [customDuty,setCustomDuty]=useState("");
-    const [transportPayment,setTransportpayment]=useState("");
-    const [repairPayment,setRepairpayment]=useState("");
+    const [cessTax,setCesstax]=useState(0);
+    const [vat,setVat]=useState(0);
+    const [customDuty,setCustomDuty]=useState(0);
+    const [transportPayment,setTransportpayment]=useState(0);
+    const [repairPayment,setRepairpayment]=useState(0);
     const [serviceCenter,setServiceCenter]=useState("");
     const [filename,setFilename]=useState("");
-    const [capacity,setCapacity]=useState("");
-  
-    // const[shippingCost,setShippingCost]=useState("");
+   // const [capacity,setCapacity]=useState("");
 
     const[orders,setOrders]=useState([]);
     useEffect(() => {
@@ -30,37 +29,29 @@ const CreateTaxes=()=> {
       .get('http://localhost:5001/orders/')
       .then(res => setOrders(res.data))
       .catch(error=>console.log(error));
-    
- 
-
 
      },[]);
 
-    
-
-    
-
-
+  
     const onChangeFile =e => {
         setFilename(e.target.files[0]);
   
     }
   
-  
 
-  
     const changeonClick = e => {
         e.preventDefault();
 
         const formData=new FormData();
 
         formData.append("orderId",orderId);
-        formData.append("cessTax",cessTax);
         formData.append("receivedDate",receivedDate);
+        formData.append("cessTax",cessTax);
         formData.append("vat",vat);
         formData.append("customDuty",customDuty);
         formData.append("transportPayment",transportPayment);
         formData.append("repairPayment",repairPayment);
+        formData.append("serviceCenter",serviceCenter);
         formData.append("invoice",filename);
      
       
@@ -75,6 +66,7 @@ const CreateTaxes=()=> {
         
         
         });
+
 
       
         // Swal.fire({
@@ -93,7 +85,7 @@ const CreateTaxes=()=> {
 
     
 
- 
+    
 
 
     
@@ -104,11 +96,12 @@ const CreateTaxes=()=> {
     return (
     
       
+      <div className="container m-5">
+        <div className="col-9 p-5 border rounded bg-info">
       
-  
       <form onSubmit={changeonClick} encType='multipart/form-data'>
 
-
+      <h3 className="text-white mb-4">Add Tax Details</h3>
 
 
         <div className="form-row">
@@ -207,7 +200,7 @@ const CreateTaxes=()=> {
         <div className="form-group bg-secondary p-2 m-2 text-white">
      <h5 className="text-white">Repairs</h5>
         <div className="col-4 mb-3"> 
-        <label htmlFor="invoice">Service Center</label>
+        <label htmlFor="">Service Center</label>
           <input 
             
               type="text" 
@@ -217,7 +210,7 @@ const CreateTaxes=()=> {
               />  
         </div>
         <div className="col-4 mb-3"> 
-        <label htmlFor="invoice">Repair Payment</label>
+        <label htmlFor="">Repair Payment</label>
         <div className="input-group">
         <div className="input-group-prepend">
           <div className="input-group-text">Rs.</div>
@@ -233,7 +226,7 @@ const CreateTaxes=()=> {
               </div> 
         </div>
         <div className="col-4 mb-3"> 
-        <label htmlFor="invoice">Transport Payment</label>
+        <label htmlFor="">Transport Payment</label>
         <div className="input-group">
         <div className="input-group-prepend">
           <div className="input-group-text">Rs.</div>
@@ -258,8 +251,8 @@ const CreateTaxes=()=> {
         <label>Invoice </label>
           <input 
               type="file" 
-              className="form-control"
-              name="invoice"
+              className="form-control-file"
+              filename="invoice"
               onChange={onChangeFile}
               />  
         </div>
@@ -272,12 +265,14 @@ const CreateTaxes=()=> {
 
 
         <div className="form-group mb-3">
-          <input type="submit" value="Submit" className="btn btn-primary" />
+        <Link className="btn btn-secondary mr-2" to={`/receivings`}>Back</Link>
+          <input type="submit" value="Submit" className="ml-5 btn btn-primary" />
+        
         </div>
       </form>
     
-
-      
+</div>
+      </div>
       
 
       

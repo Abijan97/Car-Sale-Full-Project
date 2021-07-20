@@ -15,6 +15,7 @@ import AuctionSheet from './Components/Orders/order';
 import ReceivingCard from './Components/Receivings/view-receivings.component';
 import ReceivingSingle from './Components/Receivings/receiving';
 import CreateTaxes from './Components/Taxes/create-taxes.component';
+import Home from './Components/home';
 function App() {
 
 
@@ -23,6 +24,7 @@ function App() {
     <div>
       <Router>
       <Navbar/>
+      <Route path="/" exact component={Home}/>
       <Route path="/agents" exact component={AgentCard}/>
       <Route
        path="/agent/:id" render={(props)=><AgentSingle {...props}/>} />

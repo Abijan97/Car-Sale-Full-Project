@@ -13,15 +13,11 @@ const CreateReceivings=()=> {
         
     const [orderId,setOrderId]=useState("");
     const [shippedDate,setShippedDate]=useState(new Date());
-    const [receivedDate,setReceiveddate]=useState(new Date());
     const [customAgent,setCustomagent]=useState("");
     const [agentEmail,setagentEmail]=useState("");
     const [agentMobile,setAgentmobile]=useState("");
     const [bl,setBi]=useState("");
-    const [sesTax,setSestax]=useState("");
     const [hsCode,setHscode]=useState("");
-    const [vat,setVat]=useState("");
-    let  [customDuty,setCustomDuty]=useState(0);
     const [filename,setFilename]=useState("");
     const [capacity,setCapacity]=useState("");
   
@@ -67,15 +63,12 @@ const CreateReceivings=()=> {
         formData.append("orderId",orderId);
         formData.append("shippedDate",shippedDate);
         formData.append("customAgent",customAgent);
-        formData.append("receivedDate",receivedDate);
         formData.append("agentEmail",agentEmail);
         formData.append("agentMobile",agentMobile);
         formData.append("bl",bl);
         formData.append("hsCode",hsCode);
-        formData.append("sesTax",sesTax);
-        formData.append("vat",vat);
         formData.append("deliveryOrder",filename);
-        formData.append("customDuty",customDuty);
+        
      
       
 
@@ -159,17 +152,10 @@ const CreateReceivings=()=> {
         </div>
         </div>
       
-        <div className="col-6 mb-3">
-          <label>Date: </label>
-          <div>
-            <DatePicker
-              selected={receivedDate}
-              onChange={(date)=>setReceiveddate(date)}
-            />
-          </div>
-        </div>
+
       
-        <div className="form-group bg-secondary text-white">
+        <div className="form-group bg-secondary p-2 rounded text-white">
+          <h5>Custom Agent</h5>
             <div className="row">
         <div className="col-4 mb-3"> 
         <label htmlFor="invoice">Custom Agent</label>
@@ -245,60 +231,7 @@ const CreateReceivings=()=> {
         
       
 
-  <div className="form-group bg-secondary p-2 text-white"> 
-        <div className="row">
-          <div className="col-6 mb-3">
-          <label htmlFor="pay" className="">sesTax</label>
-         <div className="input-group">
-        <div className="input-group-prepend">
-          <div className="input-group-text">Rs.</div>
-        
-         </div>
-          <input 
-              type="text" 
-              id="pay"
-              className="form-control"
-              value={sesTax}
-              onChange={(e)=>setSestax(e.target.value)}
-              />  
-              </div>
-          </div>
-          <div className="col-6 mb-3">
-          <label htmlFor="insurancepay" className="">Custom Duty</label>
-         <div className="input-group">
-        <div className="input-group-prepend">
-          <div className="input-group-text">Rs.</div>
-        
-         </div>
-          <input 
-              type="text" 
-              id="insurancepay"
-              className="form-control"
-              value={customDuty}
-              onChange={(e)=>setCustomDuty(e.target.value)}
-              />  
-              </div>
-          </div>
 
-          <div className="col-6 mb-3">
-          <label htmlFor="insurancepay" className="">Vat</label>
-         <div className="input-group">
-        <div className="input-group-prepend">
-          <div className="input-group-text">Rs.</div>
-        
-         </div>
-          <input 
-              type="text" 
-              id="insurancepay"
-              className="form-control"
-              value={vat}
-              onChange={(e)=>setVat(e.target.value)}
-              />  
-              </div>
-          </div>
-          </div>
-          
-        </div>
 
 
      

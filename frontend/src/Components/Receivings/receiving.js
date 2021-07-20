@@ -9,12 +9,13 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 const ReceivingSingle = props=> {
 
     const [orderId,setOrderId]=useState("");
-    const [shippedDate,setAgentName]=useState("");
-    const [receivedDate,setReceiveddate]=useState("");
+    const [shippedDate,setShippedDate]=useState("");
     const [customAgent,setCustomagent]=useState("");
     const [agentEmail,setagentEmail]=useState("");
-    const [agentMobile,setCompany]=useState("");
+    const [agentMobile,setAgentmobile]=useState("");
     const [filename,setFilename]=useState("");
+    const [hsCode,setHsCode]=useState("");
+
 
   //  const [filename,setFilename]=useState("");  
  
@@ -25,11 +26,12 @@ const ReceivingSingle = props=> {
         .get(`http://localhost:5001/receivings/${props.match.params.id}`)
         .then(res=>[
         setOrderId(res.data.orderId),
-        setAgentName(res.data.agentName),
-        setReceiveddate(res.data.receivedDate),
         setCustomagent(res.data.customAgent),
+        setShippedDate(res.data.shippedDate),
         setagentEmail(res.data.agentEmail),
-        setFilename(res.data.deliveryOrder)
+        setFilename(res.data.deliveryOrder),
+        setAgentmobile(res.data.agentMobile),
+        setHsCode(res.data.hsCode)
   
 //    setFilename(res.data.setFilename)
 
@@ -152,7 +154,7 @@ className="img-fluid"
 <div className="col-6 mb-3"> 
 <label>Bill of Lading </label>
 <img
-src="/orders/loc.png"
+src="/orders/bl.png"
 alt="loc"
 className="img-fluid"
 ></img>
@@ -163,6 +165,7 @@ className="img-fluid"
 
 
 <div className="row col-6">
+  <label>Invoice</label>
 <img
 src="/orders/invoice.png"
 alt="loc"

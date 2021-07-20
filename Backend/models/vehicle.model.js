@@ -4,17 +4,17 @@ const Schema = mongoose.Schema;
 
 const vehicleSchema = new Schema({
 
-      modelName:{ type : String, required :true},
-      company:{type:String,required:true},
-      fueltype:{type:String , required:true},
-      seats:{type:String,required:true},
-      capacity:{type:String,required:true},
-      bodyStyle:{type:String,required:true},
-      year:{type:String,required:true},
+      modelName:{ type : String, required :true,unique:false},
+      company:{type:String,required:true,unique:false},
+      fueltype:{type:String , required:true,unique:false},
+      seats:{type:String,required:true,unique:false},
+      capacity:{type:String,required:true,unique:false},
+      bodyStyle:{type:String,required:true,unique:false},
+      year:{type:String,required:true,unique:false},
       mileage:{type:String,required:true},
-      exteriorColor:{type:String,required:true},
-      interiorColor:{type:String,required:true},
-      vehicleImage:{type:String,required:true},
+      exteriorColor:{type:String,required:true,unique:false},
+      interiorColor:{type:String,required:true,unique:false},
+      vehicleImage:{type:String,required:true,unique:false},
       
 
      

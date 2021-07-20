@@ -43,7 +43,6 @@ router.route('/add').post(upload.single('deliveryOrder'),(req,res)=>
     const newReceiving = new Receiving({
         orderId,
         shippedDate,
-        receivedDate,
         customAgent,
         agentEmail,
         agentMobile,

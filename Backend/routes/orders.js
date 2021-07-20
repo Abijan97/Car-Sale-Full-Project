@@ -1,6 +1,6 @@
 const router = require('express').Router();
 let Order = require('../models/order.model');
-const nodemailer=require('nodemailer');
+
 
 
 
@@ -82,35 +82,8 @@ router.route('/add').post(upload.single('auctionSheet'),(req,res)=>
     .catch(err => res.status(400).json('Error:' + err));
 
 
-    //mail step1
-    let transporter=nodemailer.createTransport({
-      service:'gmail',
-      auth:{
-        user:'abijanudara97@gmail.com',
-        pass:'0332256411'
-
-      }
-    })
-      //mail step 2
-
-  let mailOptions={
-    from:'abijanudara97@gmail.com',
-    to:'abijanudara27759@gmail.com',
-    subject:'Testing and Testing',
-    text:'It works'
     
 
-  }
-
-  //step 3
-  transporter.sendMail(mailOptions,function(err,data){
-    if(err){
-      console.log('Erorr ocurs',err);
-    }
-    else{
-      console.log('Email Sent');
-    }
-  })
 
 }
 );

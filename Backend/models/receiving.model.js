@@ -4,14 +4,14 @@ const Schema = mongoose.Schema;
 
 const ReceivingSchema = new Schema({
 
-      orderId:{ type : String, required :true},
-      shippedDate: {type:Date, required :false},
-      customAgent:{type:String , required:false},
-      agentEmail:{type:String,required:false},
-      agentMobile:{type:String,required:false},
-      bl: {type:String,required:false},
-      hsCode:{type:String,required:false},
-      deliveryOrder:{type:String,required:false},
+      orderId:{ type : String, required :true,unique:false},
+      shippedDate: {type:Date, required :false,unique:false},
+      customAgent:{type:String , required:false,unique:false},
+      agentEmail:{type:String,required:false,unique:false},
+      agentMobile:{type:String,required:false,unique:false},
+      bl: {type:String,required:false,unique:false},
+      hsCode:{type:String,required:false,unique:false},
+      deliveryOrder:{type:String,required:false,unique:false},
 
 
 },{

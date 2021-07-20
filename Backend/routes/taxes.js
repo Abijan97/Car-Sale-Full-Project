@@ -2,7 +2,7 @@ const router = require('express').Router();
 let Taxes = require('../models/tax.model')
 
 const multer= require('multer');
-const Tax = require('../models/tax.model');
+
 
 
 const storage= multer.diskStorage({
@@ -22,7 +22,7 @@ const upload=multer({storage:storage});
 router.route('/').get((req,res)=>{
 
   Taxes.find()
-  .then(receivngs=>res.json(receivngs))
+  .then(taxes=>res.json(taxes))
   .catch(err=>res.status(400).json('Error: ' +err));
 });
 
@@ -34,9 +34,9 @@ router.route('/add').post(upload.single('invoice'),(req,res)=>
     const vat = Number(req.body.vat);
     const customDuty = Number(req.body.customDuty);
     const transportPayment = Number(req.body.transportPayment);
-    const repairpayment = Number(req.body.repairpayment);
+    const repairPayment = Number(req.body.repairPayment);
     const serviceCenter = req.body.serviceCenter;
-    const invoice = req.file.originalname;
+    const invoiceImage = req.file.originalname;
     
 
 
@@ -50,9 +50,9 @@ router.route('/add').post(upload.single('invoice'),(req,res)=>
         vat,
         customDuty,
         transportPayment,
-        repairpayment,
+        repairPayment,
         serviceCenter,
-        invoice
+        invoiceImage
 
         
     });
@@ -71,7 +71,13 @@ router.route('/:id').get((req,res)=>{
 
 });
 
+//deleteagent
 
+router.route('/:id').delete((req,res)=>{
+  Taxes.findByIdAndDelete(req.params.id)
+  .then(()=>res.json('Taxes deleted.')) 
+  .catch(err=>res.status(400).json('error'+ err));
+})
 
 
 

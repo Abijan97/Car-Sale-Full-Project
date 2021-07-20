@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 import CreateReceivings from './create-receivings.component';
 import { Link } from 'react-router-dom';
+import AgentList from '../Taxes/view-taxes.component';
 // import LinearProgress from '@material-ui/core/LinearProgress';
 // import { Link } from 'react-router-dom';
 // import Swal from 'sweetalert2'
@@ -125,11 +126,15 @@ useEffect(()=>{
 
                 </Grid>
                 <Grid item>
-            
+
+                <button type="button" className="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#exampleModaltwo">Tax Payments
+</button>
+ 
 
                 <button type="button" className="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#exampleModalone">
   Receive a Vehicle Order
 </button>
+
 
 
 <div className="modal fade bd-example-modal-lg" id="exampleModalone" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -143,6 +148,24 @@ useEffect(()=>{
           </div>
           <div className="col-12">
         <CreateReceivings/>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            
+<div className="modal fade bd-example-modal-lg" id="exampleModaltwo" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div className="modal-dialog modal-lg">
+    <div className="modal-content">
+     
+      <div className="modal-body">
+        <div className="container border border-primary rounded pb-5 pt-5 mt-2 mb-2">
+          <div>
+          <h4 className="bg-primary text-white p-2 mb-3">Tax Payments</h4>
+          </div>
+          <div className="col-12">
+        <AgentList/>
             </div>
             </div>
             </div>
@@ -178,8 +201,12 @@ useEffect(()=>{
   
       <form  encType='multipart/form-data'>
 
-<Link className="btn btn-info" to={`/receiving/${receiving._id}`}>Add Taxes</Link>
-<br></br>
+<Link className="btn btn-info mr-5" to={`/receiving/${receiving._id}`}>View</Link>
+
+
+<Link className="btn btn-info" to={`/taxes`}>Add Taxes</Link>
+
+
 
 
 <div className="form-row">

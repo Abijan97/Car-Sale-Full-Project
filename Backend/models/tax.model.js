@@ -5,14 +5,14 @@ const Schema = mongoose.Schema;
 const TaxSchema = new Schema({
 
       orderId:{ type : String, required :true},
-      receivedDate:{type:Date,required:true},
+      receivedDate:{type:Date,required:false},
       cessTax:{type:Number,required:false},
       vat:{type:Number,required:false},
       customDuty:{type:Number,required:false},
-      invoice:{ type : String, required :true},
-      transportPayment:{type:Number , required:true},
-      repairpayment:{type:Number , required:true},
-      serviceCenter:{type:String , required:true},
+      transportPayment:{type:Number , required:false},
+      repairPayment:{type:Number , required:false},
+      serviceCenter:{type:String , required:false},
+      invoiceImage:{ type : String, required :false},
     
       
 

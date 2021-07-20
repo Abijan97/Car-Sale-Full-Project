@@ -28,6 +28,8 @@ const CreateOrders=()=> {
     const [bankEmail,setBankEmail]=useState("");
     const [locNum,setLocnum]=useState("");
     let [cif,setCif]=useState(0);
+    const [invoice,setInvoice]=useState("")
+    const [loc,setLoc]=useState("");
   
    const setTotall=()=>{
       return Number(insuranceCost)+Number(agentPayment)+Number(shippingCost)+Number(payment);
@@ -40,9 +42,15 @@ const CreateOrders=()=> {
   
     }
   
-  
+  const onChangeF=e=>{
+    setInvoice(e.target.files[0]);
+  }
 
   
+  const onChangeFi=e=>{
+    setLoc(e.target.files[0])
+  }
+
     const changeonClick = e => {
         e.preventDefault();
 
@@ -100,10 +108,11 @@ const CreateOrders=()=> {
       .then(res => setShippers(res.data))
       .catch(error=>console.log(error));
     
- 
 
 
     },[]);
+
+
     const[users,setUsers]=useState([]);
     useEffect(() => {
       axios
@@ -383,7 +392,7 @@ const CreateOrders=()=> {
         </div>
           <div className="form-group">
             <div className="row">
-        <div className="col-4 mb-3"> 
+        <div className="col-6 mb-3"> 
         <label htmlFor="invoice">Invoice Number</label>
           <input 
             
@@ -391,6 +400,15 @@ const CreateOrders=()=> {
               className="form-control"
               value={invoiceNumber}
               onChange={(e)=>setInvoiceNumber(e.target.value)}
+              />  
+        </div>
+        <div className="col-6 mb-3"> 
+        <label>Invoice </label>
+          <input 
+              type="file" 
+              className="form-control"
+              name="invoice"
+              onChange={onChangeF}
               />  
         </div>
         
@@ -431,7 +449,16 @@ const CreateOrders=()=> {
               onChange={(e)=>setLocnum(e.target.value)}
               />  
         </div>
-        
+
+        <div className="col-6 mb-3"> 
+        <label>Loc Image </label>
+          <input 
+              type="file" 
+              className="form-control"
+              name="loc"
+              onChange={onChangeFi}
+              />  
+        </div>
 
         </div>
         </div>

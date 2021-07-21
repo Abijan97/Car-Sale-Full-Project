@@ -1,28 +1,41 @@
 
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 //send http request to backend (connect to backend)
 import axios from 'axios';
 //alert
-import Swal from 'sweetalert2';
-
-import DatePicker from 'react-datepicker';
-import "react-datepicker/dist/react-datepicker.css";
+import Swal from 'sweetalert2'
 
 
-const CreateCustomer=()=>{
+const EditAgent =props=>{
     
-        
+  useEffect(() => {
+    axios
+    .get(`http://localhost:5001/agents/${props.match.params.id}`)
+    .then(res=>[
+    setAgentId(res.data.agentId),
+setAgentName(res.data.agentName),
+setEmail(res.data.email),
+setMobile(res.data.mobile),
+setCompany(res.data.company),
+setFilename(res.data.agentImage),
+//    setFilename(res.data.setFi lename)
+
+])
+.catch(error =>console.log(error))
+}, []);
+  
+
+
          
 
 
-        const [username,setUsername]=useState("");
-        const [password,setPassword]=useState("");
+        const [agentId,setAgentId]=useState("");
+        const [agentName,setAgentName]=useState("");
         const [email,setEmail]=useState("");
         const [mobile,setMobile]=useState("");
-        const [address,setAddress]=useState("");
-        const [dob,setDOB]=useState(new Date());
+        const [company,setCompany]=useState("");
         const [filename,setFilename]=useState("");
-        
+        const [message,setMessage]=useState("");
 
 
         const onChangeFile =e => {
@@ -34,19 +47,18 @@ const CreateCustomer=()=>{
 
             const formData=new FormData();
 
-            formData.append("username",username);
-            formData.append("password",password);
+            formData.append("agentId",agentId);
+            formData.append("agentName",agentName);
             formData.append("email",email);
             formData.append("mobile",mobile);
-            formData.append('address',address);
-            formData.append("dob",dob);
-            formData.append("customerImage",filename);
+            formData.append("company",company);
+            formData.append("agentImage",filename);
 
           
             
             axios
-            .post('http://localhost:5001/customers/add',formData)
-            .then(res=>console.log(res.data))
+            .put(`http://localhost:5001/agents/update/${props.match.params.id}`,formData)
+            .then(res=>setMessage(res.data))
             .catch((err)=>{
                 console.log(err); 
                
@@ -63,12 +75,12 @@ const CreateCustomer=()=>{
             })
             
 
-            setUsername('');
-            setPassword('');
+            setAgentName('');
+            setAgentId('');
+            setCompany('');
             setEmail('');
             setMobile('');
             setFilename('');
-            setAddress('');
 
         
         };
@@ -83,7 +95,11 @@ const CreateCustomer=()=>{
     
         return(
     
-          
+          <div className="container">
+            <div className="col-6">
+              <h3 className="mb-3">Update Agent</h3>
+
+              <span className="badge badge-primary">{message}</span>
 
 
             <form onSubmit={changeonClick}  encType='multipart/form-data'>
@@ -92,24 +108,38 @@ const CreateCustomer=()=>{
                 <input  type="text"
                     required
                     className="form-control"
-                    value={username}
-                    onChange={(e)=>setUsername(e.target.value)}
+                    value={agentId}
+                    onChange={(e)=>setAgentId(e.target.value)}
                     
                     />
               
               </div>
 
               <div className="form-group mb-3"> 
-                <label>Password : </label>
+                <label>Agent Name : </label>
                 <input  type="text"
                     required
                     className="form-control"
-                    value={password}
-                    onChange={(e)=>setPassword(e.target.value)}
+                    value={agentName}
+                    onChange={(e)=>setAgentName(e.target.value)}
             
                     />
                 
               </div>
+
+              <div className="form-group mb-3"> 
+          <label>Agent Company</label>
+          <select
+              required
+              className="form-control"
+              value={company}
+              onChange={(e)=>setCompany(e.target.value)}>
+                  <option>AUTO SUPPLY JAPAN</option>
+                  <option>KOYO TRADING</option>
+                  <option>JAPAN CAR DIRECT LLC</option>
+                  <option>JAPAN TRADING</option>
+          </select>
+        </div> 
 
             
               <div className="form-group mb-3"> 
@@ -119,18 +149,6 @@ const CreateCustomer=()=>{
                     className="form-control"
                     value={email}
                     onChange={(e)=>setEmail(e.target.value)}
-            
-                    />
-                    
-              </div>
-
-              <div className="form-group mb-3"> 
-                <label>Address </label>
-                <input  type="text"
-                    required
-                    className="form-control"
-                    value={address}
-                    onChange={(e)=>setAddress(e.target.value)}
             
                     />
                     
@@ -145,44 +163,18 @@ const CreateCustomer=()=>{
                     onChange={(e)=>setMobile(e.target.value)}
             
                     />
-        
             
               </div>
-
-              <div className="form-group mb-3">
-                <label>Date of Birth</label>
-                <div>
-            <DatePicker
-              selected={dob}
-              onChange={(date)=>setDOB(date)}
-            />
-          </div>
-            </div>
-
               <div className="form-group mb-3"> 
                 <label htmlFor="file">Image </label>
                 <input
                 type="file"
+          
                 className="form-control-file"
                 onChange={onChangeFile}
-                filename="customerImage"/>
+                filename="agentImage"/>
               </div>
 
-              <div className="form-group mb-3"> 
-                <label htmlFor="file">NIC Front Image </label>
-                <input
-                type="file"
-                className="form-control-file"
-                />
-              </div>
-              <div className="form-group mb-3"> 
-                <label htmlFor="file">NIC Back Image </label>
-                <input
-                type="file"
-                className="form-control-file"
-               />
-              </div>
-            
             <br></br>
               
 
@@ -192,10 +184,12 @@ const CreateCustomer=()=>{
 
               </div>
             </form>
+            </div>
+            </div>
 
        
         )
     }
 
 
-export default CreateCustomer;
+export default EditAgent ;

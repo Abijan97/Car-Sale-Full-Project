@@ -33,6 +33,7 @@ router.route('/add').post(upload.single('customerImage'),(req,res)=>
     const username = req.body.username;
     const password = req.body.password;
     const email =    req.body.email;
+    const address= req.body.address;
     const mobile = Number(req.body.mobile);
     const dob = Date.parse(req.body.dob);  
     const customerImage=req.file.originalname;
@@ -43,6 +44,7 @@ router.route('/add').post(upload.single('customerImage'),(req,res)=>
         password,
         email,
         mobile,
+        address,
         dob,
         customerImage
     });
@@ -73,6 +75,7 @@ router.route('/update/:id').post((req,res)=>{
         customer.username=req.body.username;
         customer.password=req.body.password;
         customer.email=req.body.email;
+        customer.address=req.body.address;
         customer.mobile=Number(req.body.mobile);
         customer.dob=Date.parse(req.body.dob);
         

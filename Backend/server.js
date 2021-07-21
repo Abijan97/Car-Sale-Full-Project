@@ -36,7 +36,9 @@ const CustomClearanceRouter = require('./routes/customclearance');
 const VehiclesRouter=require('./routes/vehicles');
 const StocksRouter=require('./routes/stocks');
 const ReceivingsRouter=require('./routes/receivings');
-const TaxesRouter=require('./routes/taxes')
+const TaxesRouter=require('./routes/taxes');
+const SalesRouter=require('./routes/sales');
+
 
 //using routes
 
@@ -51,6 +53,7 @@ app.use('/stocks',StocksRouter);
 app.use('/vehicles',VehiclesRouter);
 app.use('/receivings',ReceivingsRouter);
 app.use('/taxes',TaxesRouter);
+app.use('/sales',SalesRouter);
 
 
  
@@ -59,3 +62,7 @@ app.listen(port,()=>{
     console.log(`Server is start at server ${port}`);
 })
 
+//ATLAS_URI=mongodb://localhost/CarSale
+
+
+//mongodb+srv://admin:<password>@carsale.dod2v.mongodb.net/myFirstDatabase?retryWrites=true&w=majority

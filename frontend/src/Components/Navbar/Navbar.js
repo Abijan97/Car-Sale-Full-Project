@@ -6,9 +6,10 @@ export default class Navbar extends Component {
   render() {
     return (
       <nav className="navbar  navbar-dark bg-primary navbar-expand-lg">
-        <Link to="/" className="ml-5 navbar-brand">DashBoard</Link>
+
         <div className="collpase navbar-collapse">
         <ul className="container navbar-nav mr-auto">
+        <Link to="/" className="ml-5 navbar-brand">DashBoard</Link>
          
           <li className="navbar-item">
           <Link to="/users" className="nav-link">Employees</Link>

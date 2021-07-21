@@ -201,7 +201,7 @@ useEffect(() => {
                     </Typography> 
                   </CardContent>
                   <CardActions>
-                    <Link to={`/update/${agent._id}`} className="btn btn-primary">
+                    <Link to={`/agent/update/${agent._id}`} className="btn btn-primary">
                       Update
                     </Link>
                     <Button onClick={()=>deleteAgent(agent._id)} size="small" color="secondary">

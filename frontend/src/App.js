@@ -16,6 +16,10 @@ import ReceivingCard from './Components/Receivings/view-receivings.component';
 import ReceivingSingle from './Components/Receivings/receiving';
 import CreateTaxes from './Components/Taxes/create-taxes.component';
 import Home from './Components/home';
+import CreateSales from './Components/Sales/create-sale.component';
+import SaleCard from './Components/Sales/view-sales.component';
+import MTA from './Components/Sales/sale';
+import EditAgent from './Components/Agents/updateAgent';
 function App() {
 
 
@@ -28,6 +32,8 @@ function App() {
       <Route path="/agents" exact component={AgentCard}/>
       <Route
        path="/agent/:id" render={(props)=><AgentSingle {...props}/>} />
+       <Route
+       path="/agent/update/:id" render={(props)=><EditAgent {...props}/>} />
       <Route path="/shippers" exact component={ShipperCard}/>
       <Route path="/vehicles" exact component={VehicleCard}/>
       <Route path="/orders"  exact component={OrderCard}/>
@@ -40,6 +46,10 @@ function App() {
       <Route
        path="/receiving/:id" render={(props)=><ReceivingSingle {...props}/>} />
       <Route path="/taxes" exact component={CreateTaxes}/>
+      <Route path="/sales" exact component={SaleCard}/>
+      <Route
+       path="/sale/:id" render={(props)=><MTA {...props}/>} />
+      <Route path="/add" exact component={CreateSales}/>
 
       <Footer/>
 

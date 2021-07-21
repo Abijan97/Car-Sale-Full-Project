@@ -3,6 +3,9 @@ let Receiving = require('../models/receiving.model');
 
 const multer= require('multer');
 
+const nodemailer=require('nodemailer');
+const hbs=require('nodemailer-handlebars');
+const log = console.log;
 
 const storage= multer.diskStorage({
   destination:(req,file,callback)=>{
@@ -13,6 +16,7 @@ const storage= multer.diskStorage({
     callback(null,file.originalname)
   }
 })
+
 
 const upload=multer({storage:storage});
 
@@ -51,11 +55,69 @@ router.route('/add').post(upload.single('deliveryOrder'),(req,res)=>
         hsCode,
 
         
+        
+
+
+
     });
   
     newReceiving.save()
     .then(() =>res.json('Receiving added')) 
     .catch(err => res.status(400).json('Error:' + err));
+
+    let transporter=nodemailer.createTransport({
+      service:'gmail',
+      secure:false,
+
+      auth:{
+        user:'abijanudara97@gmail.com',
+        pass:'0332256411'
+
+      }, 
+      tls:{ 
+        rejectUnauthorized:false
+      }
+    });
+    //
+    transporter.use('compile', hbs({
+      viewEngine: {
+        extname: '.handlebars',
+        layoutsDir: './views/',
+        defaultLayout : 'receiving',
+    },
+    viewPath: './views/'
+  }));
+  
+  
+      //mail step 3
+
+      let mailOptions = {
+        from: 'abijanudara97@gmail.com', 
+        to: agentEmail,
+        subject: 'Order Receiving Details',
+        text: 'Please Check and confirm theese',
+        attachments:[
+          {filename:'bl.jpg',path:'./views/bl.jpg'},
+          {filename:'delivery.jpg',path:'./views/delivery.jpg'}
+        ],
+        template: 'receiving',
+        context: {
+          orderId:orderId,
+          shippedDate:shippedDate,
+          customAgent:customAgent,
+          deliveryOrder:deliveryOrder,
+          hsCode:hsCode
+        
+        }
+    };
+
+  //step 3
+  transporter.sendMail(mailOptions, (err, data) => {
+    if (err) {
+        return log('Error occurs',err);
+    }
+    return log('Email sent!!!');
+});
 
 }
 );
@@ -68,8 +130,12 @@ router.route('/:id').get((req,res)=>{
 });
 
 
-
-
+router.route('/:id').delete((req,res)=>{
+  Receiving.findByIdAndDelete(req.params.id)
+  .then(()=>res.json('Receiving deleted.')) 
+  .catch(err=>res.status(400).json('error'+ err));
+})
+//second endpoint
 
 router.route('/update/:id').post((req,res)=>{
     Receiving.findById(req,params.id)
@@ -93,5 +159,6 @@ router.route('/update/:id').post((req,res)=>{
 })
 .catch(err=>res.status(400).json('Error ' + err));
 });
+
 
 module.exports = router;

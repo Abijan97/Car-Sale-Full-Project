@@ -1,9 +1,10 @@
 
-import React, {useState} from 'react';
+import React, {useState,useRef} from 'react';
 //send http request to backend (connect to backend)
 import axios from 'axios';
 //alert
 import Swal from 'sweetalert2'
+import SimpleReactValidator from "simple-react-validator";
 
 
 const CreateAgent=()=>{
@@ -71,14 +72,17 @@ const CreateAgent=()=>{
         
           
 
-        
+        const simpleValidator = useRef(new SimpleReactValidator())
+
+
+
     
 
     
         return(
     
           
-
+          
 
             <form onSubmit={changeonClick}  encType='multipart/form-data'>
               <div className="form-group mb-3"> 
@@ -96,12 +100,15 @@ const CreateAgent=()=>{
               <div className="form-group mb-3"> 
                 <label>Agent Name : </label>
                 <input  type="text"
-                    required
+                name="agentName"
+                  
                     className="form-control"
                     value={agentName}
                     onChange={(e)=>setAgentName(e.target.value)}
+                    onBlur={simpleValidator.current.showMessageFor('agentName')}
             
                     />
+                     {simpleValidator.current.message('agentName',agentName, 'required')}
                 
               </div>
 

@@ -1,14 +1,16 @@
 
-import React, {useState} from 'react';
+import React, {useState,useRef} from 'react';
 //send http request to backend (connect to backend)
 import axios from 'axios';
+import SimpleReactValidator from 'simple-react-validator';
+
 //alert
 import Swal from 'sweetalert2'
 
 
 const CreateAgent=()=>{
     
-        
+
          
 
 
@@ -69,7 +71,8 @@ const CreateAgent=()=>{
 
       
         
-          
+        const simpleValidator = useRef(new SimpleReactValidator())
+
 
         
     
@@ -97,11 +100,14 @@ const CreateAgent=()=>{
                 <label>Agent Name : </label>
                 <input  type="text"
                     required
+                    name="agentName"
                     className="form-control"
                     value={agentName}
                     onChange={(e)=>setAgentName(e.target.value)}
+                    onBlur={()=>simpleValidator.current.showMessageFor('agentName')}
             
                     />
+                {simpleValidator.current.message('agentName',agentName, 'required|max:15|min:5',{className:'text-danger'})}
                 
               </div>
 
@@ -124,11 +130,14 @@ const CreateAgent=()=>{
                 <label>Email </label>
                 <input  type="text"
                     required
+                    name="email"
                     className="form-control"
                     value={email}
                     onChange={(e)=>setEmail(e.target.value)}
+                    onBlur={()=>simpleValidator.current.showMessageFor('email')}
             
                     />
+                     {simpleValidator.current.message('email',email, 'required|email',{className:'text-danger'})}
                     
               </div>
             
@@ -136,11 +145,15 @@ const CreateAgent=()=>{
                 <label>Mobile </label>
                 <input  type="text"
                     required
+                    name="mobile"
                     className="form-control"
                     value={mobile}
                     onChange={(e)=>setMobile(e.target.value)}
+                    onBlur={()=>simpleValidator.current.showMessageFor('mobile')}
             
                     />
+                    {simpleValidator.current.message('mobile',mobile, 'required|phone',{className:'text-danger'})}
+
             
               </div>
               <div className="form-group mb-3"> 

@@ -1,8 +1,10 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState,useEffect,useRef} from 'react';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
-//import Swal from 'sweetalert2';
+import Swal from 'sweetalert2';
+import SimpleReactValidator from 'simple-react-validator';
+
 
 
 
@@ -86,13 +88,13 @@ const CreateOrders=()=> {
         });
 
       
-        // Swal.fire({
-        //   position: 'top-end',
-        //   icon: 'success',
-        //   title: 'Order Saved',
-        //   showConfirmButton: false,
-        //   timer: 1500
-        // })
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Order Saved',
+          showConfirmButton: false,
+          timer: 1500
+        })
         
 
 
@@ -149,6 +151,10 @@ const CreateOrders=()=> {
 
 
     },[]);
+
+    //validator
+    const simpleValidator = useRef(new SimpleReactValidator())
+
  
 
     return (
@@ -198,11 +204,17 @@ const CreateOrders=()=> {
          </div>
           <input 
               type="text" 
-              id="pay"
+              name="payment"
               className="form-control"
               value={payment}
               onChange={(e)=>setPayment(e.target.value)}
-              />  
+              onBlur={()=>simpleValidator.current.showMessageFor('payment')}
+
+              />
+
+           {simpleValidator.current.message('payment',payment, 'required|currency',{className:'text-danger'})}
+
+              
               </div>
           </div>
           <div className="col-6 mb-3">
@@ -217,8 +229,13 @@ const CreateOrders=()=> {
               id="insurancepay"
               className="form-control"
               value={insuranceCost}
+              name="insuranceCost"
               onChange={(e)=>setInsurance(e.target.value)}
+              onBlur={()=>simpleValidator.current.showMessageFor('insuranceCost')}
+
               />  
+      {simpleValidator.current.message('insuranceCost',insuranceCost, 'required|currency',{className:'text-danger'})}
+
               </div>
           </div>
           </div>
@@ -260,9 +277,14 @@ const CreateOrders=()=> {
               type="text" 
               id="agentpay"
               className="form-control"
+              name="agentPayment"
               value={agentPayment}
               onChange={(e)=>setAgentpayment(e.target.value)}
+              onBlur={()=>simpleValidator.current.showMessageFor('agentPayment')}
+
               />  
+        {simpleValidator.current.message('agentPayment',agentPayment, 'required|currency',{className:'text-danger'})}
+
               </div>
           </div>
           </div>
@@ -298,13 +320,17 @@ const CreateOrders=()=> {
          </div>
           <input 
               type="text" 
-              id="shipperpay"
               className="form-control"
+              name="shippingCost"
               value={shippingCost}
               onChange={(e)=>setShippingCost(e.target.value)}
+              onBlur={()=>simpleValidator.current.showMessageFor('shippingCost')}
+
 
               
               />  
+         {simpleValidator.current.message('shippingCost',shippingCost, 'required|currency',{className:'text-danger'})}
+
               </div>
           </div>
           </div>

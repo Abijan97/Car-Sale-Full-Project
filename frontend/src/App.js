@@ -12,7 +12,9 @@ import OrderCard from './Components/Orders/orderview.component';
 import CustomerCard from './Components/Customers/customer-view.component';
 import UserCard from './Components/User/user-view.component';
 import AuctionSheet from './Components/Orders/order';
-
+import SaleCard from './Components/Sales/view-sales.component';
+import EditAgent from './Components/Agents/updateAgent';
+import Home from './Components/home';
 function App() {
 
 
@@ -21,9 +23,13 @@ function App() {
     <div>
       <Router>
       <Navbar/>
+      <Route path="/" exact component={Home}/>
+
       <Route path="/agents" exact component={AgentCard}/>
       <Route
        path="/agent/:id" render={(props)=><AgentSingle {...props}/>} />
+          <Route
+       path="/agent/update/:id" render={(props)=><EditAgent {...props}/>} />
       <Route path="/shippers" exact component={ShipperCard}/>
       <Route path="/vehicles" exact component={VehicleCard}/>
       <Route path="/orders"  exact component={OrderCard}/>
@@ -32,6 +38,7 @@ function App() {
       <Route path="/tests" exact component={CreateTest}/>
       <Route path="/customers" exact component={CustomerCard}/>
       <Route path="/users" exact component={UserCard}/>
+      <Route path="/sales" exact component={SaleCard}/>
 
 
       <Footer/>

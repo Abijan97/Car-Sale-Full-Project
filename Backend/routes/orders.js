@@ -32,6 +32,7 @@ router.route('/').get((req,res)=>{
 });
 
 
+
 router.route('/add').post(upload.single('auctionSheet'),(req,res)=>
 {
     const orderId = req.body.orderId;
@@ -84,8 +85,8 @@ router.route('/add').post(upload.single('auctionSheet'),(req,res)=>
     let transporter=nodemailer.createTransport({
       service:'gmail',
       auth:{
-        user:'abijanudara97@gmail.com',
-        pass:'0332256411'
+        user:'//mailaddress',
+        pass:'//password'
 
       }
     })

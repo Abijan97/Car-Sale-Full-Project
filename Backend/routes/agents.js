@@ -2,7 +2,8 @@ const router = require('express').Router();
 //require agent model
 let Agent = require('../models/agent.model');
 const nodemailer=require('nodemailer');
-
+const hbs=require('nodemailer-handlebars');
+const log = console.log;
 
 //image
 const multer= require('multer');
@@ -62,14 +63,15 @@ router.get('/:id',(req,res)=>{
 });
 
 //update agent
-router.put('/update/:id',(req,res)=>{
+router.put('/update/:id',upload.single('agentImage'),(req,res)=>{
   Agent.findById(req.params.id)
   .then(agent=>{
     agent.agentId=req.body.agentImage;
     agent.agentName=req.body.agentName;
     agent.email=req.body.email;
     agent.mobile=req.body.mobile;
-    agent.agentImage=req.file.originalname;
+    agent.agentImage=req.file;
+    
 
     agent
     .save()
@@ -97,7 +99,6 @@ router.route('/add').post(upload.single('agentImage'),(req, res) => {
   const agentImage=req.file.originalname;
 
 
-
   const newAgent = new Agent({agentId,agentName,email,mobile,company,agentImage});
 
   newAgent.save()
@@ -105,42 +106,58 @@ router.route('/add').post(upload.single('agentImage'),(req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 
       //mail step1
+    
       let transporter=nodemailer.createTransport({
         service:'gmail',
         secure:false,
-        port:25,
 
         auth:{
-          user:'abijanudara97@gmail.com',
-          pass:'0332256411'
+          user:'//mailaddress',
+          pass:'//password'
   
-        },
-        tls:{
+        }, 
+        tls:{ 
           rejectUnauthorized:false
         }
-      })
-        //mail step 2
+      });
+      //
+      transporter.use('compile', hbs({
+        viewEngine: {
+          extname: '.handlebars',
+          layoutsDir: './views/',
+          defaultLayout : 'index',
+      },
+      viewPath: './views/'
+    }));
+    
+    
+        //mail step 3
   
-    let mailOptions={
-      from:'abijanudara97@gmail.com',
-      to:'abijanudara27759@gmail.com',
-      subject:'Testing and Testing',
-      text:'It works'
-      
-  
-    }
+        let mailOptions = {
+          from: 'abijanudara97@gmail.com', 
+          to: email,
+          subject: 'You added as a New Agent',
+          text: 'Wooohooo it works!!',
+          template: 'index',
+          context: {
+            agentId:agentId,
+            agentName:agentName,
+            email:email,
+            mobile:mobile,
+            Company:company
+          }
+      };
   
     //step 3
-    transporter.sendMail(mailOptions,function(err,data){
-      if(err){
-        console.log('Erorr ocurs',err);
+    transporter.sendMail(mailOptions, (err, data) => {
+      if (err) {
+          return log('Error occurs',err);
       }
-      else{
-        console.log('Email Sent');
-      }
-    })
-
+      return log('Email sent!!!');
+  });
+  
 
 });
 
 module.exports = router;
+

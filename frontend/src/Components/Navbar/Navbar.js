@@ -5,7 +5,7 @@ export default class Navbar extends Component {
 
   render() {
     return (
-      <nav className="navbar  navbar-dark bg-primary navbar-expand-lg">
+      <nav className="navbar  navbar-dark navbar-expand-lg" style={{backgroundColor:"#004d40"}}>
 
         <div className="collpase navbar-collapse">
         <ul className="container navbar-nav mr-auto">
@@ -31,6 +31,15 @@ export default class Navbar extends Component {
           </li>
           <li className="navbar-item">
           <Link to="/vehicles" className="nav-link">Vehicle</Link>
+          </li>
+          <li className="navbar-item">
+          <Link to="/sales" className="nav-link">Sales</Link>
+          </li>
+          <li className="navbar-item">
+          <Link to={{pathname:"//localhost/chatapp/users.php"}} target="_parent" className="nav-link">ChatApp</Link>
+          </li>
+          <li className="navbar-item">
+          <Link to={{}} target="_parent" className="nav-link" style={{marginLeft:"400px"}}>Logout</Link>
           </li>
         </ul>
         </div>

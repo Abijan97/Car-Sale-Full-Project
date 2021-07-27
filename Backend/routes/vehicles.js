@@ -25,7 +25,7 @@ const upload=multer({storage:storage});
 
 
 
-router.route('/').get((req,res)=>{
+router.route('/').get((req,res)=>{  
 
   Vehicle.find()
   .then(vehicles=>res.json(vehicles))
@@ -73,12 +73,14 @@ router.route('/add').post(upload.single('vehicleImage'),(req,res)=>
 }
 );
 
-router.route('/:id').get((req,res)=>{
-    Vehicle.findById(req,params.id)
-    .then(vehicle => res.json(vehicle))
-    .catch(err => res.status(400).json('Error :'+ err));
+router.get('/:id',(req,res)=>{
+  Vehicle
+  .findById(req.params.id)
+  .then(vehicle=>res.json(vehicle))
+  .catch(err=>res.status(400).json(`Error: ${err}`))
 
 });
+
 
 router.route('/:id').delete((req,res)=>{
     Vehicle.findByIdAndDelete(req.params.id)

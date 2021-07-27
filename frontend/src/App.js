@@ -9,6 +9,7 @@ import VehicleCard from './Components/vehicles/vehicle-view.component';
 import AgentSingle from './Components/Agents/agent';
 import CreateTest from './Components/test.component';
 import OrderCard from './Components/Orders/orderview.component';
+import UpdateOrder from './Components/Orders/update-component';
 import CustomerCard from './Components/Customers/customer-view.component';
 import UserCard from './Components/User/user-view.component';
 import AuctionSheet from './Components/Orders/order';
@@ -20,6 +21,7 @@ import CreateSales from './Components/Sales/create-sale.component';
 import SaleCard from './Components/Sales/view-sales.component';
 import MTA from './Components/Sales/sale';
 import EditAgent from './Components/Agents/updateAgent';
+import Vehicle from './Components/vehicles/vehicle';
 function App() {
 
 
@@ -36,9 +38,13 @@ function App() {
        path="/agent/update/:id" render={(props)=><EditAgent {...props}/>} />
       <Route path="/shippers" exact component={ShipperCard}/>
       <Route path="/vehicles" exact component={VehicleCard}/>
+      <Route
+       path="/vehicle/:id" render={(props)=><Vehicle {...props}/>} />
       <Route path="/orders"  exact component={OrderCard}/>
       <Route
        path="/order/:id" render={(props)=><AuctionSheet {...props}/>} />
+        <Route
+       path="/order/update/:id" render={(props)=><UpdateOrder {...props}/>} />
       <Route path="/tests" exact component={CreateTest}/>
       <Route path="/customers" exact component={CustomerCard}/>
       <Route path="/users" exact component={UserCard}/>

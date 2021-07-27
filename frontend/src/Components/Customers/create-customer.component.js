@@ -35,7 +35,6 @@ const CreateCustomer=()=>{
             const formData=new FormData();
 
             formData.append("username",username);
-            formData.append("password",password);
             formData.append("email",email);
             formData.append("mobile",mobile);
             formData.append('address',address);
@@ -88,7 +87,7 @@ const CreateCustomer=()=>{
 
             <form onSubmit={changeonClick}  encType='multipart/form-data'>
               <div className="form-group mb-3"> 
-                <label>Agent ID : </label>
+                <label>Username</label>
                 <input  type="text"
                     required
                     className="form-control"
@@ -99,17 +98,7 @@ const CreateCustomer=()=>{
               
               </div>
 
-              <div className="form-group mb-3"> 
-                <label>Password : </label>
-                <input  type="text"
-                    required
-                    className="form-control"
-                    value={password}
-                    onChange={(e)=>setPassword(e.target.value)}
-            
-                    />
-                
-              </div>
+          
 
             
               <div className="form-group mb-3"> 

@@ -31,7 +31,6 @@ router.route('/').get((req,res)=>{
 router.route('/add').post(upload.single('customerImage'),(req,res)=>
 {
     const username = req.body.username;
-    const password = req.body.password;
     const email =    req.body.email;
     const address= req.body.address;
     const mobile = Number(req.body.mobile);
@@ -41,7 +40,6 @@ router.route('/add').post(upload.single('customerImage'),(req,res)=>
 
     const newCustomer = new Customer({
         username,
-        password,
         email,
         mobile,
         address,

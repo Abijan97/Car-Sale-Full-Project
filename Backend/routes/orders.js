@@ -104,7 +104,7 @@ router.route('/:id').delete((req,res)=>{
     .catch(err=>res.status(400).json('error'+ err));
 })
 
-router.route('/update/:id').post((req,res)=>{
+router.put('/update/:id').post((req,res)=>{
     Order.findById(req,params.id)
     .then(order =>{
         order.orderId=req.body.orderId;

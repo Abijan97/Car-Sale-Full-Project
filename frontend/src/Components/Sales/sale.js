@@ -12,7 +12,7 @@ const MTA = props=> {
    const [filename,setFilename]=useState("");  
    const [saleNo,setSaleno]=useState("");
    const [date,setDate]=useState("");
- 
+        
     
       useEffect(() => {
         axios

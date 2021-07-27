@@ -63,14 +63,14 @@ router.get('/:id',(req,res)=>{
 });
 
 //update agent
-router.put('/update/:id',upload.single('agentImage'),(req,res)=>{
+router.put('/update/:id',upload.single('agentImae'),(req,res)=>{
   Agent.findById(req.params.id)
   .then(agent=>{
     agent.agentId=req.body.agentImage;
     agent.agentName=req.body.agentName;
     agent.email=req.body.email;
     agent.mobile=req.body.mobile;
-    agent.agentImage=req.file;
+    
     
 
     agent

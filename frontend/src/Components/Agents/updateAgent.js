@@ -82,6 +82,8 @@ setFilename(res.data.agentImage),
             setMobile('');
             setFilename('');
 
+            window.location.href = "http://localhost:3000/agents";
+
         
         };
 
@@ -96,8 +98,8 @@ setFilename(res.data.agentImage),
         return(
     
           <div className="container">
-            <div className="col-6">
-              <h3 className="mb-3">Update Agent</h3>
+            <div className="col-6 border bg-info mt-5 text-white rounded p-5">
+              <h3 className="mb-3 text-center">Update Agent</h3>
 
               <span className="badge badge-primary">{message}</span>
 

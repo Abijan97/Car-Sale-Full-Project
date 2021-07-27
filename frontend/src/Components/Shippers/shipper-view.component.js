@@ -108,7 +108,7 @@ useEffect(()=>{
     <React.Fragment>
         <CssBaseline/>
         
-        <div className={classes.heroContent}>
+        <div className={classes.heroContent}style={{backgroundColor:"#1abc9c"}}>
           <Container maxWidth="sm">
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
               shippers

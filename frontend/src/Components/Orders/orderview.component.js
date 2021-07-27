@@ -6,6 +6,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
 import Accordion from '@material-ui/core/Accordion';
+
+import Box from '@material-ui/core/Box';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -13,11 +15,14 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 import CreateOrders from './create-order.component';
 import { Link } from 'react-router-dom';
+//import { createTheme } from '@material-ui/core/styles';
 // import LinearProgress from '@material-ui/core/LinearProgress';
 // import { Link } from 'react-router-dom';
 // import Swal from 'sweetalert2'
 
 //materila ui things
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -59,7 +64,6 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-
 export default function OrderCard() {
   const classes = useStyles();
 
@@ -92,6 +96,8 @@ const deleteOrder = id =>{
       )
     }
   })
+  window.location.href = "http://localhost:3000/orders";
+
   
 }
 
@@ -110,14 +116,12 @@ useEffect(()=>{
     <React.Fragment>
         <CssBaseline/>
         
-        <div className={classes.heroContent}>
+        <div className={classes.heroContent} style={{backgroundColor:"#1abc9c"}}>
           <Container maxWidth="sm">
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
               Orders
             </Typography>
-            <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              you can add, view, delete Orders from here.
-            </Typography>
+          
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
@@ -158,9 +162,9 @@ useEffect(()=>{
 
 
 
-<div className="row mt-5">
+<div className="row mt-5 pl-5">
 
-
+<Box width="95%" justifyContent="center" >
         <div className={classes.root}>
         {orders.map((order,key)=>(
               <Accordion key={key}>
@@ -244,7 +248,7 @@ useEffect(()=>{
       placeholder={order.insuranceCost}
       disabled
 
-      />  
+      />
       </div>
   </div>
   </div>
@@ -478,6 +482,10 @@ className="img-fluid"
 
 
 <div className="form-group mb-3">
+<Link to={`/order/update/${order._id}`} className="btn btn-primary">
+                      Update
+                    </Link>
+                    <span></span>
   <input onClick={()=>deleteOrder(order._id)} value="Delete Order" className="btn btn-warning" />
 </div>
 </form>
@@ -494,6 +502,7 @@ className="img-fluid"
     
     
     </div>
+    </Box>
     </div>
 
     

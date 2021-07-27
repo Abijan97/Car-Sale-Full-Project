@@ -33,9 +33,8 @@ const useStyles = makeStyles((theme) => ({
   },
   footer: {
     padding: theme.spacing(3, 2),
-       marginTop: 'auto',
-    backgroundColor:
-      theme.palette.type === 'light' ? theme.palette.grey[500] : theme.palette.grey[800],
+       marginTop: 'auto'
+  
   },
 }));
 
@@ -43,10 +42,10 @@ export default function StickyFooter() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <CssBaseline />
+    <div className={classes.root} >
+      
      
-      <footer className={classes.footer}>
+      <footer className={classes.footer} style={{backgroundColor:"#1abc9c"}}>
         <Typography variant="h6" align="center" gutterBottom>
           Footer
         </Typography>

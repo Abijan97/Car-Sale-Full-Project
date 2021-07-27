@@ -205,7 +205,7 @@ const CreateReceivings=()=> {
               />  
         </div>
         
-     
+    
         </div>
         </div>
         <div className="col-4 mb-3"> 
@@ -254,7 +254,7 @@ const CreateReceivings=()=> {
 
 
         <div className="form-group mb-3">
-          <input type="submit" value="Create Order" className="btn btn-primary" />
+          <input type="submit" value="Submit" className="btn btn-primary" />
         </div>
       </form>
     

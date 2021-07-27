@@ -14,6 +14,8 @@ import axios from 'axios';
 import CreateReceivings from './create-receivings.component';
 import { Link } from 'react-router-dom';
 import AgentList from '../Taxes/view-taxes.component';
+import Box from '@material-ui/core/Box';
+
 // import LinearProgress from '@material-ui/core/LinearProgress';
 // import { Link } from 'react-router-dom';
 // import Swal from 'sweetalert2'
@@ -111,7 +113,7 @@ useEffect(()=>{
     <React.Fragment>
         <CssBaseline/>
         
-        <div className={classes.heroContent}>
+        <div className={classes.heroContent} style={{backgroundColor:"#1abc9c"}}>
           <Container maxWidth="sm">
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
               Order Receivings
@@ -126,11 +128,12 @@ useEffect(()=>{
 
                 </Grid>
                 <Grid item>
+                  
 
-                <button type="button" className="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#exampleModaltwo">Tax Payments
+                <button type="button" className="btn btn-primary float-left mr-5" data-bs-toggle="modal" data-bs-target="#exampleModaltwo">Tax Payments
 </button>
  
-
+<span>       </span>
                 <button type="button" className="btn btn-primary float-right" data-bs-toggle="modal" data-bs-target="#exampleModalone">
   Receive a Vehicle Order
 </button>
@@ -181,9 +184,9 @@ useEffect(()=>{
 
 
 
-<div className="row">
+<div className="row mt-5 pl-5">
 
-
+<Box width="95%" justifyContent="center" >
         <div className={classes.root}>
         {receivings.map((receiving,key)=>(
               <Accordion key={key}>
@@ -202,6 +205,8 @@ useEffect(()=>{
       <form  encType='multipart/form-data'>
 
 <Link className="btn btn-info mr-5" to={`/receiving/${receiving._id}`}>View</Link>
+<span>  </span>
+<span> </span>
 
 
 <Link className="btn btn-info" to={`/taxes`}>Add Taxes</Link>
@@ -342,6 +347,7 @@ className="img-fluid"
     
     
     </div>
+    </Box>
     </div>
 
     

@@ -266,6 +266,7 @@ const CreateTaxes=()=> {
 
         <div className="form-group mb-3">
         <Link className="btn btn-secondary mr-2" to={`/receivings`}>Back</Link>
+        <span> </span>
           <input type="submit" value="Submit" className="ml-5 btn btn-primary" />
         
         </div>

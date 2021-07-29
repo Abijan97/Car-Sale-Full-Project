@@ -1,0 +1,97 @@
+[{
+  "_id": {
+    "$oid": "60f1e18e9dbecd2f58ce4e41"
+  },
+  "orderId": "O934423",
+  "shippedDate": {
+    "$date": "2021-06-28T19:43:25Z"
+  },
+  "receivedDate": {
+    "$date": "2021-06-26T19:43:25Z"
+  },
+  "customAgent": "asdas",
+  "agentEmail": "dads",
+  "agentMobile": "asd",
+  "bl": "asdsa",
+  "deliveryOrder": "game_of_thrones_rory_mccann_sandor_clegane_94610_1920x1080.jpg",
+  "hsCode": "adad",
+  "sesTax": 767,
+  "vat": 76776,
+  "customDuty": 766,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60f76519b1e99f4ad872c4c5"
+  },
+  "orderId": "O2323",
+  "shippedDate": {
+    "$date": "2021-06-28T00:05:48Z"
+  },
+  "customAgent": "Abijan",
+  "agentEmail": "abijanudara27759@gmail.com",
+  "agentMobile": "0332256411",
+  "bl": "234234",
+  "deliveryOrder": "Delivery-order-form-1.jpg",
+  "hsCode": "FR3332",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60f7680592c4e93cb84e1a90"
+  },
+  "orderId": "O4234324",
+  "shippedDate": {
+    "$date": "2021-06-27T00:18:21Z"
+  },
+  "customAgent": "abijan",
+  "agentEmail": "abijanudara27759@gmail.com",
+  "agentMobile": "0332256411",
+  "bl": "23424",
+  "deliveryOrder": "Delivery-order-form-1.jpg",
+  "hsCode": "DF342",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60f9be0ae740df4d507795bd"
+  },
+  "orderId": "O111",
+  "shippedDate": {
+    "$date": "2021-07-04T18:47:35Z"
+  },
+  "customAgent": "aniil",
+  "agentEmail": "abijanudara27759@gmail.com",
+  "agentMobile": "0332256411",
+  "bl": "Ldad3123",
+  "deliveryOrder": "Delivery-order-form-1.jpg",
+  "hsCode": "JS423423",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60f9d4b8e740df4d507795c0"
+  },
+  "orderId": "O2323",
+  "shippedDate": {
+    "$date": "2021-06-27T20:25:49Z"
+  },
+  "customAgent": "anil",
+  "agentEmail": "abijanudara27759@gmail.com",
+  "agentMobile": "0332256411",
+  "bl": "adad",
+  "deliveryOrder": "Delivery-order-form-1.jpg",
+  "hsCode": "UT43443",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60fa4ef5ce1c84455c7eddfd"
+  },
+  "orderId": "O42423",
+  "shippedDate": {
+    "$date": "2021-06-28T05:07:43Z"
+  },
+  "customAgent": "abijan udara",
+  "agentEmail": "abijanudara27759@gmail.com",
+  "agentMobile": "03322555",
+  "bl": "AD344",
+  "deliveryOrder": "delivery order.png",
+  "hsCode": "DA3424",
+  "__v": 0
+}]

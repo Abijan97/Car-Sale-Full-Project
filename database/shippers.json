@@ -1,0 +1,65 @@
+[{
+  "_id": {
+    "$oid": "60e685419872df2aac7c2e45"
+  },
+  "shipperId": "s3434",
+  "shipperName": "Navel Shippers",
+  "email": "navel@gmail.com",
+  "mobile": "0789655474",
+  "photo": "76804f67ba38f85e4802d250e5b15504.jpg",
+  "createdAt": {
+    "$date": "2021-07-08T04:55:29.866Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-08T04:55:29.866Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60e685879872df2aac7c2e47"
+  },
+  "shipperId": "s34323",
+  "shipperName": "AB Shippers",
+  "email": "abshipper@gmail.com",
+  "mobile": "0332256411",
+  "photo": "man-character-face-avatar-in-glasses-vector-17074986.jpg",
+  "createdAt": {
+    "$date": "2021-07-08T04:56:39.306Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-08T04:56:39.306Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60e686189872df2aac7c2e49"
+  },
+  "shipperId": "s2323r",
+  "shipperName": "XYZ Shippers",
+  "email": "xyz@gmail.com",
+  "mobile": "0332256411",
+  "photo": "draw-nice-style-cartoon-caricature-as-a-profile-picture.png",
+  "createdAt": {
+    "$date": "2021-07-08T04:59:04.730Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-08T04:59:04.730Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60ea7e3202a57805c088cfd2"
+  },
+  "shipperId": "s2323",
+  "shipperName": "Charitha Asalanka",
+  "email": "charitha@gmail.com",
+  "mobile": "0112971869",
+  "photo": "c8f14613fdfd69eaced69d0f1143d47d.jpg",
+  "createdAt": {
+    "$date": "2021-07-11T05:14:26.509Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-11T05:14:26.509Z"
+  },
+  "__v": 0
+}]

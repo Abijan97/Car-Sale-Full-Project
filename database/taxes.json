@@ -1,0 +1,23 @@
+[{
+  "_id": {
+    "$oid": "60f42fe8ccb6f70f849fbc88"
+  },
+  "orderId": "O4234324",
+  "receivedDate": {
+    "$date": "2021-06-28T13:42:39Z"
+  },
+  "cessTax": 2344,
+  "vat": 324,
+  "customDuty": 2344,
+  "transportPayment": 34324,
+  "repairPayment": 43234,
+  "serviceCenter": "dad",
+  "invoiceImage": "invoice.png",
+  "createdAt": {
+    "$date": "2021-07-18T13:43:04.782Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-18T13:43:04.782Z"
+  },
+  "__v": 0
+}]

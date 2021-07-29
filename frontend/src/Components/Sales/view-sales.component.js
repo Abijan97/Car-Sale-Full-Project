@@ -138,7 +138,7 @@ useEffect(()=>{
       <div className="modal-body">
         <div className="container border border-primary rounded pb-5 pt-5 mt-2 mb-2">
           <div>
-          <h4 className="bg-primary text-white p-2 mb-3">ADD ORDER</h4>
+          <h4 className="bg-primary text-white p-2 mb-3">ADD SALES</h4>
           </div>
           <div className="col-12">
                 <CreateSales/>

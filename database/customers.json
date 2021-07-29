@@ -1,0 +1,39 @@
+[{
+  "_id": {
+    "$oid": "60efcc218f5aca1aa493a31e"
+  },
+  "username": "aniljaya98",
+  "password": "adadd",
+  "email": "anil@gmail.com",
+  "mobile": 112971869,
+  "dob": {
+    "$date": "2021-06-28T05:46:51Z"
+  },
+  "customerImage": "game_of_thrones_rory_mccann_sandor_clegane_94610_1920x1080.jpg",
+  "createdAt": {
+    "$date": "2021-07-15T05:48:17.903Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-15T05:48:17.903Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60f9baf9e740df4d507795bb"
+  },
+  "username": "nimalaka34",
+  "email": "nimalaka@gmail.com",
+  "mobile": 767892368,
+  "address": "411,Kadawatha",
+  "dob": {
+    "$date": "2021-07-05T18:36:57Z"
+  },
+  "customerImage": "e437953450630fe7c4d05c7b297644e3.jpg",
+  "createdAt": {
+    "$date": "2021-07-22T18:37:45.059Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-22T18:37:45.059Z"
+  },
+  "__v": 0
+}]

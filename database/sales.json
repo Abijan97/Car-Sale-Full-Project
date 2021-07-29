@@ -1,0 +1,47 @@
+[{
+  "_id": {
+    "$oid": "60f7137d6f388353343c4237"
+  },
+  "saleNo": "2",
+  "regiNo": "DF2344",
+  "paymentMethod": "Debit Card",
+  "modelName": "0",
+  "customer": "0",
+  "user": "Imraan Hashmi",
+  "date": {
+    "$date": "2021-06-28T18:17:54Z"
+  },
+  "payment": 234234,
+  "luxuryTaxes": 3424234,
+  "MTA": "mta8.png",
+  "createdAt": {
+    "$date": "2021-07-20T18:18:37.668Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-20T18:18:37.668Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60f732470b8f6b43705573e0"
+  },
+  "saleNo": "3",
+  "regiNo": "FG3242",
+  "paymentMethod": "Debit Card",
+  "modelName": "A3",
+  "customer": "aniljaya98",
+  "user": "0",
+  "date": {
+    "$date": "2021-06-27T20:29:12Z"
+  },
+  "payment": 1200000,
+  "luxuryTaxes": 20000,
+  "MTA": "mta8.png",
+  "createdAt": {
+    "$date": "2021-07-20T20:29:59.216Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-20T20:29:59.216Z"
+  },
+  "__v": 0
+}]

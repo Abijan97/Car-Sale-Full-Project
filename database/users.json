@@ -1,0 +1,63 @@
+[{
+  "_id": {
+    "$oid": "60f770113a26a43dd436e510"
+  },
+  "username": "Kamesh Silva",
+  "password": "AV3323",
+  "email": "kamesh@gmail.com",
+  "mobile": "0332256411",
+  "address": "211,ambaraluwa,weliweriya",
+  "homePhone": "0332256411",
+  "marriedState": "unmarried",
+  "dob": {
+    "$date": "2021-06-28T00:51:30Z"
+  },
+  "startDate": {
+    "$date": "2021-06-27T00:51:30Z"
+  },
+  "empType": "Full time",
+  "gender": "male",
+  "bank": "AB",
+  "accountNo": "dad3242424",
+  "position": "Manager",
+  "qualification": "Advanced Level",
+  "employeeImage": "701651-vector-cartoon-portrait-avatar-illustration-fanart.jpg",
+  "createdAt": {
+    "$date": "2021-07-21T00:53:37.662Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-21T00:53:37.662Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60f77ec63a26a43dd436e511"
+  },
+  "username": "Gayan Perera",
+  "password": "dasdad424",
+  "email": "gayan@gmail.com",
+  "mobile": "0718065795",
+  "address": "211,ambaraluwa,weliweriya",
+  "homePhone": "0112971869",
+  "marriedState": "married",
+  "dob": {
+    "$date": "2021-06-30T01:54:02Z"
+  },
+  "startDate": {
+    "$date": "2021-06-29T01:54:02Z"
+  },
+  "empType": "Part Time",
+  "gender": "male",
+  "bank": "Ab",
+  "accountNo": "423442343",
+  "position": "Manager",
+  "qualification": "Ordinary Level",
+  "employeeImage": "76804f67ba38f85e4802d250e5b15504.jpg",
+  "createdAt": {
+    "$date": "2021-07-21T01:56:22.338Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-21T01:56:22.338Z"
+  },
+  "__v": 0
+}]

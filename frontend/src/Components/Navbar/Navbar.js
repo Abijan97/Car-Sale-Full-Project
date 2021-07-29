@@ -39,7 +39,7 @@ export default class Navbar extends Component {
           <Link to={{pathname:"//localhost/chatapp/users.php"}} target="_parent" className="nav-link">ChatApp</Link>
           </li>
           <li className="navbar-item">
-          <Link to={{}} target="_parent" className="nav-link" style={{marginLeft:"400px"}}>Logout</Link>
+          <Link to={{pathname:"//localhost/cs/"}} target="_parent" className="nav-link" style={{marginLeft:"500px"}}>Logout</Link>
           </li>
         </ul>
         </div>

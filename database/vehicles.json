@@ -1,0 +1,67 @@
+[{
+  "_id": {
+    "$oid": "60eb545cfa9410371435af14"
+  },
+  "modelName": "A4",
+  "company": "Audi",
+  "fueltype": "Petrol",
+  "seats": "5",
+  "capacity": "4000",
+  "bodyStyle": "4000",
+  "year": "2019",
+  "mileage": "0",
+  "exteriorColor": "Black",
+  "interiorColor": "White",
+  "vehicleImage": "2022-audi-a4-mmp-1-1621027611.jpg",
+  "createdAt": {
+    "$date": "2021-07-11T20:28:13.185Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-11T20:28:13.185Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60ee673038d71411282a9d01"
+  },
+  "modelName": "A3",
+  "company": "Audi",
+  "fueltype": "Petrol",
+  "seats": "6",
+  "capacity": "3000",
+  "bodyStyle": "3000",
+  "year": "2019",
+  "mileage": "200km",
+  "exteriorColor": "Cream",
+  "interiorColor": "Titanium",
+  "vehicleImage": "bmw-8-series-right-front-three-quarter8.jpeg",
+  "createdAt": {
+    "$date": "2021-07-14T04:25:20.608Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-14T04:25:20.608Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60ee6d3038d71411282a9d02"
+  },
+  "modelName": "M3",
+  "company": "BMW",
+  "fueltype": "Petrol",
+  "seats": "6",
+  "capacity": "3000",
+  "bodyStyle": "3000",
+  "year": "2016",
+  "mileage": "2km",
+  "exteriorColor": "Silver Grey",
+  "interiorColor": "Silver Grey",
+  "vehicleImage": "1280x854_P90351044_highRes_the-new-bmw-8-series.jpg",
+  "createdAt": {
+    "$date": "2021-07-14T04:50:56.439Z"
+  },
+  "updatedAt": {
+    "$date": "2021-07-14T04:50:56.439Z"
+  },
+  "__v": 0
+}]

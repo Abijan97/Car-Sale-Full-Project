@@ -1,0 +1,17 @@
+[{
+  "_id": {
+    "$oid": "60bf547b0216345d9c51d69d"
+  },
+  "vehicleId": "v1",
+  "modelName": "Swift",
+  "marketPrice": 0,
+  "orderId": "O2",
+  "color": "red",
+  "createdAt": {
+    "$date": "2021-06-08T11:28:59.160Z"
+  },
+  "updatedAt": {
+    "$date": "2021-06-08T11:28:59.160Z"
+  },
+  "__v": 0
+}]

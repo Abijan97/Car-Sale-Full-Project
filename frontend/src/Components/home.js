@@ -104,12 +104,12 @@ const Home=()=>{
 
 <div id="report1" className="container mt-5 mb-5">
 
-<iframe width="1200" height="600" src="https://app.powerbi.com/reportEmbed?reportId=0b4cefdc-dd6b-4a9e-ba6e-f776eadb1d8a&autoAuth=true&ctid=aa232db2-7a78-4414-a529-33db9124cba7&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+<iframe width="1400" height="700" src="https://app.powerbi.com/reportEmbed?reportId=0b4cefdc-dd6b-4a9e-ba6e-f776eadb1d8a&autoAuth=true&ctid=aa232db2-7a78-4414-a529-33db9124cba7&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
  <button
           onClick={createPDF}
           style={{
-            backgroundColor: "#050f2c",
-            color: "#2DDD98",
+            backgroundColor: "#1abc9c",
+            color: "#fcfcfc",
             fontSize: "20px",
             height: "50px",
             marginTop: "50px",
